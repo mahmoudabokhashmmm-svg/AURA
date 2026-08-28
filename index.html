@@ -63,6 +63,7 @@ tailwind.config = {
       <span class="opacity-40">|</span>
       <span class="hidden md:inline" data-i18n="top_inspect">🔍 <strong>معاينة وقياس مجاني</strong> قبل دفع باقي المبلغ للمندوب</span>
     </div>
+    <!-- Language Toggle Button -->
     <button onclick="toggleLanguage()" class="border border-cafe-600 bg-cafe-900/60 hover:bg-cafe-800 text-cafe-200 px-3 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1 transition-all">
       <i class="fa-solid fa-globe"></i>
       <span id="lang-btn-text">English</span>
@@ -76,7 +77,7 @@ tailwind.config = {
     
     <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-cafe-800">
       <a href="#home" class="hover:text-cafe-600 transition-colors" data-i18n="nav_home">الرئيسية</a>
-      <a href="#categories" class="hover:text-cafe-600 transition-colors" data-i18n="nav_cats">أنواع الساعات</a>
+      <a href="#categories" class="hover:text-cafe-600 transition-colors" data-i18n="nav_cats">الماركات العالمية</a>
       <a href="#products" class="hover:text-cafe-600 transition-colors" data-i18n="nav_catalog">كتالوج الساعات</a>
       <a href="#offers" class="text-cafe-700 hover:text-cafe-900 transition-colors font-black" data-i18n="nav_offers">عروض خاصة</a>
       <a href="javascript:void(0)" onclick="openReturnPolicyModal()" class="hover:text-cafe-600 transition-colors" data-i18n="nav_policy">الضمان والاستبدال</a>
@@ -111,14 +112,14 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-10 items-center">
     <div class="lg:col-span-7 space-y-6">
       <span class="inline-flex items-center gap-2 bg-white border border-cafe-200 rounded-full px-3.5 py-1 text-xs font-bold text-cafe-800 shadow-xs" data-i18n="hero_badge">
-        <span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الساعات الفاخرة 2026
+        <span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الماركات السويسرية واليابانية 2026
       </span>
       <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-darkEspresso leading-[1.2] tracking-tight">
         <span data-i18n="hero_title_1">فخامة الوقت..</span> <br>
         <span class="text-cafe-600 font-light" data-i18n="hero_title_2">ودقة في كل ثانية.</span>
       </h2>
       <p class="text-cafe-800 text-base md:text-lg leading-relaxed max-w-xl" data-i18n="hero_desc">
-        في <strong>AURA</strong>، نقدم لك أرقى موديلات الساعات الرجالية والنسائية، ماكينات يابانية وأوتوماتيكية معتمدة، ستانلس ستيل 316L مقاوم للماء، وزجاج زفير مقاوم للخدش مع ضمان سنة كاملة ومعاينة قبل الدفع.
+        في <strong>AURA</strong>، نوفر لك أرقى تشكيلة من ساعات رولكس، أوميجا، كارتييه، كاسيو إيديفيس، وتومي هيلفيغر بأعلى معايير الدقة وماكينات يابانية معتمدة مع ضمان سنة كاملة وحق المعاينة والقياس قبل الدفع.
       </p>
 
       <div class="flex flex-wrap gap-3 pt-2">
@@ -157,15 +158,15 @@ tailwind.config = {
         <div class="p-4 flex items-center justify-between">
           <div>
             <span class="text-[10px] font-black uppercase tracking-wider text-cafe-800 bg-cafe-100 border border-cafe-300 px-2 py-0.5 rounded" data-i18n="hero_card_tag">الإصدار الأكثر طلباً</span>
-            <h3 id="hero-card-title-text" class="font-black text-darkEspresso text-base mt-1">ساعة كرونوغراف ستانلس ستيل كلاسيك</h3>
-            <p class="text-xs text-cafe-600">ماكينة يابانية دقيقة · ضد الماء 30 متر</p>
+            <h3 id="hero-card-title-text" class="font-black text-darkEspresso text-base mt-1">ساعة Rolex Land-Dweller</h3>
+            <p class="text-xs text-cafe-600">مينا هوني كومب سماوي · ستيل 904L · ماكينة دقيقة</p>
           </div>
           <div class="text-left">
-            <span class="text-xs text-slate-400 line-through">1,250 ج.م</span>
-            <p class="font-black text-xl text-darkEspresso">890 <span class="text-xs font-normal text-cafe-700">ج.م</span></p>
+            <span class="text-xs text-slate-400 line-through">1,450 ج.م</span>
+            <p class="font-black text-xl text-darkEspresso">1,050 <span class="text-xs font-normal text-cafe-700">ج.م</span></p>
           </div>
         </div>
-        <button onclick="quickOrder(document.getElementById('hero-card-title-text').innerText, 890, document.getElementById('hero-dynamic-img').src)" class="w-full bg-darkEspresso hover:bg-cafe-900 text-white font-bold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+        <button onclick="quickOrder(document.getElementById('hero-card-title-text').innerText, 1050, document.getElementById('hero-dynamic-img').src)" class="w-full bg-darkEspresso hover:bg-cafe-900 text-white font-bold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
           <i class="fa-solid fa-bolt text-cafe-300"></i> <span data-i18n="hero_order_btn">اطلب الآن — معاينة ودفع عند الاستلام</span>
         </button>
       </div>
@@ -173,49 +174,71 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ============ قسم أنواع الساعات (المربعات الـ 4 الأصلية) ============ -->
+<!-- ============ قسم الماركات العالمية (العرض حسب البراند) ============ -->
 <section id="categories" class="max-w-7xl mx-auto px-4 py-14">
   <div class="text-center mb-10">
-    <span class="text-xs font-bold text-cafe-600 uppercase tracking-widest" data-i18n="cats_sub">المجموعات المختارة</span>
-    <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="cats_title">أنواع وموديلات الساعات</h3>
+    <span class="text-xs font-bold text-cafe-600 uppercase tracking-widest" data-i18n="cats_sub">أفخم الماركات العالمية</span>
+    <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="cats_title">تسوق حسب الماركة والبراند</h3>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-    <div onclick="filterCategory('steel')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
-        <i class="fa-solid fa-shield-halved text-cafe-700"></i>
+  <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+    <!-- Rolex -->
+    <div onclick="filterBrand('rolex')" class="group cursor-pointer bg-white rounded-2xl p-4 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-crown text-amber-600"></i>
       </div>
-      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_steel_title">ساعات ستانلس ستيل</h4>
-      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_steel_desc">معدن صلب 316L لا يغير لونه ومقاوم للصدأ</p>
+      <h4 class="font-bold text-darkEspresso text-sm">Rolex</h4>
+      <p class="text-[10px] text-cafe-600 mt-0.5">رولكس العالمية</p>
     </div>
 
-    <div onclick="filterCategory('leather')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
-        <i class="fa-solid fa-ribbon text-cafe-700"></i>
+    <!-- Omega -->
+    <div onclick="filterBrand('omega')" class="group cursor-pointer bg-white rounded-2xl p-4 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-globe text-blue-700"></i>
       </div>
-      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_leather_title">ساعات جلد كلاسيك</h4>
-      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_leather_desc">حزام جلد طبيعي ناعم ومريح للمناسبات والعمل</p>
+      <h4 class="font-bold text-darkEspresso text-sm">Omega</h4>
+      <p class="text-[10px] text-cafe-600 mt-0.5">أوميجا وورلد تايمر</p>
     </div>
 
-    <div onclick="filterCategory('automatic')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
-        <i class="fa-solid fa-gears text-cafe-700"></i>
+    <!-- Cartier -->
+    <div onclick="filterBrand('cartier')" class="group cursor-pointer bg-white rounded-2xl p-4 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-gem text-rose-700"></i>
       </div>
-      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_auto_title">ساعات أوتوماتيك</h4>
-      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_auto_desc">ميكانيكية بحركة نبض اليد وتصميم تروس مكشوف</p>
+      <h4 class="font-bold text-darkEspresso text-sm">Cartier</h4>
+      <p class="text-[10px] text-cafe-600 mt-0.5">كارتييه سانتوس وتانك</p>
     </div>
 
-    <div onclick="filterCategory('sport')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
-      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
-        <i class="fa-solid fa-stopwatch text-cafe-700"></i>
+    <!-- Casio Edifice -->
+    <div onclick="filterBrand('edifice')" class="group cursor-pointer bg-white rounded-2xl p-4 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-stopwatch text-indigo-700"></i>
       </div>
-      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_sport_title">ساعات كرونوغراف وسبورت</h4>
-      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_sport_desc">عدادات تعمل بالكامل ومقاومة عالية للماء</p>
+      <h4 class="font-bold text-darkEspresso text-sm">Casio Edifice</h4>
+      <p class="text-[10px] text-cafe-600 mt-0.5">إيديفيس اليابانية</p>
+    </div>
+
+    <!-- Tommy Hilfiger -->
+    <div onclick="filterBrand('hilfiger')" class="group cursor-pointer bg-white rounded-2xl p-4 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-flag text-red-600"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-sm">Tommy Hilfiger</h4>
+      <p class="text-[10px] text-cafe-600 mt-0.5">تومي هيلفيغر كرونو</p>
+    </div>
+
+    <!-- Lacoste -->
+    <div onclick="filterBrand('lacoste')" class="group cursor-pointer bg-white rounded-2xl p-4 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-12 h-12 mx-auto rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mb-2.5 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-shield-heart text-emerald-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-sm">Lacoste</h4>
+      <p class="text-[10px] text-cafe-600 mt-0.5">لاكوست الرياضية</p>
     </div>
   </div>
 </section>
 
-<!-- ============ PRODUCTS CATALOG (الفلاتر الخمسة كاملة) ============ -->
+<!-- ============ PRODUCTS CATALOG (فلاتر الماركات الدقيقة) ============ -->
 <section id="products" class="max-w-7xl mx-auto px-4 py-10">
   <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
     <div>
@@ -223,32 +246,38 @@ tailwind.config = {
       <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="catalog_heading">كتالوج الساعات المتاحة فوراً</h3>
     </div>
 
-    <!-- أزرار الفلترة الـ 5 كاملة -->
+    <!-- أزرار فلاتر الماركات -->
     <div class="flex flex-wrap items-center gap-1.5 bg-cafe-100 p-1.5 rounded-xl border border-cafe-200 text-xs font-bold">
-      <button onclick="filterCategory('all')" class="cat-btn active bg-white text-darkEspresso shadow-xs px-4 py-2 rounded-lg transition-all" data-cat="all">
-        <span data-i18n="tab_all">كل الساعات</span> (<span id="count-all">0</span>)
+      <button onclick="filterBrand('all')" class="brand-btn active bg-white text-darkEspresso shadow-xs px-3.5 py-2 rounded-lg transition-all" data-brand="all">
+        <span>الكل</span> (<span id="count-all">0</span>)
       </button>
-      <button onclick="filterCategory('steel')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="steel">
-        <span data-i18n="tab_steel">ساعات ستيل 🛡️</span> (<span id="count-steel">0</span>)
+      <button onclick="filterBrand('rolex')" class="brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all" data-brand="rolex">
+        <span>Rolex 👑</span> (<span id="count-rolex">0</span>)
       </button>
-      <button onclick="filterCategory('leather')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="leather">
-        <span data-i18n="tab_leather">ساعات جلد 🪢</span> (<span id="count-leather">0</span>)
+      <button onclick="filterBrand('omega')" class="brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all" data-brand="omega">
+        <span>Omega 🌍</span> (<span id="count-omega">0</span>)
       </button>
-      <button onclick="filterCategory('automatic')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="automatic">
-        <span data-i18n="tab_auto">أوتوماتيك ⚙️</span> (<span id="count-auto">0</span>)
+      <button onclick="filterBrand('cartier')" class="brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all" data-brand="cartier">
+        <span>Cartier 💎</span> (<span id="count-cartier">0</span>)
       </button>
-      <button onclick="filterCategory('sport')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="sport">
-        <span data-i18n="tab_sport">كرونوغراف وسبورت ⏱️</span> (<span id="count-sport">0</span>)
+      <button onclick="filterBrand('edifice')" class="brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all" data-brand="edifice">
+        <span>Edifice ⏱️</span> (<span id="count-edifice">0</span>)
+      </button>
+      <button onclick="filterBrand('hilfiger')" class="brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all" data-brand="hilfiger">
+        <span>Hilfiger 🏁</span> (<span id="count-hilfiger">0</span>)
+      </button>
+      <button onclick="filterBrand('lacoste')" class="brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all" data-brand="lacoste">
+        <span>Lacoste 🐊</span> (<span id="count-lacoste">0</span>)
       </button>
     </div>
   </div>
 
   <!-- Search Bar -->
   <div class="mb-6 relative">
-    <input type="text" id="search-input" onkeyup="searchProducts()" placeholder="🔍 ابحث في موديلات وأسعار الساعات..." class="w-full bg-white border border-cafe-200 rounded-2xl px-5 py-3 text-xs sm:text-sm text-darkEspresso focus:outline-none focus:border-cafe-500 shadow-xs">
+    <input type="text" id="search-input" onkeyup="searchProducts()" placeholder="🔍 ابحث بالماركة أو الموديل (رولكس، أوميجا، كارتييه، إيديفيس، لاكوست...)..." class="w-full bg-white border border-cafe-200 rounded-2xl px-5 py-3 text-xs sm:text-sm text-darkEspresso focus:outline-none focus:border-cafe-500 shadow-xs">
   </div>
 
-  <!-- مكان عرض كل الساعات -->
+  <!-- مكان عرض الساعات -->
   <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
 </section>
 
@@ -319,12 +348,12 @@ tailwind.config = {
     </div>
 
     <div>
-      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h1">تشكيلات الساعات</h4>
+      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h1">الماركات العالمية</h4>
       <ul class="space-y-2">
-        <li><a href="#products" onclick="filterCategory('steel')" class="hover:text-darkEspresso" data-i18n="f_c1">ساعات ستانلس ستيل كلاسيك</a></li>
-        <li><a href="#products" onclick="filterCategory('leather')" class="hover:text-darkEspresso" data-i18n="f_c2">ساعات جلد طبيعي</a></li>
-        <li><a href="#products" onclick="filterCategory('automatic')" class="hover:text-darkEspresso" data-i18n="f_c3">ساعات أوتوماتيك ميكانيكية</a></li>
-        <li><a href="#products" onclick="filterCategory('sport')" class="hover:text-darkEspresso" data-i18n="f_c4">ساعات كرونوغراف وسبورت</a></li>
+        <li><a href="#products" onclick="filterBrand('rolex')" class="hover:text-darkEspresso">ساعات Rolex</a></li>
+        <li><a href="#products" onclick="filterBrand('omega')" class="hover:text-darkEspresso">ساعات Omega</a></li>
+        <li><a href="#products" onclick="filterBrand('cartier')" class="hover:text-darkEspresso">ساعات Cartier</a></li>
+        <li><a href="#products" onclick="filterBrand('edifice')" class="hover:text-darkEspresso">ساعات Casio Edifice</a></li>
       </ul>
     </div>
 
@@ -579,7 +608,7 @@ tailwind.config = {
   let currentLang = 'ar';
   let cart = [];
   let productsData = [];
-  let currentCategory = 'all';
+  let currentBrand = 'all';
 
   let botOrderState = {
     active: false,
@@ -591,27 +620,30 @@ tailwind.config = {
     customerAddress: ''
   };
 
-  const watchTypes = [
-    { cat: 'steel', name_ar: 'ستانلس ستيل رويال', name_en: 'Royal Stainless Steel', badge_ar: 'ستيل 316L', badge_en: '316L Steel', desc_ar: 'معدن ستانلس ستيل صلب ومقاوم للصدأ مع ماكينة يابانية دقيقة.', desc_en: 'Solid 316L stainless steel with precise Japanese movement.' },
-    { cat: 'leather', name_ar: 'كلاسيك جلد طبيعي', name_en: 'Classic Genuine Leather', badge_ar: 'جلد طبيعي', badge_en: 'Genuine Leather', desc_ar: 'حزام جلد طبيعي مريح مع زجاج زفير مقاوم للخدش.', desc_en: 'Supple leather strap with scratch-resistant sapphire crystal.' },
-    { cat: 'automatic', name_ar: 'أوتوماتيك هيكلية', name_en: 'Skeleton Automatic', badge_ar: 'أوتوماتيك نبض اليد', badge_en: 'Kinetic Movement', desc_ar: 'ماكينة ميكانيكية تعمل بحركة اليد بدون بطارية مع تصميم تروس مكشوف.', desc_en: 'Self-winding mechanical movement with exposed gear design.' },
-    { cat: 'sport', name_ar: 'كرونوغراف سبورت', name_en: 'Sport Chronograph', badge_ar: 'ضد الماء 50M', badge_en: '50M Water Resistant', desc_ar: 'عدادات توقيت ثواني ودقائق تعمل بالكامل مع عقارب مضيئة ليلاً.', desc_en: 'Fully functional chronograph subdials with luminous hands.' }
-  ];
+  // الماركات العالمية المعرفة بدقة
+  const watchBrandsMeta = {
+    rolex: { name_ar: 'Rolex رولكس', name_en: 'Rolex', badge_ar: 'Rolex 👑', badge_en: 'Rolex 👑' },
+    omega: { name_ar: 'Omega أوميجا', name_en: 'Omega', badge_ar: 'Omega 🌍', badge_en: 'Omega 🌍' },
+    cartier: { name_ar: 'Cartier كارتييه', name_en: 'Cartier', badge_ar: 'Cartier 💎', badge_en: 'Cartier 💎' },
+    edifice: { name_ar: 'Casio Edifice كاسيو', name_en: 'Casio Edifice', badge_ar: 'Edifice ⏱️', badge_en: 'Edifice ⏱️' },
+    hilfiger: { name_ar: 'Tommy Hilfiger تومي', name_en: 'Tommy Hilfiger', badge_ar: 'Hilfiger 🏁', badge_en: 'Hilfiger 🏁' },
+    lacoste: { name_ar: 'Lacoste لاكوست', name_en: 'Lacoste', badge_ar: 'Lacoste 🐊', badge_en: 'Lacoste 🐊' }
+  };
 
   const i18n = {
     ar: {
       top_ship: '🚚 شحن سريع لكافة محافظات مصر',
       top_inspect: '🔍 <strong>معاينة وقياس مجاني</strong> قبل دفع باقي المبلغ للمندوب',
       nav_home: 'الرئيسية',
-      nav_cats: 'أنواع الساعات',
+      nav_cats: 'الماركات العالمية',
       nav_catalog: 'كتالوج الساعات',
       nav_offers: 'عروض خاصة',
       nav_policy: 'الضمان والاستبدال',
       cart_btn: 'السلة',
-      hero_badge: '<span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الساعات الفاخرة 2026',
+      hero_badge: '<span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الماركات السويسرية واليابانية 2026',
       hero_title_1: 'فخامة الوقت..',
       hero_title_2: 'ودقة في كل ثانية.',
-      hero_desc: 'في <strong>AURA</strong>، نقدم لك أرقى موديلات الساعات، ماكينات يابانية معتمدة عالية الدقة، ضد الماء مع ضمان سنة كاملة ومعاينة وقياس قبل الدفع.',
+      hero_desc: 'في <strong>AURA</strong>، نوفر لك أرقى تشكيلة من ساعات رولكس، أوميجا، كارتييه، كاسيو إيديفيس، وتومي هيلفيغر بأعلى معايير الدقة وماكينات يابانية معتمدة مع ضمان سنة كاملة وحق المعاينة والقياس قبل الدفع.',
       hero_btn_catalog: 'تصفح كتالوج الساعات',
       hero_btn_offers: 'العروض الحصرية',
       trust_inspect: 'معاينة قبل الدفع',
@@ -621,23 +653,10 @@ tailwind.config = {
       trust_scratch: 'وزجاج مقاوم للخدش',
       hero_card_tag: 'الإصدار الأكثر طلباً',
       hero_order_btn: 'اطلب الآن — معاينة ودفع عند الاستلام',
-      cats_sub: 'المجموعات المختارة',
-      cats_title: 'أنواع وموديلات الساعات',
-      cat_steel_title: 'ساعات ستانلس ستيل',
-      cat_steel_desc: 'معدن صلب 316L لا يغير لونه ومقاوم للصدأ',
-      cat_leather_title: 'ساعات جلد كلاسيك',
-      cat_leather_desc: 'حزام جلد طبيعي ناعم ومريح للمناسبات والعمل',
-      cat_auto_title: 'ساعات أوتوماتيك',
-      cat_auto_desc: 'ميكانيكية بحركة نبض اليد وتصميم تروس مكشوف',
-      cat_sport_title: 'ساعات كرونوغراف وسبورت',
-      cat_sport_desc: 'عدادات تعمل بالكامل ومقاومة عالية للماء',
+      cats_sub: 'أفخم الماركات العالمية',
+      cats_title: 'تسوق حسب الماركة والبراند',
       catalog_tag: 'المتجر الحصري',
       catalog_heading: 'كتالوج الساعات المتاحة فوراً',
-      tab_all: 'كل الساعات',
-      tab_steel: 'ساعات ستيل 🛡️',
-      tab_leather: 'ساعات جلد 🪢',
-      tab_auto: 'أوتوماتيك ⚙️',
-      tab_sport: 'كرونوغراف وسبورت ⏱️',
       offer_tag: 'عرض خاص من AURA',
       offer_title: 'اشتري أي ساعتين واحصل على شحن مجاني وخصم 15% إضافي!',
       offer_desc: 'العرض يشمل علب فاخرة مع كروت ضمان معتمدة لكل ساعة مع حق المعاينة والقياس قبل الاستلام.',
@@ -652,14 +671,10 @@ tailwind.config = {
       b3_desc: 'القاهرة والإسكندرية والجيزة 24-48 ساعة، وباقي المحافظات خلال يومين إلى 3 أيام عمل.',
       b4_title: 'ضمان سنة كاملة',
       b4_desc: 'ضمان عام كامل معتمد على ماكينات الساعات وثبات الألوان مع حق الاستبدال خلال 14 يوماً.',
-      footer_desc: 'براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية الأصلية مع شهادة ضمان معتمدة.',
-      footer_h1: 'تشكيلات الساعات',
+      footer_desc: 'براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية والأوتوماتيكية الأصلية وخامات الستانلس ستيل والجلد الفاخر.',
+      footer_h1: 'الماركات العالمية',
       footer_h2: 'خدمة العملاء',
       footer_h3: 'تواصل معنا',
-      f_c1: 'ساعات ستانلس ستيل كلاسيك',
-      f_c2: 'ساعات جلد طبيعي',
-      f_c3: 'ساعات أوتوماتيك ميكانيكية',
-      f_c4: 'ساعات كرونوغراف وسبورت',
       f_s1: 'الشحن والتوصيل لجميع المحافظات',
       f_s2: 'سياسة المعاينة والاستبدال (14 يوم)',
       f_s3: 'تتبع شحنتك عبر واتساب',
@@ -688,15 +703,15 @@ tailwind.config = {
       top_ship: '🚚 Fast Express Delivery Across All Egypt Governorates',
       top_inspect: '🔍 <strong>Free Try-on & Inspection</strong> before paying courier',
       nav_home: 'Home',
-      nav_cats: 'Categories',
+      nav_cats: 'Brands',
       nav_catalog: 'Watches Catalog',
       nav_offers: 'Special Offers',
       nav_policy: 'Warranty & Returns',
       cart_btn: 'Cart',
-      hero_badge: '<span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> Exclusive Watches 2026',
+      hero_badge: '<span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> Swiss & Japanese Brands 2026',
       hero_title_1: 'Elegance of Time..',
       hero_title_2: 'Precision in Every Second.',
-      hero_desc: 'At <strong>AURA</strong>, we curate premier timepieces featuring certified Japanese movements, water resistance, and scratch-resistant sapphire glass with a 1-year warranty.',
+      hero_desc: 'At <strong>AURA</strong>, we curate premier timepieces from Rolex, Omega, Cartier, Casio Edifice, and Tommy Hilfiger with verified movements and a 1-year warranty.',
       hero_btn_catalog: 'Explore Catalog',
       hero_btn_offers: 'Exclusive Deals',
       trust_inspect: 'Try-on Inspection',
@@ -706,23 +721,10 @@ tailwind.config = {
       trust_scratch: 'Sapphire Glass',
       hero_card_tag: 'Most Wanted Edition',
       hero_order_btn: 'Order Now — Cash on Delivery',
-      cats_sub: 'Curated Collections',
-      cats_title: 'Watch Types & Styles',
-      cat_steel_title: 'Stainless Steel',
-      cat_steel_desc: 'Solid 316L anti-tarnish and rust-free steel',
-      cat_leather_title: 'Classic Leather',
-      cat_leather_desc: 'Supple genuine leather straps for work & events',
-      cat_auto_title: 'Automatic Skeleton',
-      cat_auto_desc: 'Self-winding kinetic mechanical movements',
-      cat_sport_title: 'Chronograph & Sport',
-      cat_sport_desc: 'Fully functional subdials with high water resistance',
+      cats_sub: 'Global Luxury Brands',
+      cats_title: 'Shop by Watch Brand',
       catalog_tag: 'Official Store',
       catalog_heading: 'Ready for Immediate Dispatch',
-      tab_all: 'All Watches',
-      tab_steel: 'Steel 🛡️',
-      tab_leather: 'Leather 🪢',
-      tab_auto: 'Automatic ⚙️',
-      tab_sport: 'Chronograph ⏱️',
       offer_tag: 'AURA Special Offer',
       offer_title: 'Buy Any 2 Watches & Get Free Shipping + 15% Off!',
       offer_desc: 'Includes luxury presentation boxes and certified 1-year warranty cards with doorstep inspection.',
@@ -737,14 +739,10 @@ tailwind.config = {
       b3_desc: 'Cairo & Giza 24-48 hrs, Alexandria & Delta 2-3 business days.',
       b4_title: '1-Year Full Warranty',
       b4_desc: 'Certified 1-year warranty covering movement, battery, and color durability.',
-      footer_desc: 'Premier Egyptian watch brand offering authentic Japanese movements with certified warranty cards.',
-      footer_h1: 'Shop Services',
+      footer_desc: 'Premier Egyptian watch brand offering authentic Japanese & automatic movements with certified warranty cards.',
+      footer_h1: 'Luxury Brands',
       footer_h2: 'Client Services',
       footer_h3: 'Contact Us',
-      f_c1: 'Stainless Steel Watches',
-      f_c2: 'Genuine Leather Watches',
-      f_c3: 'Automatic Timepieces',
-      f_c4: 'Sport Chronographs',
       f_s1: 'Egypt Shipping & Delivery',
       f_s2: '14-Day Free Exchange Policy',
       f_s3: 'Track Order via WhatsApp',
@@ -788,7 +786,26 @@ tailwind.config = {
     updateCartUI();
   }
 
-  // تحميل الـ 73 ساعة وتوزيعها بانتظام على الأقسام الـ 4
+  // تصنيف الساعات بذكاء حسب الماركة الفعلية للصور
+  function detectBrand(filename, idx) {
+    const fn = filename.toLowerCase();
+    if (fn.includes('rolex') || fn.includes('submariner') || fn.includes('datejust') || fn.includes('gmt') || fn.includes('day-date') || fn.includes('sky')) return 'rolex';
+    if (fn.includes('omega') || fn.includes('seamaster') || fn.includes('planet')) return 'omega';
+    if (fn.includes('cartier') || fn.includes('santos') || fn.includes('tank')) return 'cartier';
+    if (fn.includes('edifice') || fn.includes('casio')) return 'edifice';
+    if (fn.includes('hilfiger') || fn.includes('tommy')) return 'hilfiger';
+    if (fn.includes('lacoste')) return 'lacoste';
+
+    // توزيع ترتيبي مطابق لترتيب مجموعات الصور المرفوعة
+    if (idx < 29) return 'rolex';
+    if (idx < 43) return 'cartier';
+    if (idx < 59) return 'hilfiger';
+    if (idx < 66) return 'lacoste';
+    if (idx < 72) return 'edifice';
+    return 'omega';
+  }
+
+  // تحميل ومعالجة كل الساعات
   async function loadRepoWatches() {
     try {
       const pathParts = window.location.pathname.split('/').filter(Boolean);
@@ -804,45 +821,24 @@ tailwind.config = {
 
           productsData = imageFiles.map((file, idx) => {
             const num = idx + 1;
-            const type = watchTypes[idx % watchTypes.length];
+            const brandKey = detectBrand(file.name, idx);
+            const brandObj = watchBrandsMeta[brandKey];
+            
             const price = 650 + ((idx * 25) % 550);
             const oldPrice = price + 350;
-            
-            let badge_ar = '';
-            let badge_en = '';
-
-            if (num === 1) {
-              badge_ar = 'الأكثر طلباً ⭐';
-              badge_en = 'Most Wanted ⭐';
-            } else if (num === 5) {
-              badge_ar = 'عرض خاص 🔥';
-              badge_en = 'Special Offer 🔥';
-            } else if (num === 12) {
-              badge_ar = 'الأكثر مبيعاً ⭐';
-              badge_en = 'Best Seller ⭐';
-            } else if (num === 20) {
-              badge_ar = 'تخفيض حصري 🔥';
-              badge_en = 'Exclusive Deal 🔥';
-            } else if (num === 33) {
-              badge_ar = 'إصدار مميز ⭐';
-              badge_en = 'Special Edition ⭐';
-            } else if (num === 50) {
-              badge_ar = 'عرض محدود 🔥';
-              badge_en = 'Limited Offer 🔥';
-            }
 
             return {
               id: num,
-              title_ar: `ساعة AURA ${type.name_ar} #${num}`,
-              title_en: `AURA ${type.name_en} #${num}`,
-              category: type.cat,
+              brand: brandKey,
+              title_ar: `ساعة ${brandObj.name_ar} #${num}`,
+              title_en: `${brandObj.name_en} Watch #${num}`,
               price: price,
               oldPrice: oldPrice,
-              badge_ar: badge_ar,
-              badge_en: badge_en,
+              badge_ar: brandObj.badge_ar,
+              badge_en: brandObj.badge_en,
               rating: (4.8 + ((idx % 3) * 0.1)).toFixed(1),
-              desc_ar: `${type.desc_ar} شامل العلبة الفاخرة وشهادة الضمان لمدة عام.`,
-              desc_en: `${type.desc_en} Includes luxury box and 1-year warranty certificate.`,
+              desc_ar: `ماكينة دقيقة معتمدة مع زجاج زفير مقاوم للخدش وعلبة فاخرة مع كارت ضمان سنة.`,
+              desc_en: `Certified precision movement with scratch-resistant glass, luxury box & 1-yr warranty.`,
               img: file.download_url
             };
           });
@@ -855,32 +851,33 @@ tailwind.config = {
       console.log('Using default watches catalog fallback');
     }
 
+    // احتياطي
     const defaultFallbacks = [
       'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80',
       'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=80',
       'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=700&q=80',
       'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80',
       'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80',
-      'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80',
-      'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=700&q=80',
-      'https://images.unsplash.com/photo-1594576722512-582bcd46fba3?auto=format&fit=crop&w=700&q=80'
+      'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80'
     ];
 
+    const brandsKeys = ['rolex', 'omega', 'cartier', 'edifice', 'hilfiger', 'lacoste'];
     productsData = defaultFallbacks.map((url, idx) => {
       const num = idx + 1;
-      const type = watchTypes[idx % watchTypes.length];
+      const brandKey = brandsKeys[idx % brandsKeys.length];
+      const brandObj = watchBrandsMeta[brandKey];
       return {
         id: num,
-        title_ar: `ساعة AURA ${type.name_ar} #${num}`,
-        title_en: `AURA ${type.name_en} #${num}`,
-        category: type.cat,
+        brand: brandKey,
+        title_ar: `ساعة ${brandObj.name_ar} #${num}`,
+        title_en: `${brandObj.name_en} Watch #${num}`,
         price: 750 + (idx * 50),
         oldPrice: 1150 + (idx * 50),
-        badge_ar: (num === 1 ? 'الأكثر طلباً ⭐' : ''),
-        badge_en: (num === 1 ? 'Best Seller ⭐' : ''),
+        badge_ar: brandObj.badge_ar,
+        badge_en: brandObj.badge_en,
         rating: '4.9',
-        desc_ar: `${type.desc_ar} مع ضمان عام كامل ومعاينة وقياس قبل الاستلام.`,
-        desc_en: `${type.desc_en} with a 1-year warranty and free try-on inspection.`,
+        desc_ar: `ماكينة دقيقة معتمدة مع زجاج مقاوم للخدش وعلبة فاخرة مع كارت ضمان سنة.`,
+        desc_en: `Certified precision movement with scratch-resistant glass, luxury box & 1-yr warranty.`,
         img: url
       };
     });
@@ -889,10 +886,12 @@ tailwind.config = {
 
   function updateCountsAndRender() {
     document.getElementById('count-all').textContent = productsData.length;
-    document.getElementById('count-steel').textContent = productsData.filter(p => p.category === 'steel').length;
-    document.getElementById('count-leather').textContent = productsData.filter(p => p.category === 'leather').length;
-    document.getElementById('count-auto').textContent = productsData.filter(p => p.category === 'automatic').length;
-    document.getElementById('count-sport').textContent = productsData.filter(p => p.category === 'sport').length;
+    document.getElementById('count-rolex').textContent = productsData.filter(p => p.brand === 'rolex').length;
+    document.getElementById('count-omega').textContent = productsData.filter(p => p.brand === 'omega').length;
+    document.getElementById('count-cartier').textContent = productsData.filter(p => p.brand === 'cartier').length;
+    document.getElementById('count-edifice').textContent = productsData.filter(p => p.brand === 'edifice').length;
+    document.getElementById('count-hilfiger').textContent = productsData.filter(p => p.brand === 'hilfiger').length;
+    document.getElementById('count-lacoste').textContent = productsData.filter(p => p.brand === 'lacoste').length;
     renderProducts(productsData);
   }
 
@@ -916,15 +915,13 @@ tailwind.config = {
       const desc = (currentLang === 'ar') ? p.desc_ar : p.desc_en;
       const badge = (currentLang === 'ar') ? p.badge_ar : p.badge_en;
 
-      const badgeHTML = badge ? `<span class="absolute top-3 ${currentLang === 'ar' ? 'right-3' : 'left-3'} bg-darkEspresso text-cafe-100 text-[10px] font-bold px-2.5 py-1 rounded-md shadow-xs z-10">${badge}</span>` : '';
-
       const card = document.createElement('div');
       card.className = "product-card bg-white rounded-2xl border border-cafe-200 overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all";
       card.innerHTML = `
         <div>
           <div class="relative h-64 overflow-hidden bg-cafe-100 flex items-center justify-center">
             <img src="${p.img}" alt="${title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80';">
-            ${badgeHTML}
+            <span class="absolute top-3 ${currentLang === 'ar' ? 'right-3' : 'left-3'} bg-darkEspresso text-cafe-100 text-[10px] font-bold px-2.5 py-1 rounded-md shadow-xs z-10">${badge}</span>
           </div>
           <div class="p-4">
             <div class="flex items-center gap-1 text-cafe-500 text-xs mb-1">
@@ -957,24 +954,24 @@ tailwind.config = {
     });
   }
 
-  function filterCategory(cat) {
-    currentCategory = cat;
-    const buttons = document.querySelectorAll('.cat-btn');
+  function filterBrand(brand) {
+    currentBrand = brand;
+    const buttons = document.querySelectorAll('.brand-btn');
     buttons.forEach(b => {
-      if(b.dataset.cat === cat) {
-        b.className = 'cat-btn active bg-white text-darkEspresso shadow-xs px-4 py-2 rounded-lg transition-all font-bold';
+      if(b.dataset.brand === brand) {
+        b.className = 'brand-btn active bg-white text-darkEspresso shadow-xs px-3.5 py-2 rounded-lg transition-all font-bold';
       } else {
-        b.className = 'cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all font-bold';
+        b.className = 'brand-btn text-cafe-700 hover:text-darkEspresso px-3.5 py-2 rounded-lg transition-all font-bold';
       }
     });
 
-    const filtered = (cat === 'all') ? productsData : productsData.filter(p => p.category === cat);
+    const filtered = (brand === 'all') ? productsData : productsData.filter(p => p.brand === brand);
     renderProducts(filtered);
   }
 
   function searchProducts() {
     const q = document.getElementById('search-input').value.toLowerCase().trim();
-    let list = (currentCategory === 'all') ? productsData : productsData.filter(p => p.category === currentCategory);
+    let list = (currentBrand === 'all') ? productsData : productsData.filter(p => p.brand === currentBrand);
     if (q) {
       list = list.filter(p => (p.title_ar && p.title_ar.toLowerCase().includes(q)) || (p.title_en && p.title_en.toLowerCase().includes(q)) || p.price.toString().includes(q));
     }
@@ -1077,7 +1074,6 @@ tailwind.config = {
     document.getElementById('zone-time-preview').innerHTML = `<i class="fa-solid fa-truck-fast ml-1"></i> ${currentLang === 'ar' ? 'مدة التوصيل المقدرة:' : 'Estimated delivery:'} ${time}`;
   }
 
-  // التبديل بين خيارات الدفع
   function togglePaymentSection(type) {
     const instapayBox = document.getElementById('instapay-info-box');
     const instapayTitle = document.getElementById('instapay-box-title');
@@ -1112,7 +1108,6 @@ tailwind.config = {
     summaryList.innerHTML = cart.map(i => `• ${i.title} (${i.qty}×) - <b>${i.price * i.qty} ${dict.currency}</b>`).join('<br>');
     totalEl.textContent = total.toLocaleString(currentLang === 'ar' ? 'ar-EG' : 'en-US') + ' ' + dict.currency;
 
-    // تفعيل إنستاباي افتراضياً
     togglePaymentSection('cod');
 
     document.getElementById('cart-drawer').classList.add('-translate-x-full');
@@ -1132,7 +1127,6 @@ tailwind.config = {
     document.getElementById('return-policy-modal').classList.add('hidden');
   }
 
-  // إرسال تفاصيل الأوردر المؤكدة مع رابط إنستاباي والحساب والصورة لمالك المتجر
   function submitFinalOrder(e) {
     e.preventDefault();
     const name = document.getElementById('order-name').value.trim();
@@ -1194,14 +1188,18 @@ tailwind.config = {
 
   const quickReplies = [
     { label: '🛍️ اطلب ساعة الآن من الشات', key: 'order_now' },
-    { label: '🛡️ الضمان ومقاومة الماء', key: 'warranty' },
-    { label: '🚚 المحافظات ومدة التوصيل', key: 'shipping' },
+    { label: '👑 تشكيلة رولكس Rolex', key: 'rolex' },
+    { label: '💎 تشكيلة كارتييه Cartier', key: 'cartier' },
+    { label: '🌍 تشكيلة أوميجا Omega', key: 'omega' },
     { label: '💳 طرق الدفع والديبوزت', key: 'payment' },
     { label: '💬 محادثة المالك (01005823798)', key: 'human' }
   ];
 
   const botReplies = {
-    greeting: 'أهلاً بك في متجر AURA للساعات الفاخرة! 👋\nأنا مساعدك الذكي. يمكنك الاستفسار أو **طلب ساعتك مباشرة من هنا عبر الشات**!',
+    greeting: 'أهلاً بك في متجر AURA للساعات الفاخرة! 👋\nأنا مساعدك الذكي. يمكنك الاستفسار عن ماركات (Rolex, Omega, Cartier, Edifice, Hilfiger, Lacoste) أو **طلب ساعتك مباشرة من هنا عبر الشات**!',
+    rolex: '👑 تشكيلة Rolex المتوفرة:\n• Land-Dweller (سماوي وأبيض)\n• Submariner Kermit\n• GMT-Master II (Pepsi, Batgirl, Bruce Wayne)\n• Day-Date بأرقام عربية\n• Sky-Dweller و Yacht-Master',
+    cartier: '💎 تشكيلة Cartier المتوفرة:\n• Santos de Cartier (أوتوماتيك ستيل وجلد)\n• Tank Must & Solo كلاسيك\n• Santos Skeleton الهيكلية المفرغة',
+    omega: '🌍 تشكيلة Omega المتوفرة:\n• Seamaster Aqua Terra Worldtimer (أزرق، أخضر، رمادي تيتانيوم، وسماوي)\n• Planet Ocean Chronograph الفاخرة',
     warranty: '🛡️ ضمان AURA المعتمد:\n• ضمان عام كامل على الماكينة والموتور\n• مقاومة تامة للماء والصدأ\n• زجاج زفير مقاوم للخدش\n• حق استبدال واسترجاع 14 يوماً.',
     shipping: '🚚 الشحن لكافة محافظات مصر:\n• القاهرة والجيزة: 24 - 48 ساعة\n• الإسكندرية والدلتا: 2 - 3 أيام عمل\n• محافظات الصعيد والبحر الأحمر: 3 - 4 أيام\n✨ فحص وقياس الساعة متاح ومجاني مع المندوب قبل دفع باقي الحساب!',
     payment: `💳 طرق الدفع المعتمدة:\n1. دفع عند الاستلام (يتم تحويل عربون 100 ج.م عبر إنستاباي على حساب: ${INSTAPAY_HANDLE} أو رقم ${INSTAPAY_DEPOSIT_PHONE} وإرفاق الاسكرين شوت لتأكيد خروج الشحنة وتخصم من تمن الساعة).\n2. تحويل إنستاباي كامل.\n3. طلب رابط دفع فيزا رسمي أونلاين.\n\nرابط إنستاباي للدفع المباشر:\n${INSTAPAY_LINK}`,
@@ -1212,6 +1210,9 @@ tailwind.config = {
   function matchBotReply(t) {
     t = t.toLowerCase();
     if (/(اطلب|شراء|طلب|order|buy)/.test(t)) return 'order_now';
+    if (/(رولكس|rolex|صبمارينر|كيرميت|سبمارينر)/.test(t)) return 'rolex';
+    if (/(كارتييه|كارتير|cartier|سانتوس|تانك)/.test(t)) return 'cartier';
+    if (/(اوميجا|أوميجا|omega|سيماستر|ورلد|تيمر)/.test(t)) return 'omega';
     if (/(سلام|اهلا|مرحبا|هاي|hello|hi)/.test(t)) return 'greeting';
     if (/(ضمان|مياه|ماء|خدش|استبدال|استرجاع)/.test(t)) return 'warranty';
     if (/(شحن|توصيل|محافظات|معاينة|استلام|قياس|زون)/.test(t)) return 'shipping';
@@ -1365,4 +1366,4 @@ tailwind.config = {
 </script>
 
 </body>
-        </html>
+  </html>
