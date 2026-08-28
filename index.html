@@ -63,7 +63,6 @@ tailwind.config = {
       <span class="opacity-40">|</span>
       <span class="hidden md:inline" data-i18n="top_inspect">🔍 <strong>معاينة وقياس مجاني</strong> قبل دفع باقي المبلغ للمندوب</span>
     </div>
-    <!-- Language Toggle Button -->
     <button onclick="toggleLanguage()" class="border border-cafe-600 bg-cafe-900/60 hover:bg-cafe-800 text-cafe-200 px-3 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1 transition-all">
       <i class="fa-solid fa-globe"></i>
       <span id="lang-btn-text">English</span>
@@ -77,6 +76,7 @@ tailwind.config = {
     
     <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-cafe-800">
       <a href="#home" class="hover:text-cafe-600 transition-colors" data-i18n="nav_home">الرئيسية</a>
+      <a href="#categories" class="hover:text-cafe-600 transition-colors" data-i18n="nav_cats">أنواع الساعات</a>
       <a href="#products" class="hover:text-cafe-600 transition-colors" data-i18n="nav_catalog">كتالوج الساعات</a>
       <a href="#offers" class="text-cafe-700 hover:text-cafe-900 transition-colors font-black" data-i18n="nav_offers">عروض خاصة</a>
       <a href="javascript:void(0)" onclick="openReturnPolicyModal()" class="hover:text-cafe-600 transition-colors" data-i18n="nav_policy">الضمان والاستبدال</a>
@@ -107,9 +107,9 @@ tailwind.config = {
 </header>
 
 <!-- ============ HERO SECTION ============ -->
-<section id="home" class="relative bg-gradient-to-b from-cafe-100/70 to-cafe-50 py-10 md:py-16 overflow-hidden border-b border-cafe-200/70">
+<section id="home" class="relative bg-gradient-to-b from-cafe-100/70 to-cafe-50 py-12 md:py-20 overflow-hidden border-b border-cafe-200/70">
   <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-10 items-center">
-    <div class="lg:col-span-7 space-y-5">
+    <div class="lg:col-span-7 space-y-6">
       <span class="inline-flex items-center gap-2 bg-white border border-cafe-200 rounded-full px-3.5 py-1 text-xs font-bold text-cafe-800 shadow-xs" data-i18n="hero_badge">
         <span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الساعات الفاخرة 2026
       </span>
@@ -118,7 +118,7 @@ tailwind.config = {
         <span class="text-cafe-600 font-light" data-i18n="hero_title_2">ودقة في كل ثانية.</span>
       </h2>
       <p class="text-cafe-800 text-base md:text-lg leading-relaxed max-w-xl" data-i18n="hero_desc">
-        في <strong>AURA</strong>، نقدم لك أرقى موديلات الساعات، ماكينات يابانية معتمدة عالية الدقة، ضد الماء مع ضمان سنة كاملة ومعاينة وقياس قبل الدفع.
+        في <strong>AURA</strong>، نقدم لك أرقى موديلات الساعات الرجالية والنسائية، ماكينات يابانية وأوتوماتيكية معتمدة، ستانلس ستيل 316L مقاوم للماء، وزجاج زفير مقاوم للخدش مع ضمان سنة كاملة ومعاينة قبل الدفع.
       </p>
 
       <div class="flex flex-wrap gap-3 pt-2">
@@ -157,8 +157,8 @@ tailwind.config = {
         <div class="p-4 flex items-center justify-between">
           <div>
             <span class="text-[10px] font-black uppercase tracking-wider text-cafe-800 bg-cafe-100 border border-cafe-300 px-2 py-0.5 rounded" data-i18n="hero_card_tag">الإصدار الأكثر طلباً</span>
-            <h3 id="hero-card-title-text" class="font-black text-darkEspresso text-base mt-1">ساعة AURA رويال إيديشن #1</h3>
-            <p class="text-xs text-cafe-600">ماكينة يابانية دقيقة · ضد الماء · علبة فاخرة</p>
+            <h3 id="hero-card-title-text" class="font-black text-darkEspresso text-base mt-1">ساعة كرونوغراف ستانلس ستيل كلاسيك</h3>
+            <p class="text-xs text-cafe-600">ماكينة يابانية دقيقة · ضد الماء 30 متر</p>
           </div>
           <div class="text-left">
             <span class="text-xs text-slate-400 line-through">1,250 ج.م</span>
@@ -173,35 +173,83 @@ tailwind.config = {
   </div>
 </section>
 
-<!-- ============ PRODUCTS CATALOG (عرض كل الساعات بدون زحمة شارات) ============ -->
-<section id="products" class="max-w-7xl mx-auto px-4 py-12">
-  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+<!-- ============ قسم أنواع الساعات (المربعات الـ 4 الأصلية) ============ -->
+<section id="categories" class="max-w-7xl mx-auto px-4 py-14">
+  <div class="text-center mb-10">
+    <span class="text-xs font-bold text-cafe-600 uppercase tracking-widest" data-i18n="cats_sub">المجموعات المختارة</span>
+    <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="cats_title">أنواع وموديلات الساعات</h3>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+    <div onclick="filterCategory('steel')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-shield-halved text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_steel_title">ساعات ستانلس ستيل</h4>
+      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_steel_desc">معدن صلب 316L لا يغير لونه ومقاوم للصدأ</p>
+    </div>
+
+    <div onclick="filterCategory('leather')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-ribbon text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_leather_title">ساعات جلد كلاسيك</h4>
+      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_leather_desc">حزام جلد طبيعي ناعم ومريح للمناسبات والعمل</p>
+    </div>
+
+    <div onclick="filterCategory('automatic')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-gears text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_auto_title">ساعات أوتوماتيك</h4>
+      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_auto_desc">ميكانيكية بحركة نبض اليد وتصميم تروس مكشوف</p>
+    </div>
+
+    <div onclick="filterCategory('sport')" class="group cursor-pointer bg-white rounded-2xl p-5 border border-cafe-200 hover:border-cafe-500 hover:shadow-lg transition-all text-center">
+      <div class="w-14 h-14 mx-auto rounded-2xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-2xl mb-3 group-hover:scale-110 transition-transform">
+        <i class="fa-solid fa-stopwatch text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-base" data-i18n="cat_sport_title">ساعات كرونوغراف وسبورت</h4>
+      <p class="text-xs text-cafe-700 mt-1" data-i18n="cat_sport_desc">عدادات تعمل بالكامل ومقاومة عالية للماء</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS CATALOG (الفلاتر الخمسة كاملة) ============ -->
+<section id="products" class="max-w-7xl mx-auto px-4 py-10">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
     <div>
       <span class="text-xs font-bold text-cafe-600 uppercase tracking-widest" data-i18n="catalog_tag">المتجر الحصري</span>
       <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="catalog_heading">كتالوج الساعات المتاحة فوراً</h3>
     </div>
 
-    <!-- الفلاتر -->
-    <div class="flex flex-wrap items-center gap-2 bg-cafe-100 p-1.5 rounded-xl border border-cafe-200 text-xs font-bold">
+    <!-- أزرار الفلترة الـ 5 كاملة -->
+    <div class="flex flex-wrap items-center gap-1.5 bg-cafe-100 p-1.5 rounded-xl border border-cafe-200 text-xs font-bold">
       <button onclick="filterCategory('all')" class="cat-btn active bg-white text-darkEspresso shadow-xs px-4 py-2 rounded-lg transition-all" data-cat="all">
         <span data-i18n="tab_all">كل الساعات</span> (<span id="count-all">0</span>)
       </button>
-      <button onclick="filterCategory('best')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="best">
-        <span data-i18n="tab_best">الأكثر طلباً ⭐</span> (<span id="count-best">0</span>)
+      <button onclick="filterCategory('steel')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="steel">
+        <span data-i18n="tab_steel">ساعات ستيل 🛡️</span> (<span id="count-steel">0</span>)
       </button>
-      <button onclick="filterCategory('offers')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="offers">
-        <span data-i18n="tab_offers">عروض خاصة 🔥</span> (<span id="count-offers">0</span>)
+      <button onclick="filterCategory('leather')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="leather">
+        <span data-i18n="tab_leather">ساعات جلد 🪢</span> (<span id="count-leather">0</span>)
+      </button>
+      <button onclick="filterCategory('automatic')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="automatic">
+        <span data-i18n="tab_auto">أوتوماتيك ⚙️</span> (<span id="count-auto">0</span>)
+      </button>
+      <button onclick="filterCategory('sport')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="sport">
+        <span data-i18n="tab_sport">كرونوغراف وسبورت ⏱️</span> (<span id="count-sport">0</span>)
       </button>
     </div>
   </div>
 
-  <!-- شريط البحث -->
-  <div class="mb-8 relative">
-    <input type="text" id="search-input" onkeyup="searchProducts()" placeholder="🔍 ابحث برقم الساعة أو السعر..." class="w-full bg-white border border-cafe-200 rounded-2xl px-5 py-3.5 text-xs sm:text-sm text-darkEspresso focus:outline-none focus:border-cafe-500 shadow-xs">
+  <!-- Search Bar -->
+  <div class="mb-6 relative">
+    <input type="text" id="search-input" onkeyup="searchProducts()" placeholder="🔍 ابحث في موديلات وأسعار الساعات..." class="w-full bg-white border border-cafe-200 rounded-2xl px-5 py-3 text-xs sm:text-sm text-darkEspresso focus:outline-none focus:border-cafe-500 shadow-xs">
   </div>
 
-  <!-- مكان عرض الساعات -->
-  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-h-[300px]"></div>
+  <!-- مكان عرض كل الساعات -->
+  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
 </section>
 
 <!-- ============ SPECIAL OFFER BANNER ============ -->
@@ -267,15 +315,16 @@ tailwind.config = {
   <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
     <div class="space-y-3">
       <span class="font-cinzel font-bold text-xl tracking-widest text-darkEspresso block">AURA</span>
-      <p class="text-cafe-700 leading-relaxed" data-i18n="footer_desc">براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية الأصلية مع شهادة ضمان معتمدة.</p>
+      <p class="text-cafe-700 leading-relaxed" data-i18n="footer_desc">براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية والأوتوماتيكية الأصلية وخامات الستانلس ستيل والجلد الفاخر.</p>
     </div>
 
     <div>
-      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h1">خدمات الشراء</h4>
+      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h1">تشكيلات الساعات</h4>
       <ul class="space-y-2">
-        <li><a href="#products" class="hover:text-darkEspresso">كتالوج الساعات الفاخرة</a></li>
-        <li><a href="#offers" class="hover:text-darkEspresso">العروض والتخفيضات</a></li>
-        <li><a href="javascript:void(0)" onclick="openReturnPolicyModal()" class="hover:text-darkEspresso" data-i18n="f_s2">سياسة المعاينة والاستبدال (14 يوم)</a></li>
+        <li><a href="#products" onclick="filterCategory('steel')" class="hover:text-darkEspresso" data-i18n="f_c1">ساعات ستانلس ستيل كلاسيك</a></li>
+        <li><a href="#products" onclick="filterCategory('leather')" class="hover:text-darkEspresso" data-i18n="f_c2">ساعات جلد طبيعي</a></li>
+        <li><a href="#products" onclick="filterCategory('automatic')" class="hover:text-darkEspresso" data-i18n="f_c3">ساعات أوتوماتيك ميكانيكية</a></li>
+        <li><a href="#products" onclick="filterCategory('sport')" class="hover:text-darkEspresso" data-i18n="f_c4">ساعات كرونوغراف وسبورت</a></li>
       </ul>
     </div>
 
@@ -283,6 +332,7 @@ tailwind.config = {
       <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h2">خدمة العملاء</h4>
       <ul class="space-y-2">
         <li><a href="#payment-shipping" class="hover:text-darkEspresso" data-i18n="f_s1">الشحن والتوصيل لجميع المحافظات</a></li>
+        <li><a href="javascript:void(0)" onclick="openReturnPolicyModal()" class="hover:text-darkEspresso" data-i18n="f_s2">سياسة المعاينة والاستبدال (14 يوم)</a></li>
         <li><a href="https://wa.me/201005823798" target="_blank" class="hover:text-darkEspresso" data-i18n="f_s3">تتبع شحنتك عبر واتساب</a></li>
       </ul>
     </div>
@@ -329,7 +379,7 @@ tailwind.config = {
   </div>
 </div>
 
-<!-- ============ CHECKOUT & ORDER MODAL (بيانات افتراضية ورقم إنستاباي الصحيح) ============ -->
+<!-- ============ CHECKOUT & ORDER MODAL ============ -->
 <div id="checkout-modal" class="fixed inset-0 bg-darkEspresso/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
   <div class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl max-h-[90vh] flex flex-col border border-cafe-200">
     <div class="p-4 border-b border-cafe-200 flex items-center justify-between bg-cafe-100">
@@ -541,11 +591,19 @@ tailwind.config = {
     customerAddress: ''
   };
 
+  const watchTypes = [
+    { cat: 'steel', name_ar: 'ستانلس ستيل رويال', name_en: 'Royal Stainless Steel', badge_ar: 'ستيل 316L', badge_en: '316L Steel', desc_ar: 'معدن ستانلس ستيل صلب ومقاوم للصدأ مع ماكينة يابانية دقيقة.', desc_en: 'Solid 316L stainless steel with precise Japanese movement.' },
+    { cat: 'leather', name_ar: 'كلاسيك جلد طبيعي', name_en: 'Classic Genuine Leather', badge_ar: 'جلد طبيعي', badge_en: 'Genuine Leather', desc_ar: 'حزام جلد طبيعي مريح مع زجاج زفير مقاوم للخدش.', desc_en: 'Supple leather strap with scratch-resistant sapphire crystal.' },
+    { cat: 'automatic', name_ar: 'أوتوماتيك هيكلية', name_en: 'Skeleton Automatic', badge_ar: 'أوتوماتيك نبض اليد', badge_en: 'Kinetic Movement', desc_ar: 'ماكينة ميكانيكية تعمل بحركة اليد بدون بطارية مع تصميم تروس مكشوف.', desc_en: 'Self-winding mechanical movement with exposed gear design.' },
+    { cat: 'sport', name_ar: 'كرونوغراف سبورت', name_en: 'Sport Chronograph', badge_ar: 'ضد الماء 50M', badge_en: '50M Water Resistant', desc_ar: 'عدادات توقيت ثواني ودقائق تعمل بالكامل مع عقارب مضيئة ليلاً.', desc_en: 'Fully functional chronograph subdials with luminous hands.' }
+  ];
+
   const i18n = {
     ar: {
       top_ship: '🚚 شحن سريع لكافة محافظات مصر',
       top_inspect: '🔍 <strong>معاينة وقياس مجاني</strong> قبل دفع باقي المبلغ للمندوب',
       nav_home: 'الرئيسية',
+      nav_cats: 'أنواع الساعات',
       nav_catalog: 'كتالوج الساعات',
       nav_offers: 'عروض خاصة',
       nav_policy: 'الضمان والاستبدال',
@@ -563,11 +621,23 @@ tailwind.config = {
       trust_scratch: 'وزجاج مقاوم للخدش',
       hero_card_tag: 'الإصدار الأكثر طلباً',
       hero_order_btn: 'اطلب الآن — معاينة ودفع عند الاستلام',
+      cats_sub: 'المجموعات المختارة',
+      cats_title: 'أنواع وموديلات الساعات',
+      cat_steel_title: 'ساعات ستانلس ستيل',
+      cat_steel_desc: 'معدن صلب 316L لا يغير لونه ومقاوم للصدأ',
+      cat_leather_title: 'ساعات جلد كلاسيك',
+      cat_leather_desc: 'حزام جلد طبيعي ناعم ومريح للمناسبات والعمل',
+      cat_auto_title: 'ساعات أوتوماتيك',
+      cat_auto_desc: 'ميكانيكية بحركة نبض اليد وتصميم تروس مكشوف',
+      cat_sport_title: 'ساعات كرونوغراف وسبورت',
+      cat_sport_desc: 'عدادات تعمل بالكامل ومقاومة عالية للماء',
       catalog_tag: 'المتجر الحصري',
       catalog_heading: 'كتالوج الساعات المتاحة فوراً',
       tab_all: 'كل الساعات',
-      tab_best: 'الأكثر طلباً ⭐',
-      tab_offers: 'عروض خاصة 🔥',
+      tab_steel: 'ساعات ستيل 🛡️',
+      tab_leather: 'ساعات جلد 🪢',
+      tab_auto: 'أوتوماتيك ⚙️',
+      tab_sport: 'كرونوغراف وسبورت ⏱️',
       offer_tag: 'عرض خاص من AURA',
       offer_title: 'اشتري أي ساعتين واحصل على شحن مجاني وخصم 15% إضافي!',
       offer_desc: 'العرض يشمل علب فاخرة مع كروت ضمان معتمدة لكل ساعة مع حق المعاينة والقياس قبل الاستلام.',
@@ -583,9 +653,13 @@ tailwind.config = {
       b4_title: 'ضمان سنة كاملة',
       b4_desc: 'ضمان عام كامل معتمد على ماكينات الساعات وثبات الألوان مع حق الاستبدال خلال 14 يوماً.',
       footer_desc: 'براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية الأصلية مع شهادة ضمان معتمدة.',
-      footer_h1: 'خدمات الشراء',
+      footer_h1: 'تشكيلات الساعات',
       footer_h2: 'خدمة العملاء',
       footer_h3: 'تواصل معنا',
+      f_c1: 'ساعات ستانلس ستيل كلاسيك',
+      f_c2: 'ساعات جلد طبيعي',
+      f_c3: 'ساعات أوتوماتيك ميكانيكية',
+      f_c4: 'ساعات كرونوغراف وسبورت',
       f_s1: 'الشحن والتوصيل لجميع المحافظات',
       f_s2: 'سياسة المعاينة والاستبدال (14 يوم)',
       f_s3: 'تتبع شحنتك عبر واتساب',
@@ -614,6 +688,7 @@ tailwind.config = {
       top_ship: '🚚 Fast Express Delivery Across All Egypt Governorates',
       top_inspect: '🔍 <strong>Free Try-on & Inspection</strong> before paying courier',
       nav_home: 'Home',
+      nav_cats: 'Categories',
       nav_catalog: 'Watches Catalog',
       nav_offers: 'Special Offers',
       nav_policy: 'Warranty & Returns',
@@ -631,11 +706,23 @@ tailwind.config = {
       trust_scratch: 'Sapphire Glass',
       hero_card_tag: 'Most Wanted Edition',
       hero_order_btn: 'Order Now — Cash on Delivery',
+      cats_sub: 'Curated Collections',
+      cats_title: 'Watch Types & Styles',
+      cat_steel_title: 'Stainless Steel',
+      cat_steel_desc: 'Solid 316L anti-tarnish and rust-free steel',
+      cat_leather_title: 'Classic Leather',
+      cat_leather_desc: 'Supple genuine leather straps for work & events',
+      cat_auto_title: 'Automatic Skeleton',
+      cat_auto_desc: 'Self-winding kinetic mechanical movements',
+      cat_sport_title: 'Chronograph & Sport',
+      cat_sport_desc: 'Fully functional subdials with high water resistance',
       catalog_tag: 'Official Store',
       catalog_heading: 'Ready for Immediate Dispatch',
       tab_all: 'All Watches',
-      tab_best: 'Best Sellers ⭐',
-      tab_offers: 'Special Offers 🔥',
+      tab_steel: 'Steel 🛡️',
+      tab_leather: 'Leather 🪢',
+      tab_auto: 'Automatic ⚙️',
+      tab_sport: 'Chronograph ⏱️',
       offer_tag: 'AURA Special Offer',
       offer_title: 'Buy Any 2 Watches & Get Free Shipping + 15% Off!',
       offer_desc: 'Includes luxury presentation boxes and certified 1-year warranty cards with doorstep inspection.',
@@ -654,6 +741,10 @@ tailwind.config = {
       footer_h1: 'Shop Services',
       footer_h2: 'Client Services',
       footer_h3: 'Contact Us',
+      f_c1: 'Stainless Steel Watches',
+      f_c2: 'Genuine Leather Watches',
+      f_c3: 'Automatic Timepieces',
+      f_c4: 'Sport Chronographs',
       f_s1: 'Egypt Shipping & Delivery',
       f_s2: '14-Day Free Exchange Policy',
       f_s3: 'Track Order via WhatsApp',
@@ -697,7 +788,7 @@ tailwind.config = {
     updateCartUI();
   }
 
-  // تحميل الـ 73 ساعة من المستودع مع تحديد الشارات لـ 6 ساعات فقط
+  // تحميل الـ 73 ساعة وتوزيعها بانتظام على الأقسام الـ 4
   async function loadRepoWatches() {
     try {
       const pathParts = window.location.pathname.split('/').filter(Boolean);
@@ -713,51 +804,45 @@ tailwind.config = {
 
           productsData = imageFiles.map((file, idx) => {
             const num = idx + 1;
+            const type = watchTypes[idx % watchTypes.length];
             const price = 650 + ((idx * 25) % 550);
             const oldPrice = price + 350;
             
             let badge_ar = '';
             let badge_en = '';
-            let category = 'all';
 
             if (num === 1) {
               badge_ar = 'الأكثر طلباً ⭐';
               badge_en = 'Most Wanted ⭐';
-              category = 'best';
             } else if (num === 5) {
               badge_ar = 'عرض خاص 🔥';
               badge_en = 'Special Offer 🔥';
-              category = 'offers';
             } else if (num === 12) {
               badge_ar = 'الأكثر مبيعاً ⭐';
               badge_en = 'Best Seller ⭐';
-              category = 'best';
             } else if (num === 20) {
               badge_ar = 'تخفيض حصري 🔥';
               badge_en = 'Exclusive Deal 🔥';
-              category = 'offers';
             } else if (num === 33) {
               badge_ar = 'إصدار مميز ⭐';
               badge_en = 'Special Edition ⭐';
-              category = 'best';
             } else if (num === 50) {
               badge_ar = 'عرض محدود 🔥';
               badge_en = 'Limited Offer 🔥';
-              category = 'offers';
             }
 
             return {
               id: num,
-              title_ar: `ساعة AURA الفاخرة #${num}`,
-              title_en: `AURA Luxury Watch #${num}`,
-              category: category,
+              title_ar: `ساعة AURA ${type.name_ar} #${num}`,
+              title_en: `AURA ${type.name_en} #${num}`,
+              category: type.cat,
               price: price,
               oldPrice: oldPrice,
               badge_ar: badge_ar,
               badge_en: badge_en,
               rating: (4.8 + ((idx % 3) * 0.1)).toFixed(1),
-              desc_ar: `ماكينة يابانية معتمدة عالية الدقة مع زجاج زفير مقاوم للخدش وعلبة فاخرة مع كارت ضمان سنة.`,
-              desc_en: `Certified Japanese movement with scratch-resistant sapphire glass, luxury box & 1-yr warranty.`,
+              desc_ar: `${type.desc_ar} شامل العلبة الفاخرة وشهادة الضمان لمدة عام.`,
+              desc_en: `${type.desc_en} Includes luxury box and 1-year warranty certificate.`,
               img: file.download_url
             };
           });
@@ -776,23 +861,26 @@ tailwind.config = {
       'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=700&q=80',
       'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80',
       'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80',
-      'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80'
+      'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1614164185128-e4ec99c436d7?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1594576722512-582bcd46fba3?auto=format&fit=crop&w=700&q=80'
     ];
 
     productsData = defaultFallbacks.map((url, idx) => {
       const num = idx + 1;
+      const type = watchTypes[idx % watchTypes.length];
       return {
         id: num,
-        title_ar: `ساعة AURA الفاخرة #${num}`,
-        title_en: `AURA Luxury Watch #${num}`,
-        category: (num === 1 ? 'best' : (num === 2 ? 'offers' : 'all')),
+        title_ar: `ساعة AURA ${type.name_ar} #${num}`,
+        title_en: `AURA ${type.name_en} #${num}`,
+        category: type.cat,
         price: 750 + (idx * 50),
         oldPrice: 1150 + (idx * 50),
-        badge_ar: (num === 1 ? 'الأكثر طلباً ⭐' : (num === 2 ? 'عرض خاص 🔥' : '')),
-        badge_en: (num === 1 ? 'Best Seller ⭐' : (num === 2 ? 'Special Offer 🔥' : '')),
+        badge_ar: (num === 1 ? 'الأكثر طلباً ⭐' : ''),
+        badge_en: (num === 1 ? 'Best Seller ⭐' : ''),
         rating: '4.9',
-        desc_ar: `ماكينة يابانية معتمدة عالية الدقة مع زجاج مقاوم للخدش وعلبة فاخرة مع كارت ضمان سنة.`,
-        desc_en: `Certified high-precision Japanese movement with scratch-resistant glass, luxury box & 1-yr warranty.`,
+        desc_ar: `${type.desc_ar} مع ضمان عام كامل ومعاينة وقياس قبل الاستلام.`,
+        desc_en: `${type.desc_en} with a 1-year warranty and free try-on inspection.`,
         img: url
       };
     });
@@ -801,8 +889,10 @@ tailwind.config = {
 
   function updateCountsAndRender() {
     document.getElementById('count-all').textContent = productsData.length;
-    document.getElementById('count-best').textContent = productsData.filter(p => p.category === 'best').length;
-    document.getElementById('count-offers').textContent = productsData.filter(p => p.category === 'offers').length;
+    document.getElementById('count-steel').textContent = productsData.filter(p => p.category === 'steel').length;
+    document.getElementById('count-leather').textContent = productsData.filter(p => p.category === 'leather').length;
+    document.getElementById('count-auto').textContent = productsData.filter(p => p.category === 'automatic').length;
+    document.getElementById('count-sport').textContent = productsData.filter(p => p.category === 'sport').length;
     renderProducts(productsData);
   }
 
@@ -1022,7 +1112,7 @@ tailwind.config = {
     summaryList.innerHTML = cart.map(i => `• ${i.title} (${i.qty}×) - <b>${i.price * i.qty} ${dict.currency}</b>`).join('<br>');
     totalEl.textContent = total.toLocaleString(currentLang === 'ar' ? 'ar-EG' : 'en-US') + ' ' + dict.currency;
 
-    // ضبط إنستاباي افتراضياً
+    // تفعيل إنستاباي افتراضياً
     togglePaymentSection('cod');
 
     document.getElementById('cart-drawer').classList.add('-translate-x-full');
