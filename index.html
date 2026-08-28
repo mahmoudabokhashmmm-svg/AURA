@@ -1,805 +1,1278 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AURA | أورا — متجر الساعات الفاخرة</title>
-  <meta name="description" content="متجر AURA للساعات الفاخرة المعتمدة بماكينات يابانية دقيقة وضمان عام كامل ومعاينة قبل الدفع">
-  
-  <!-- خطوط جوجل الفاخرة -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            aura: {
-              bg: '#fdfbf7',
-              dark: '#231812',
-              card: '#ffffff',
-              border: '#eddcc9',
-              gold: '#b08968',
-              goldDark: '#8c6f5b',
-              accent: '#f7f2ea'
-            }
-          },
-          fontFamily: {
-            cairo: ['Cairo', 'sans-serif'],
-            cinzel: ['Cinzel', 'serif']
-          }
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AURA | أورا — متجر الساعات الفاخرة</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&family=Cinzel:wght@600;700;800;900&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        cafe: {
+          50: '#fdfbf7',
+          100: '#f7f2ea',
+          200: '#eddcc9',
+          300: '#dec2a3',
+          400: '#c5ab9a',
+          500: '#b08968',
+          600: '#8c6f5b',
+          800: '#4a3b31',
+          900: '#3d281a'
+        },
+        darkEspresso: '#231812',
+      },
+      fontFamily: {
+        cairo: ['Cairo', 'sans-serif'],
+        montserrat: ['Montserrat', 'sans-serif'],
+        cinzel: ['Cinzel', 'serif'],
       }
     }
-  </script>
+  }
+}
+</script>
+<style>
+  body { font-family: 'Cairo', sans-serif; background-color: #fdfbf7; color: #231812; }
+  body.lang-en { font-family: 'Montserrat', sans-serif; }
+  html { scroll-behavior: smooth; }
   
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <style>
-    body { font-family: 'Cairo', sans-serif; background-color: #fdfbf7; color: #231812; }
-    .font-cinzel { font-family: 'Cinzel', serif; }
-    .custom-scroll::-webkit-scrollbar { width: 6px; }
-    .custom-scroll::-webkit-scrollbar-track { background: #f7f2ea; }
-    .custom-scroll::-webkit-scrollbar-thumb { background: #dec2a3; border-radius: 4px; }
-  </style>
+  #chat-panel, #cart-drawer { transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), opacity .25s ease; }
+  #chat-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+  #chat-panel.closed { transform: translateY(16px); opacity: 0; pointer-events: none; }
+  .chat-msg { max-width: 85%; line-height: 1.6; word-break: break-word; }
+  .typing-dot { animation: blink 1.2s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: .2s; }
+  .typing-dot:nth-child(3) { animation-delay: .4s; }
+  @keyframes blink { 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+  
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #f7f2ea; }
+  ::-webkit-scrollbar-thumb { background: #dec2a3; border-radius: 4px; }
+</style>
 </head>
-<body class="overflow-x-hidden antialiased bg-[#fdfbf7]">
+<body class="overflow-x-hidden antialiased selection:bg-cafe-300 selection:text-darkEspresso">
 
-  <!-- شريط الإعلان العلوي -->
-  <div class="bg-[#231812] text-[#f7f2ea] text-xs py-2.5 px-4 text-center flex items-center justify-center gap-2 border-b border-[#3d281a]">
-    <i class="fa-solid fa-truck-fast text-[#dec2a3]"></i>
-    <span class="font-bold">توصيل سريع لكافة محافظات مصر • المعاينة والقياس مجاناً مع المندوب قبل دفع باقي الحساب</span>
+<!-- ============ TOP ANNOUNCEMENT BAR ============ -->
+<div class="bg-darkEspresso text-cafe-100 text-[11px] sm:text-xs py-2 px-4 text-center font-medium tracking-wide">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <div class="flex items-center gap-3 mx-auto sm:mx-0">
+      <span data-i18n="top_ship">🚚 شحن سريع لكافة محافظات مصر</span>
+      <span class="opacity-40">|</span>
+      <span class="hidden md:inline" data-i18n="top_inspect">🔍 <strong>معاينة وقياس مجاني</strong> قبل دفع باقي المبلغ للمندوب</span>
+    </div>
+    <!-- Language Toggle Button -->
+    <button onclick="toggleLanguage()" class="border border-cafe-600 bg-cafe-900/60 hover:bg-cafe-800 text-cafe-200 px-3 py-0.5 rounded-full text-[10px] font-bold flex items-center gap-1 transition-all">
+      <i class="fa-solid fa-globe"></i>
+      <span id="lang-btn-text">English</span>
+    </button>
   </div>
+</div>
 
-  <!-- الهيدر وشريط التنقل -->
-  <header class="sticky top-0 z-40 bg-[#fdfbf7]/90 backdrop-blur-md border-b border-[#eddcc9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      
-      <!-- الشعار -->
-      <a href="#" class="flex items-center gap-3 group">
-        <div class="w-11 h-11 rounded-full bg-[#231812] text-[#fdfbf7] flex items-center justify-center font-bold text-xl font-cinzel shadow-sm group-hover:scale-105 transition-transform">
-          A
-        </div>
-        <div class="flex flex-col">
-          <span class="font-cinzel text-xl sm:text-2xl font-black tracking-widest text-[#231812] leading-none">AURA</span>
-          <span class="text-[9px] uppercase tracking-widest text-[#8c6f5b] font-semibold">Luxury Timepieces</span>
-        </div>
+<!-- ============ NAVBAR ============ -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-cafe-200 shadow-xs">
+  <div class="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+    
+    <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-cafe-800">
+      <a href="#home" class="hover:text-cafe-600 transition-colors" data-i18n="nav_home">الرئيسية</a>
+      <a href="#products" class="hover:text-cafe-600 transition-colors" data-i18n="nav_catalog">كتالوج الساعات</a>
+      <a href="#offers" class="text-cafe-700 hover:text-cafe-900 transition-colors font-black" data-i18n="nav_offers">عروض خاصة</a>
+      <a href="javascript:void(0)" onclick="openReturnPolicyModal()" class="hover:text-cafe-600 transition-colors" data-i18n="nav_policy">الضمان والاستبدال</a>
+    </nav>
+
+    <!-- Center Logo -->
+    <a href="#home" class="flex flex-col items-center justify-center text-center">
+      <span class="font-cinzel font-bold text-2xl md:text-3xl tracking-[0.25em] text-darkEspresso leading-none">AURA</span>
+      <span class="text-[9px] font-bold text-cafe-600 tracking-[0.25em] uppercase mt-0.5">LUXURY TIMEPIECES</span>
+    </a>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-2.5">
+      <a href="https://wa.me/201005823798" target="_blank" class="hidden sm:flex items-center gap-1.5 text-xs font-bold bg-cafe-100 hover:bg-cafe-200 text-darkEspresso px-3.5 py-2 rounded-full transition-all border border-cafe-200">
+        <i class="fa-brands fa-whatsapp text-emerald-700 text-sm"></i>
+        <span>01005823798</span>
       </a>
 
-      <!-- روابط التنقل -->
-      <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-[#4a3b31]">
-        <a href="#home" class="hover:text-[#8c6f5b] transition-colors">الرئيسية</a>
-        <a href="#products" class="hover:text-[#8c6f5b] transition-colors">الكتالوج الكامل (99 ساعة)</a>
-        <a href="#watch-guide" class="hover:text-[#8c6f5b] transition-colors flex items-center gap-1.5">
-          <i class="fa-regular fa-compass text-[#b08968]"></i>
-          <span>دليل اختيار ساعتك</span>
-        </a>
-      </nav>
-
-      <!-- الأزرار والإجراءات -->
-      <div class="flex items-center gap-2.5">
-        <a href="https://wa.me/201005823798" target="_blank" class="hidden lg:flex items-center gap-1.5 text-xs font-bold bg-[#f7f2ea] hover:bg-[#eddcc9] text-[#231812] px-3.5 py-2 rounded-full transition-all border border-[#eddcc9]">
-          <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
-          <span dir="ltr">01005823798</span>
-        </a>
-
-        <!-- زر المساعد الذكي -->
-        <button onclick="toggleChatbot(true)" class="p-2.5 sm:px-3 sm:py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1.5 transition-all">
-          <i class="fa-solid fa-headset text-emerald-600"></i>
-          <span class="hidden sm:inline">مستشار الساعات</span>
-        </button>
-
-        <!-- زر المفضلة -->
-        <button onclick="toggleWishlistDrawer(true)" class="relative p-2.5 sm:px-3 sm:py-2 rounded-full bg-[#f7f2ea] hover:bg-[#eddcc9] text-[#231812] border border-[#eddcc9] text-xs font-bold flex items-center gap-1.5 transition-all">
-          <i class="fa-solid fa-heart text-rose-500 text-sm"></i>
-          <span class="hidden sm:inline">المفضلة</span>
-          <span id="wishlistCountBadge" class="bg-rose-500 text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center">0</span>
-        </button>
-
-        <!-- زر السلة -->
-        <button onclick="toggleCartDrawer(true)" class="relative bg-[#231812] hover:bg-[#3d281a] text-white px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-all">
-          <i class="fa-solid fa-bag-shopping text-[#dec2a3]"></i>
-          <span class="hidden sm:inline">السلة</span>
-          <span id="cartCountBadge" class="bg-[#b08968] text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center">0</span>
-        </button>
-      </div>
+      <!-- Cart Button -->
+      <button onclick="toggleCart()" class="relative bg-darkEspresso hover:bg-cafe-900 text-white px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-all">
+        <i class="fa-solid fa-bag-shopping text-sm text-cafe-300"></i>
+        <span class="hidden sm:inline" data-i18n="cart_btn">السلة</span>
+        <span id="cart-badge" class="bg-cafe-500 text-white text-[11px] font-black w-5 h-5 rounded-full flex items-center justify-center">0</span>
+      </button>
     </div>
-  </header>
 
-  <!-- القسم الترحيبي Hero -->
-  <section id="home" class="relative py-12 sm:py-20 overflow-hidden bg-gradient-to-b from-[#f7f2ea] to-[#fdfbf7] border-b border-[#eddcc9]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#eddcc9] text-xs font-bold text-[#735340] shadow-xs">
-        <i class="fa-solid fa-gem text-[#b08968]"></i>
-        <span>المجموعة الشاملة 2026 — 99 ساعة فاخرة بضمان معتمد</span>
-      </div>
-      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-[#231812] tracking-tight leading-tight">
-        فخامة الوقت..<br>
-        <span class="text-[#8c6f5b]">ودقة متناهية في كل ثانية.</span>
-      </h1>
-      <p class="max-w-2xl mx-auto text-sm sm:text-base text-[#735340] font-medium leading-relaxed">
-        ساعات مختارة بعناية (رولكس، كارتييه، تومي هيلفيغر، لاكوست، كاسيو إيديفيس، أوميغا). عاين وقس ساعتك براحتك مع المندوب قبل دفع باقي الحساب.
+  </div>
+</header>
+
+<!-- ============ HERO SECTION ============ -->
+<section id="home" class="relative bg-gradient-to-b from-cafe-100/70 to-cafe-50 py-10 md:py-16 overflow-hidden border-b border-cafe-200/70">
+  <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-12 gap-10 items-center">
+    <div class="lg:col-span-7 space-y-5">
+      <span class="inline-flex items-center gap-2 bg-white border border-cafe-200 rounded-full px-3.5 py-1 text-xs font-bold text-cafe-800 shadow-xs" data-i18n="hero_badge">
+        <span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الساعات الفاخرة 2026
+      </span>
+      <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-darkEspresso leading-[1.2] tracking-tight">
+        <span data-i18n="hero_title_1">فخامة الوقت..</span> <br>
+        <span class="text-cafe-600 font-light" data-i18n="hero_title_2">ودقة في كل ثانية.</span>
+      </h2>
+      <p class="text-cafe-800 text-base md:text-lg leading-relaxed max-w-xl" data-i18n="hero_desc">
+        في <strong>AURA</strong>، نقدم لك أرقى موديلات الساعات، ماكينات يابانية معتمدة عالية الدقة، ضد الماء مع ضمان سنة كاملة ومعاينة وقياس قبل الدفع.
       </p>
-      <div class="flex items-center justify-center gap-3 pt-3">
-        <a href="#products" class="bg-[#231812] hover:bg-[#3d281a] text-white font-bold text-sm px-6 py-3 rounded-full transition-all shadow-md flex items-center gap-2">
-          <span>استعرض الـ 99 ساعة</span>
-          <i class="fa-solid fa-arrow-down text-xs"></i>
+
+      <div class="flex flex-wrap gap-3 pt-2">
+        <a href="#products" class="bg-darkEspresso hover:bg-cafe-900 text-white px-7 py-3.5 rounded-xl font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+          <span data-i18n="hero_btn_catalog">تصفح كتالوج الساعات</span>
+          <i class="fa-solid fa-arrow-left text-xs text-cafe-300"></i>
+        </a>
+        <a href="#offers" class="bg-white hover:bg-cafe-100 border border-cafe-300 text-darkEspresso px-6 py-3.5 rounded-xl font-bold text-sm transition-all" data-i18n="hero_btn_offers">
+          العروض الحصرية
         </a>
       </div>
-    </div>
-  </section>
 
-  <!-- كتالوج الساعات الكامل (99 ساعة) -->
-  <section id="products" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <!-- Trust Badges -->
+      <div class="grid grid-cols-3 gap-4 pt-6 border-t border-cafe-200/80 text-darkEspresso">
+        <div>
+          <p class="font-black text-xl text-darkEspresso">100%</p>
+          <p class="text-xs text-cafe-700 font-medium mt-0.5" data-i18n="trust_inspect">معاينة قبل الدفع</p>
+        </div>
+        <div>
+          <p class="font-black text-xl text-darkEspresso" data-i18n="trust_year">سنة كاملة</p>
+          <p class="text-xs text-cafe-700 font-medium mt-0.5" data-i18n="trust_warranty">ضمان على الموتور</p>
+        </div>
+        <div>
+          <p class="font-black text-xl text-darkEspresso" data-i18n="trust_waterproof">ضد الماء</p>
+          <p class="text-xs text-cafe-700 font-medium mt-0.5" data-i18n="trust_scratch">وزجاج مقاوم للخدش</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero Card -->
+    <div class="lg:col-span-5 relative">
+      <div class="relative rounded-3xl overflow-hidden bg-white p-3.5 shadow-xl border border-cafe-200">
+        <div class="relative h-96 rounded-2xl overflow-hidden bg-cafe-100 flex items-center justify-center">
+          <img id="hero-dynamic-img" src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=900&q=80" alt="ساعة AURA الفاخرة" class="w-full h-full object-cover">
+        </div>
+        <div class="p-4 flex items-center justify-between">
+          <div>
+            <span class="text-[10px] font-black uppercase tracking-wider text-cafe-800 bg-cafe-100 border border-cafe-300 px-2 py-0.5 rounded" data-i18n="hero_card_tag">الإصدار الأكثر طلباً</span>
+            <h3 id="hero-card-title-text" class="font-black text-darkEspresso text-base mt-1">ساعة AURA رويال إيديشن #1</h3>
+            <p class="text-xs text-cafe-600">ماكينة يابانية دقيقة · ضد الماء · علبة فاخرة</p>
+          </div>
+          <div class="text-left">
+            <span class="text-xs text-slate-400 line-through">1,250 ج.م</span>
+            <p class="font-black text-xl text-darkEspresso">890 <span class="text-xs font-normal text-cafe-700">ج.م</span></p>
+          </div>
+        </div>
+        <button onclick="quickOrder(document.getElementById('hero-card-title-text').innerText, 890, document.getElementById('hero-dynamic-img').src)" class="w-full bg-darkEspresso hover:bg-cafe-900 text-white font-bold py-3 rounded-xl text-xs transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-bolt text-cafe-300"></i> <span data-i18n="hero_order_btn">اطلب الآن — معاينة ودفع عند الاستلام</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS CATALOG (عرض كل الساعات بدون زحمة شارات) ============ -->
+<section id="products" class="max-w-7xl mx-auto px-4 py-12">
+  <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+    <div>
+      <span class="text-xs font-bold text-cafe-600 uppercase tracking-widest" data-i18n="catalog_tag">المتجر الحصري</span>
+      <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="catalog_heading">كتالوج الساعات المتاحة فوراً</h3>
+    </div>
+
+    <!-- الفلاتر -->
+    <div class="flex flex-wrap items-center gap-2 bg-cafe-100 p-1.5 rounded-xl border border-cafe-200 text-xs font-bold">
+      <button onclick="filterCategory('all')" class="cat-btn active bg-white text-darkEspresso shadow-xs px-4 py-2 rounded-lg transition-all" data-cat="all">
+        <span data-i18n="tab_all">كل الساعات</span> (<span id="count-all">0</span>)
+      </button>
+      <button onclick="filterCategory('best')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="best">
+        <span data-i18n="tab_best">الأكثر طلباً ⭐</span> (<span id="count-best">0</span>)
+      </button>
+      <button onclick="filterCategory('offers')" class="cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all" data-cat="offers">
+        <span data-i18n="tab_offers">عروض خاصة 🔥</span> (<span id="count-offers">0</span>)
+      </button>
+    </div>
+  </div>
+
+  <!-- شريط البحث -->
+  <div class="mb-8 relative">
+    <input type="text" id="search-input" onkeyup="searchProducts()" placeholder="🔍 ابحث برقم الساعة أو السعر..." class="w-full bg-white border border-cafe-200 rounded-2xl px-5 py-3.5 text-xs sm:text-sm text-darkEspresso focus:outline-none focus:border-cafe-500 shadow-xs">
+  </div>
+
+  <!-- مكان عرض الساعات -->
+  <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 min-h-[300px]"></div>
+</section>
+
+<!-- ============ SPECIAL OFFER BANNER ============ -->
+<section id="offers" class="max-w-7xl mx-auto px-4 py-8">
+  <div class="bg-gradient-to-r from-darkEspresso via-cafe-900 to-darkEspresso text-white rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden shadow-xl border border-cafe-700/40">
+    <div class="space-y-3 max-w-xl z-10">
+      <span class="bg-cafe-500/30 text-cafe-200 text-xs font-bold px-3 py-1 rounded-full uppercase border border-cafe-500/40" data-i18n="offer_tag">عرض خاص من AURA</span>
+      <h3 class="text-2xl md:text-4xl font-black leading-tight" data-i18n="offer_title">اشتري أي ساعتين واحصل على شحن مجاني وخصم 15% إضافي!</h3>
+      <p class="text-cafe-200 text-sm" data-i18n="offer_desc">العرض يشمل علب فاخرة مع كروت ضمان معتمدة لكل ساعة مع حق المعاينة والقياس قبل الاستلام.</p>
+    </div>
+    <div class="z-10 shrink-0">
+      <a href="https://wa.me/201005823798?text=أهلاً،%20أريد%20الاستفادة%20من%20عرض%20الساعتين%20مع%20الشحن%20المجاني" target="_blank" class="bg-cafe-200 hover:bg-white text-darkEspresso px-7 py-4 rounded-2xl font-black text-sm transition-all flex items-center gap-2 shadow-lg">
+        <i class="fa-brands fa-whatsapp text-emerald-700 text-lg"></i> <span data-i18n="offer_btn">اطلب العرض عبر واتساب (01005823798)</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAYMENT & GUARANTEE SECTION ============ -->
+<section id="payment-shipping" class="max-w-7xl mx-auto px-4 py-16">
+  <div class="text-center mb-12">
+    <span class="text-xs font-bold text-cafe-600 uppercase tracking-widest" data-i18n="sec_trust_sub">ثقة وراحة تامة</span>
+    <h3 class="text-2xl md:text-3xl font-black text-darkEspresso mt-1" data-i18n="sec_trust_title">طرق الدفع والتوصيل وسياسة الضمان</h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="bg-white p-6 rounded-2xl border border-cafe-200 text-center shadow-xs">
+      <div class="w-12 h-12 rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mx-auto mb-4 border border-cafe-200">
+        <i class="fa-solid fa-hand-holding-dollar text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-sm" data-i18n="b1_title">الدفع عند الاستلام (كاش)</h4>
+      <p class="text-xs text-cafe-700 mt-1.5 leading-relaxed" data-i18n="b1_desc">افتح وعاين الساعة وقسها بنفسك مع المندوب قبل دفع باقي المبلغ (ديبوزت 100 ج.م فقط لجدية الشحن).</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl border border-cafe-200 text-center shadow-xs">
+      <div class="w-12 h-12 rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mx-auto mb-4 border border-cafe-200">
+        <i class="fa-solid fa-mobile-screen-button text-purple-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-sm" data-i18n="b2_title">إنستاباي وفودافون كاش</h4>
+      <p class="text-xs text-cafe-700 mt-1.5 leading-relaxed" data-i18n="b2_desc">تحويل مباشر عبر رابط إنستاباي المباشر أو لحساب mahmoudabokhashm2006@instapay على 01010143989.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl border border-cafe-200 text-center shadow-xs">
+      <div class="w-12 h-12 rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mx-auto mb-4 border border-cafe-200">
+        <i class="fa-solid fa-truck-fast text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-sm" data-i18n="b3_title">شحن سريع لكافة المحافظات</h4>
+      <p class="text-xs text-cafe-700 mt-1.5 leading-relaxed" data-i18n="b3_desc">القاهرة والإسكندرية والجيزة 24-48 ساعة، وباقي المحافظات خلال يومين إلى 3 أيام عمل.</p>
+    </div>
+
+    <div class="bg-white p-6 rounded-2xl border border-cafe-200 text-center shadow-xs">
+      <div class="w-12 h-12 rounded-xl bg-cafe-100 text-darkEspresso flex items-center justify-center text-xl mx-auto mb-4 border border-cafe-200">
+        <i class="fa-solid fa-shield-check text-cafe-700"></i>
+      </div>
+      <h4 class="font-bold text-darkEspresso text-sm" data-i18n="b4_title">ضمان سنة كاملة</h4>
+      <p class="text-xs text-cafe-700 mt-1.5 leading-relaxed" data-i18n="b4_desc">ضمان عام كامل معتمد على ماكينات الساعات وثبات الألوان مع حق الاستبدال خلال 14 يوماً.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact" class="bg-white border-t border-cafe-200 pt-12 pb-8 text-cafe-700 text-xs">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+    <div class="space-y-3">
+      <span class="font-cinzel font-bold text-xl tracking-widest text-darkEspresso block">AURA</span>
+      <p class="text-cafe-700 leading-relaxed" data-i18n="footer_desc">براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية الأصلية مع شهادة ضمان معتمدة.</p>
+    </div>
+
+    <div>
+      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h1">خدمات الشراء</h4>
+      <ul class="space-y-2">
+        <li><a href="#products" class="hover:text-darkEspresso">كتالوج الساعات الفاخرة</a></li>
+        <li><a href="#offers" class="hover:text-darkEspresso">العروض والتخفيضات</a></li>
+        <li><a href="javascript:void(0)" onclick="openReturnPolicyModal()" class="hover:text-darkEspresso" data-i18n="f_s2">سياسة المعاينة والاستبدال (14 يوم)</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h2">خدمة العملاء</h4>
+      <ul class="space-y-2">
+        <li><a href="#payment-shipping" class="hover:text-darkEspresso" data-i18n="f_s1">الشحن والتوصيل لجميع المحافظات</a></li>
+        <li><a href="https://wa.me/201005823798" target="_blank" class="hover:text-darkEspresso" data-i18n="f_s3">تتبع شحنتك عبر واتساب</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h4 class="font-bold text-darkEspresso text-sm mb-3" data-i18n="footer_h3">تواصل معنا</h4>
+      <p class="flex items-center gap-2 mb-2"><i class="fa-brands fa-whatsapp text-emerald-700 text-sm"></i> <a href="https://wa.me/201005823798" target="_blank" class="font-bold text-darkEspresso dir-ltr">01005823798</a></p>
+      <p class="flex items-center gap-2 mb-2"><i class="fa-solid fa-location-dot text-cafe-500"></i> <span data-i18n="f_loc">توصيل سريع لباب البيت بجميع المحافظات</span></p>
+      <p class="flex items-center gap-2"><i class="fa-solid fa-clock text-cafe-500"></i> <span data-i18n="f_time">خدمة العملاء متاحة طوال أيام الأسبوع</span></p>
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 pt-6 border-t border-cafe-100 text-center flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
+    <p>© 2026 AURA Luxury Timepieces. All Rights Reserved.</p>
+    <div class="flex items-center gap-4 text-base text-cafe-600">
+      <i class="fa-brands fa-cc-visa hover:text-blue-700"></i>
+      <i class="fa-brands fa-cc-mastercard hover:text-red-600"></i>
+      <i class="fa-solid fa-mobile-screen hover:text-purple-700" title="InstaPay"></i>
+      <i class="fa-solid fa-hand-holding-dollar hover:text-amber-700" title="Cash on Delivery"></i>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CART DRAWER ============ -->
+<div id="cart-drawer-overlay" onclick="toggleCart()" class="fixed inset-0 bg-darkEspresso/50 backdrop-blur-xs z-50 hidden"></div>
+<div id="cart-drawer" class="fixed top-0 left-0 bottom-0 w-full max-w-md bg-white border-r border-cafe-200 z-50 transform -translate-x-full flex flex-col justify-between shadow-2xl">
+  <div class="p-4 border-b border-cafe-200 flex items-center justify-between bg-cafe-50">
+    <div class="flex items-center gap-2">
+      <i class="fa-solid fa-bag-shopping text-darkEspresso text-base"></i>
+      <h3 class="font-bold text-darkEspresso text-sm"><span data-i18n="cart_modal_title">سلة مشتريات الساعات</span> (<span id="cart-items-count">0</span>)</h3>
+    </div>
+    <button onclick="toggleCart()" class="text-cafe-700 hover:text-darkEspresso p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
+  </div>
+  <div id="cart-items-container" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+  <div class="p-4 border-t border-cafe-200 bg-cafe-50">
+    <div class="flex justify-between items-center text-xs mb-1.5 text-cafe-800">
+      <span data-i18n="cart_subtotal_label">المجموع الفرعي:</span>
+      <span id="cart-subtotal" class="font-black text-darkEspresso text-base">0 ج.م</span>
+    </div>
+    <p class="text-[11px] text-emerald-800 font-bold mb-4" data-i18n="cart_inspect_note">🔍 المعاينة وقياس الساعة مجاناً قبل الدفع للمندوب</p>
+    <button onclick="openCheckoutModal()" id="btn-proceed-checkout" disabled class="w-full bg-darkEspresso hover:bg-cafe-900 disabled:opacity-40 text-white py-3 rounded-xl font-bold text-xs transition-all flex items-center justify-center gap-2">
+      <i class="fa-solid fa-circle-check text-cafe-300"></i> <span data-i18n="cart_checkout_btn">متابعة الطلب وتحديد العنوان</span>
+    </button>
+  </div>
+</div>
+
+<!-- ============ CHECKOUT & ORDER MODAL (بيانات افتراضية ورقم إنستاباي الصحيح) ============ -->
+<div id="checkout-modal" class="fixed inset-0 bg-darkEspresso/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl w-full max-w-lg overflow-hidden shadow-2xl max-h-[90vh] flex flex-col border border-cafe-200">
+    <div class="p-4 border-b border-cafe-200 flex items-center justify-between bg-cafe-100">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-truck-fast text-darkEspresso text-sm"></i>
+        <h4 class="font-bold text-darkEspresso text-sm" data-i18n="checkout_title">بيانات الشحن وتأكيد طلب الساعة</h4>
+      </div>
+      <button onclick="closeCheckoutModal()" class="text-cafe-700 hover:text-darkEspresso text-base"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <form id="order-form" onsubmit="submitFinalOrder(event)" class="p-5 overflow-y-auto space-y-4 flex-1 text-xs">
+      <div class="bg-cafe-50 p-3 rounded-xl border border-cafe-200">
+        <p class="text-cafe-700 font-bold mb-1" data-i18n="checkout_summary_title">ملخص الساعات المطلوبة:</p>
+        <div id="checkout-summary-list" class="text-darkEspresso space-y-1"></div>
+        <div class="mt-2 pt-2 border-t border-cafe-200 flex justify-between font-black text-sm text-darkEspresso">
+          <span data-i18n="checkout_total_label">الإجمالي المطلوب:</span>
+          <span id="checkout-final-total" class="text-cafe-700">0 ج.م</span>
+        </div>
+      </div>
+
       <div>
-        <h2 class="text-2xl sm:text-3xl font-black text-[#231812]">كتالوج الساعات (99 ساعة)</h2>
-        <p class="text-xs sm:text-sm text-[#735340] mt-1">كل ساعة معروضة بصورتها المعتمدة ومواصفاتها الفنية الكاملة</p>
-      </div>
-      
-      <!-- فلتر الحالة -->
-      <div class="flex items-center gap-2 flex-wrap">
-        <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]">كل الساعات</button>
-        <button onclick="setCategoryFilter('best')" id="cat-best" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">الأكثر طلباً ⭐</button>
-        <button onclick="setCategoryFilter('offers')" id="cat-offers" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">عروض خاصة 🔥</button>
-      </div>
-    </div>
-
-    <!-- شريط فلتر الماركات (Brand Filters) -->
-    <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none">
-      <button onclick="setBrandFilter('all')" id="brand-all" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#231812] text-white border border-[#231812] whitespace-nowrap">جميع الماركات (99)</button>
-      <button onclick="setBrandFilter('rolex')" id="brand-rolex" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">رولكس Rolex</button>
-      <button onclick="setBrandFilter('cartier')" id="brand-cartier" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كارتييه Cartier</button>
-      <button onclick="setBrandFilter('tommy')" id="brand-tommy" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">تومي Tommy</button>
-      <button onclick="setBrandFilter('lacoste')" id="brand-lacoste" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">لاكوست Lacoste</button>
-      <button onclick="setBrandFilter('casio')" id="brand-casio" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كاسيو إيديفيس Casio</button>
-      <button onclick="setBrandFilter('omega')" id="brand-omega" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">أوميغا Omega</button>
-    </div>
-
-    <!-- حقل البحث السريع -->
-    <div class="mb-8 relative">
-      <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الموديل أو اللون أو الماركة..." class="w-full bg-white border border-[#eddcc9] rounded-2xl py-3.5 pr-11 pl-4 text-xs sm:text-sm text-[#231812] placeholder-[#735340]/60 focus:outline-none focus:border-[#b08968] shadow-xs">
-      <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-[#8c6f5b]"></i>
-    </div>
-
-    <!-- شبكة الـ 99 ساعة -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <!-- يتم حقن الـ 99 ساعة ديناميكياً بواسطة JavaScript -->
-    </div>
-  </section>
-
-  <!-- نافذة إتمام الطلب الشاملة (Checkout Modal) -->
-  <div id="checkoutModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
-    <div onclick="toggleCheckoutModal(false)" class="fixed inset-0 bg-black/75 backdrop-blur-xs"></div>
-    <div class="relative bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 border border-[#eddcc9] shadow-2xl z-10 space-y-5 max-h-[92vh] overflow-y-auto custom-scroll text-[#231812]">
-      
-      <div class="flex items-center justify-between border-b border-[#eddcc9] pb-4">
-        <div>
-          <span class="text-[10px] text-[#8c6f5b] font-bold uppercase tracking-widest">المعاينة قبل الدفع متاحة مجاناً</span>
-          <h3 class="text-xl font-black text-[#231812] flex items-center gap-2 mt-0.5">
-            <i class="fa-solid fa-shield-halved text-[#b08968]"></i>
-            <span>تأكيد طلب الساعات</span>
-          </h3>
-        </div>
-        <button onclick="toggleCheckoutModal(false)" class="text-[#735340] hover:text-[#231812] text-xl">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
+        <label class="block font-bold text-darkEspresso mb-1" data-i18n="form_name">الاسم ثلاثي *</label>
+        <input type="text" id="order-name" required placeholder="مثال: أحمد محمود علي" class="w-full bg-white border border-cafe-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-darkEspresso">
       </div>
 
-      <!-- ملخص الساعات المختارة -->
-      <div class="bg-[#f7f2ea] p-4 rounded-2xl border border-[#eddcc9] space-y-2">
-        <h4 class="text-xs font-bold text-[#735340]">الساعات المطلوبة:</h4>
-        <div id="checkoutItemsPreview" class="space-y-2 max-h-36 overflow-y-auto custom-scroll pr-1"></div>
-        <div class="border-t border-[#eddcc9] pt-2 flex justify-between items-center text-xs font-bold">
-          <span>إجمالي المستحق:</span>
-          <span id="checkoutTotalAmount" class="text-sm font-black text-[#8c6f5b]">0 ج.م</span>
+      <div>
+        <label class="block font-bold text-darkEspresso mb-1" data-i18n="form_phone">رقم الموبايل / واتساب *</label>
+        <input type="tel" id="order-phone" required placeholder="01012345678" class="w-full bg-white border border-cafe-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-darkEspresso" dir="ltr">
+      </div>
+
+      <div>
+        <label class="block font-bold text-darkEspresso mb-1" data-i18n="form_zone">منطقة ومحافظة الشحن *</label>
+        <select id="order-gov" onchange="updateZoneTime()" required class="w-full bg-white border border-cafe-300 rounded-xl px-2.5 py-2 text-xs focus:outline-none focus:border-darkEspresso">
+          <option value="القاهرة والجيزة" data-time="24 - 48 ساعة">القاهرة والجيزة (توصيل سريع 24-48 ساعة) - شحن مجاني</option>
+          <option value="الإسكندرية والساحل" data-time="2 - 3 أيام عمل">الإسكندرية والساحل الشمالي (2-3 أيام) - شحن مجاني</option>
+          <option value="محافظات الدلتا والقناة" data-time="2 - 3 أيام عمل">محافظات الدلتا والقناة (طنطا، المنصورة، الإسماعيلية...) - شحن مجاني</option>
+          <option value="محافظات الصعيد" data-time="3 - 4 أيام عمل">محافظات الصعيد (المنيا، أسيوط، سوهاج، قنا...) - شحن مجاني</option>
+          <option value="البحر الأحمر وسيناء" data-time="3 - 5 أيام عمل">البحر الأحمر وسيناء (الغردقة، شرم الشيخ...) - شحن مجاني</option>
+        </select>
+        <p id="zone-time-preview" class="text-[11px] text-emerald-800 font-bold mt-1"><i class="fa-solid fa-truck-fast ml-1"></i> مدة التوصيل المقدرة: 24 - 48 ساعة</p>
+      </div>
+
+      <!-- طرق الدفع المعتمدة -->
+      <div>
+        <label class="block font-bold text-darkEspresso mb-1" data-i18n="form_payment">طريقة الدفع المعتمدة *</label>
+        <div class="grid grid-cols-3 gap-2">
+          <!-- دفع عند الاستلام مع عربون -->
+          <label class="border border-cafe-300 rounded-xl p-2.5 flex flex-col items-center gap-1 cursor-pointer hover:border-darkEspresso has-[:checked]:border-darkEspresso has-[:checked]:bg-cafe-100 text-center">
+            <input type="radio" name="paymentMethod" value="Cash on Delivery (دفع عند الاستلام)" checked onchange="togglePaymentSection('cod')" class="accent-darkEspresso">
+            <i class="fa-solid fa-hand-holding-dollar text-base text-amber-700"></i>
+            <span class="text-[10px] font-bold">دفع عند الاستلام (عربون 100 ج)</span>
+          </label>
+
+          <!-- إنستاباي كامل المبلغ -->
+          <label class="border border-cafe-300 rounded-xl p-2.5 flex flex-col items-center gap-1 cursor-pointer hover:border-darkEspresso has-[:checked]:border-darkEspresso has-[:checked]:bg-cafe-100 text-center">
+            <input type="radio" name="paymentMethod" value="InstaPay (تحويل كامل المبلغ)" onchange="togglePaymentSection('instapay')" class="accent-darkEspresso">
+            <i class="fa-solid fa-mobile-screen-button text-base text-purple-700"></i>
+            <span class="text-[10px] font-bold">إنستاباي (المبلغ كاملاً)</span>
+          </label>
+
+          <!-- طلب رابط فيزا رسمي أونلاين -->
+          <label class="border border-cafe-300 rounded-xl p-2.5 flex flex-col items-center gap-1 cursor-pointer hover:border-darkEspresso has-[:checked]:border-darkEspresso has-[:checked]:bg-cafe-100 text-center">
+            <input type="radio" name="paymentMethod" value="Visa / Mastercard (طلب رابط دفع فيزا رسمي)" onchange="togglePaymentSection('visa')" class="accent-darkEspresso">
+            <div class="flex gap-1 text-sm text-blue-700">
+              <i class="fa-brands fa-cc-visa"></i>
+              <i class="fa-brands fa-cc-mastercard text-red-600"></i>
+            </div>
+            <span class="text-[10px] font-bold">رابط دفع فيزا (أونلاين)</span>
+          </label>
         </div>
       </div>
 
-      <!-- نموذج بيانات العميل -->
-      <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
-        
-        <div>
-          <label class="block text-xs font-bold text-[#4a3b31] mb-1">الاسم بالكامل *</label>
-          <input type="text" id="custName" required placeholder="مثال: محمود ناصر" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-[#4a3b31] mb-1">رقم الموبايل (واتساب) *</label>
-            <input type="tel" id="custPhone" required placeholder="01010143989" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
-          </div>
-          <div>
-            <label class="block text-xs font-bold text-[#4a3b31] mb-1">المحافظة *</label>
-            <select id="custGov" required class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
-              <option value="محافظات الدلتا والقناة">محافظات الدلتا والقناة</option>
-              <option value="القاهرة والجيزة">القاهرة والجيزة</option>
-              <option value="الإسكندرية">الإسكندرية</option>
-              <option value="محافظات الصعيد">محافظات الصعيد</option>
-              <option value="محافظات أخرى">محافظات أخرى</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-[#4a3b31] mb-1">العنوان التفصيلي وعلامة مميزة *</label>
-          <input type="text" id="custAddress" required placeholder="مثال: دمنهور شارع شندي اخر شارع المعهد الديني قصاد الدفراوي" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-[#4a3b31] mb-1">طريقة الدفع *</label>
-          <select id="custPayment" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
-            <option value="كاش عند الاستلام">كاش عند الاستلام (معاينة قبل الدفع)</option>
-            <option value="إنستاباي InstaPay">تحويل إنستاباي InstaPay</option>
-          </select>
-        </div>
-
-        <!-- صندوق التنبيه الخاص بالعربون -->
-        <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-2xl text-[11px] text-amber-900 leading-relaxed space-y-1">
-          <div class="font-bold flex items-center gap-1.5 text-amber-800">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <span>تنبيه ديبوزت جدية الشحن (100 ج.م)</span>
-          </div>
-          <p>لضمان جدية الاستلام وحجز المندوب، يتم تحويل 100 ج.م عربون شحن على إنستاباي رقم: <strong dir="ltr" class="font-black text-[#231812]">01005823798</strong> أو <strong dir="ltr" class="font-black text-[#231812]">01010143989</strong> وخصمها من إجمالي الفاتورة عند الاستلام.</p>
-        </div>
-
-        <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 text-sm">
-          <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>إرسال الطلب والتفاصيل بالواتساب 🚀</span>
-        </button>
-
-      </form>
-    </div>
-  </div>
-
-  <!-- الشات بوت الذكي لمساعد العميل (Smart Watch Assistant) -->
-  <div id="chatbotModal" class="fixed bottom-5 start-5 z-50 w-full max-w-sm bg-white rounded-3xl border border-[#eddcc9] shadow-2xl overflow-hidden hidden flex-col transition-all">
-    <div class="bg-[#231812] p-4 text-white flex items-center justify-between">
-      <div class="flex items-center gap-2.5">
-        <div class="w-8 h-8 rounded-full bg-emerald-600 flex items-center justify-center text-xs">
-          <i class="fa-solid fa-robot text-white"></i>
-        </div>
-        <div>
-          <h4 class="text-xs font-bold">مستشار AURA للساعات</h4>
-          <span class="text-[9px] text-emerald-400 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> متصل لمساعدتك
+      <!-- صندوق تفاصيل إنستاباي مع رابط الدفع المباشر ipn.eg -->
+      <div id="instapay-info-box" class="bg-amber-50 border border-amber-300 rounded-2xl p-3.5 space-y-2.5 text-xs text-amber-950">
+        <div class="flex items-center justify-between">
+          <span class="font-bold text-amber-900 flex items-center gap-1.5">
+            <i class="fa-solid fa-shield-check text-green-700"></i>
+            <span id="instapay-box-title">تحويل عربون الشحن (100 ج.م) عبر إنستاباي:</span>
           </span>
+          <span class="text-[10px] bg-purple-100 text-purple-800 border border-purple-200 px-2 py-0.5 rounded-md font-bold">InstaPay Link</span>
         </div>
-      </div>
-      <button onclick="toggleChatbot(false)" class="text-stone-400 hover:text-white">
-        <i class="fa-solid fa-xmark text-base"></i>
-      </button>
-    </div>
 
-    <div id="chatMessages" class="p-4 h-72 overflow-y-auto custom-scroll space-y-3 bg-[#fdfbf7] text-xs">
-      <div class="bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812]">
-        أهلاً بك في AURA! ⌚ أنا مستشارك الشخصي لمساعدتك في اختيار الساعة المثالية أو الإجابة عن الضمان والمعاينة. كيف أساعدك اليوم؟
-      </div>
-    </div>
-
-    <!-- أزرار الأسئلة الشائعة السريعة -->
-    <div class="p-2 bg-white border-t border-[#eddcc9] flex gap-1.5 overflow-x-auto scrollbar-none">
-      <button onclick="sendQuickPrompt('ما هو نظام المعاينة قبل الدفع؟')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">المعاينة والضمان؟</button>
-      <button onclick="sendQuickPrompt('رشحلي أفضل ساعة للمناسبات والبدلات')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">ساعة رسمية؟</button>
-      <button onclick="sendQuickPrompt('عايز ساعة رياضية ضد المية')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">ساعة رياضية؟</button>
-    </div>
-
-    <!-- حقل إرسال الرسالة -->
-    <div class="p-3 bg-white border-t border-[#eddcc9] flex items-center gap-2">
-      <input type="text" id="chatInput" onkeypress="if(event.key==='Enter') handleChatSend()" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-[#fdfbf7] border border-[#eddcc9] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#b08968]">
-      <button onclick="handleChatSend()" class="w-8 h-8 rounded-xl bg-[#231812] hover:bg-[#3d281a] text-white flex items-center justify-center text-xs">
-        <i class="fa-solid fa-paper-plane"></i>
-      </button>
-    </div>
-  </div>
-
-  <!-- زر فتح الشات بوت العائم -->
-  <button onclick="toggleChatbot(true)" class="fixed bottom-5 start-5 z-40 bg-[#231812] hover:bg-[#3d281a] text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 border border-[#dec2a3]/40 hover:scale-105 transition-all">
-    <i class="fa-solid fa-comments text-emerald-400 text-lg"></i>
-    <span class="text-xs font-bold hidden sm:inline">مستشار AURA</span>
-  </button>
-
-  <!-- درج المفضلة (Wishlist) -->
-  <div id="wishlistDrawer" class="fixed inset-0 z-50 hidden">
-    <div onclick="toggleWishlistDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
-    <div class="absolute inset-y-0 start-0 max-w-md w-full bg-[#231812] text-white shadow-2xl flex flex-col p-6 space-y-4">
-      <div class="flex items-center justify-between border-b border-stone-800 pb-4">
-        <h3 class="text-lg font-bold flex items-center gap-2">
-          <i class="fa-solid fa-heart text-rose-500"></i>
-          <span>قائمة الساعات المفضلة</span>
-        </h3>
-        <button onclick="toggleWishlistDrawer(false)" class="text-stone-400 hover:text-white text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div id="wishlistItemsList" class="flex-1 overflow-y-auto space-y-3 custom-scroll"></div>
-      <div class="border-t border-stone-800 pt-4">
-        <button onclick="moveAllWishlistToCart()" class="w-full bg-[#b08968] hover:bg-[#8c6f5b] text-white font-bold py-3 rounded-xl transition-all">
-          نقل جميع المفضلة للسلة 🛒
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- درج السلة (Cart) -->
-  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
-    <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
-    <div class="absolute inset-y-0 end-0 max-w-md w-full bg-white text-[#231812] shadow-2xl flex flex-col p-6 space-y-4">
-      <div class="flex items-center justify-between border-b border-[#eddcc9] pb-4">
-        <h3 class="text-lg font-black flex items-center gap-2">
-          <i class="fa-solid fa-bag-shopping text-[#b08968]"></i>
-          <span>سلة المشتريات</span>
-        </h3>
-        <button onclick="toggleCartDrawer(false)" class="text-[#735340] hover:text-[#231812] text-lg">
-          <i class="fa-solid fa-xmark"></i>
-        </button>
-      </div>
-      <div id="cartItemsList" class="flex-1 overflow-y-auto space-y-3 custom-scroll"></div>
-      <div class="border-t border-[#eddcc9] pt-4 space-y-3">
-        <div class="flex justify-between items-center text-sm font-bold">
-          <span>الإجمالي:</span>
-          <span id="cartTotalPrice" class="text-lg font-black text-[#8c6f5b]">0 ج.م</span>
-        </div>
-        <button onclick="openCheckoutModal()" class="w-full bg-[#231812] hover:bg-[#3d281a] text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2">
-          <span>متابعة الشراء ومعاينة الساعات</span>
-          <i class="fa-solid fa-arrow-left text-xs"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- السكربت الشامل لكل الـ 99 صورة ورسائل الواتساب والشات بوت -->
-  <script>
-    const imageFiles = [
-      "rolex-men-land-dweller-ice-blue-honeycomb-dial-watch-990x990.webp",
-      "rolex-mens-land-dweller-silver-honeycomb-dial-jubilee-watch-990x990.webp",
-      "226570-0001-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-white-dial-metal-silver-strap-automatic-analog-sweeping-hands-explorer-ii-1024x1024.webp",
-      "rolex-mens-land-dweller-rose-gold-honeycomb-dial-watch-990x990.webp",
-      "126622-0001-rolex-watch-oyster-perpetual-date-yacht-master-superlative-chronometer-officially-certified-men-gray-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "116681-0002-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-white-dial-metal-silver-gold-strap-automatic-analog-sweeping-hands-yacht-master-ii-1024x1024.webp",
-      "126610lv-0002-rolex-watch-hulk-oyster-perpetual-date-100ft-300m-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-submariner-1024x1024.webp",
-      "226659-0002-rolex-watch-oyster-perpetual-date-yacht-master-superlative-chronometer-officially-certified-men-black-dial-rubber-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "336934-0001-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "336934-0008-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "336934-0005-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "228238-0061-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-green-dial-metal-gold-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "336934-0006-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "336933-0006-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-white-dial-metal-silver-gold-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "228236-0008-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "228239-0007-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "126334-0028-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
-      "228235-0025-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-green-dial-metal-rose-gold-strap-automatic-analog-sweeping-hands-1024x1024.webp",
-      "126334-0002-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
-      "126333-0010-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-gold-dial-metal-silver-golden-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
-      "126331-0016-rolex-watch-oyster-perpetual-datejust-superlative-chronometer-officially-certified-men-gray-dial-metal-silver-rose-gold-strap-automatic-analog-date-just-1024x1024.webp",
-      "126333-0016-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-white-dial-metal-silver-gold-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
-      "126710blro-0001-rolex-watch-pepsi-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
-      "126710grnr-0003-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
-      "126713grnr-0001-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-gold-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
-      "126710blnr-0002-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
-      "126000-0005-rolex-watch-datejust-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-oyster-perpetual-1024x1024.webp",
-      "126234-0048-rolex-watch-oyster-perpetual-datejust-superlative-chronometer-officially-certified-men-palm-motif-green-dial-metal-silver-strap-automatic-analog-date-just-1024x1024.webp",
-      "277200-0003-rolex-watch-datejust-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-oyster-perpetual-1024x1024.webp",
-      "228206-0048-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-arabic-numerals-green-dial-metal-silver-strap-automatic-analog-day-date-1024x1024.webp",
-      "2-380.jpg",
-      "17-331.jpg",
-      "cartier-men-tank-gold-case-black-strap-watch-990x990.webp",
-      "cartier-men-silver-rectangular-black-leather-watch-990x990.webp",
-      "cartier-men-rectangular-silver-black-leather-watch-990x990.webp",
-      "cartier-men-square-white-dial-silver-metal-watch-990x990.webp",
-      "cartier-men-rose-gold-rectangular-black-leather-watch-990x990.webp",
-      "cartier-men-rectangular-brown-leather-cream-dial-watch-990x990.webp",
-      "cartier-men-white-dial-leather-watch-990x990.webp",
-      "cartier-men-brown-leather-square-white-dial-watch-990x990.webp",
-      "cartier-men-santos-blue-dial-silver-watch-990x990.webp",
-      "cartier-men-rectangular-silver-case-brown-leather-strap-watch-990x990.webp",
-      "cartier-men-santos-black-dial-silver-watch-990x990.webp",
-      "cartier-men-santos-white-dial-silver-metal-watch-990x990.webp",
-      "cartier-men-skeleton-dial-silver-metal-watch-990x990.webp",
-      "cartier-men-square-green-dial-silver-metal-watch-990x990.webp",
-      "1792214-tommy-hilfiger-watch-men-green-dial-metal-stainless-steel-silver-strap-quartz-analog-chronograph-th85-990x990.webp",
-      "1792215-tommy-hilfiger-watch-men-silver-dial-metal-stainless-steel-strap-quartz-analog-chronograph-th85-990x990.webp",
-      "1792213-tommy-hilfiger-watch-chronograph-men-black-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
-      "1792188-tommy-hilfiger-watch-chronograph-men-green-dial-leather-strap-quartz-analog-th85-990x990.webp",
-      "1792187-tommy-hilfiger-watch-chronograph-men-blue-dial-leather-navy-strap-quartz-analog-th85-990x990.webp",
-      "1792186-tommy-hilfiger-watch-chronograph-men-gray-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
-      "1792185-tommy-hilfiger-watch-chronograph-men-blue-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
-      "1792184-tommy-hilfiger-watch-chronograph-men-white-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
-      "1792180-tommy-hilfiger-watch-men-green-dial-metal-stainless-steel-silver-strap-quartz-analog-rocky-990x990.webp",
-      "1792179-tommy-hilfiger-watch-men-blue-dial-metal-stainless-steel-silver-strap-quartz-analog-rocky-990x990.webp",
-      "1792166-tommy-hilfiger-watch-chronograph-men-black-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
-      "1792168-tommy-hilfiger-watch-chronograph-men-black-dial-rubber-strap-quartz-analog-bank-990x990.webp",
-      "1792163-tommy-hilfiger-watch-chronograph-men-blue-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
-      "1792162-tommy-hilfiger-watch-chronograph-men-black-dial-leather-strap-quartz-analog-th85-990x990.webp",
-      "1792157-tommy-hilfiger-watch-chronograph-men-white-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
-      "1792158-tommy-hilfiger-watch-chronograph-men-blue-dial-metal-stainless-steel-gold-strap-quartz-analog-th85-990x990.webp",
-      "2011270-lacoste-watch-boston-men-chronograph-green-dial-black-stainless-steel-strap-990x990.webp",
-      "2011255-lacoste-watch-neo-heritage-men-chronograph-green-dial-silver-stainless-steel-strap-mesh-990x990.webp",
-      "2011218-lacoste-watch-endurance-men-green-dial-rubber-strap-5bar-990x990.webp",
-      "2011178-lacoste-watch-replay-men-green-dial-silver-stainless-steel-strap-990x990.webp",
-      "2011163-lacoste-watch-boston-men-chronograph-blue-dial-silver-stainless-steel-strap-mesh-990x990.webp",
-      "2011155-lacoste-watch-tiebreaker-men-chronograph-black-dial-silver-stainless-steel-strap-990x990.webp",
-      "2011162-lacoste-watch-boston-men-chronograph-black-dial-stainless-steel-strap-mesh-990x990.webp",
-      "2011080-lacoste-watch-boston-men-chronograph-green-dial-silver-stainless-steel-strap-990x990.webp",
-      "2011039-lacoste-watch-12-12-men-white-dial-rubber-strap-990x990.webp",
-      "2011069-lacoste-watch-12-12-men-white-dial-rubber-strap-990x990.webp",
-      "1-95.jpg.webp",
-      "1-93.jpg.webp",
-      "casio-edifice-efr-564d-2av-efr-564d-2av-9704004.jpg.webp",
-      "casio-edifice-men-efr-554-blue-gold-watch-990x990.webp",
-      "1-102.jpg.webp",
-      "1-103.jpg.webp",
-      "1-104.jpg.webp",
-      "1-94.jpg.webp",
-      "1-99.jpg.webp",
-      "1-98.jpg.webp",
-      "1-97.jpg.webp",
-      "1-83.jpg.webp",
-      "1-101.jpg.webp",
-      "1-82.jpg.webp",
-      "1-88.jpg.webp",
-      "1-90.jpg.webp",
-      "1-105.jpg.webp",
-      "1-89.jpg.webp",
-      "1-85.jpg.webp",
-      "omega-men-seamaster-worldtimer-light-blue-watch-990x990.webp",
-      "omega-men-seamaster-aqua-terra-worldtimer-titanium-watch-990x990.webp",
-      "omega-men-seamaster-aqua-terra-worldtimer-green-steel-watch-990x990.webp",
-      "omega-men-seamaster-worldtimer-blue-dial-metal-watch-990x990.webp",
-      "omega-men-seamaster-aqua-terra-worldtimer-blue-watch-990x990.webp",
-      "omega-mens-seamaster-aqua-terra-worldtimer-green-dial-watch-990x990.webp",
-      "omega-men-seamaster-aqua-terra-worldtimer-blue-strap-watch-990x990.webp",
-      "1-25.jpg.webp"
-    ];
-
-    const allWatches = imageFiles.map((file, idx) => {
-      const lower = file.toLowerCase();
-      let brand = 'rolex';
-      let brandName = 'رولكس';
-      let price = 1050;
-      let oldPrice = 1550;
-
-      if (lower.includes('cartier') || lower.includes('santos') || lower.includes('tank')) {
-        brand = 'cartier'; brandName = 'كارتييه'; price = 950; oldPrice = 1390;
-      } else if (lower.includes('tommy') || lower.includes('hilfiger') || lower.includes('th85') || lower.includes('1792')) {
-        brand = 'tommy'; brandName = 'تومي هيلفيغر'; price = 850; oldPrice = 1250;
-      } else if (lower.includes('lacoste') || lower.includes('2011')) {
-        brand = 'lacoste'; brandName = 'لاكوست'; price = 790; oldPrice = 1190;
-      } else if (lower.includes('casio') || lower.includes('edifice') || lower.startsWith('1-9') || lower.startsWith('1-8') || lower.startsWith('1-10')) {
-        brand = 'casio'; brandName = 'كاسيو إيديفيس'; price = 890; oldPrice = 1290;
-      } else if (lower.includes('omega') || lower.includes('seamaster') || lower.includes('1-25')) {
-        brand = 'omega'; brandName = 'أوميغا'; price = 1250; oldPrice = 1790;
-      }
-
-      const clean = file.replace(/\.(webp|jpe?g|png|gif)(\.webp)?$/i, '').replace(/[-_]+/g, ' ').replace(/\b\d{3,4}x\d{3,4}\b/gi, '').trim();
-
-      return {
-        id: idx + 1,
-        title: `ساعة ${brandName} الفاخرة #${idx + 1}`,
-        rawFileName: file,
-        desc: `ماكينة يابانية معتمدة عالية الدقة مع زجاج زفير مقاوم للخدش، علبة فاخرة وكارت ضمان سنة. (${clean.slice(0, 32)})`,
-        brand: brand,
-        category: idx % 3 === 0 ? 'best' : idx % 3 === 1 ? 'offers' : 'all',
-        price: price,
-        oldPrice: oldPrice,
-        rating: (4.8 + (idx % 3) * 0.1).toFixed(1),
-        img: `https://raw.githubusercontent.com/mahmoudabokhashmmm-svg/AURA/main/${file}`
-      };
-    });
-
-    let currentCategory = 'all';
-    let currentBrand = 'all';
-    let searchQuery = '';
-    let cart = JSON.parse(localStorage.getItem('aura_cart') || '[]');
-    let wishlist = JSON.parse(localStorage.getItem('aura_wishlist') || '[]');
-
-    function renderProducts() {
-      const grid = document.getElementById('productsGrid');
-      grid.innerHTML = '';
-
-      const filtered = allWatches.filter(w => {
-        const matchCat = currentCategory === 'all' || w.category === currentCategory;
-        const matchBrand = currentBrand === 'all' || w.brand === currentBrand;
-        const matchSearch = !searchQuery || w.title.includes(searchQuery) || w.desc.includes(searchQuery);
-        return matchCat && matchBrand && matchSearch;
-      });
-
-      if (filtered.length === 0) {
-        grid.innerHTML = '<div class="col-span-full py-12 text-center text-sm text-[#735340]">لا توجد نتائج مطابقة لبحثك</div>';
-        return;
-      }
-
-      filtered.forEach(watch => {
-        const isWish = wishlist.includes(watch.id);
-        const card = document.createElement('div');
-        card.className = 'bg-white rounded-3xl border border-[#eddcc9] overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all';
-        card.innerHTML = `
-          <div>
-            <div class="relative h-64 overflow-hidden bg-[#f7f2ea]">
-              <img src="${watch.img}" alt="${watch.title}" onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
-              <button onclick="toggleWishlist(${watch.id})" class="absolute top-3.5 start-3.5 p-2 rounded-full backdrop-blur-md ${isWish ? 'bg-rose-500 text-white' : 'bg-white/80 text-stone-700 hover:text-rose-500'} shadow-sm">
-                <i class="fa-solid fa-heart"></i>
-              </button>
-            </div>
-            <div class="p-4 space-y-2">
-              <div class="flex items-center justify-between text-xs text-amber-500">
-                <span>⭐ ${watch.rating}</span>
-                <span class="text-[10px] bg-[#f7f2ea] text-[#8c6f5b] px-2 py-0.5 rounded-full font-bold">#${watch.id}</span>
-              </div>
-              <h3 class="font-bold text-sm text-[#231812]">${watch.title}</h3>
-              <p class="text-xs text-[#735340] line-clamp-2">${watch.desc}</p>
-            </div>
-          </div>
-          <div class="p-4 border-t border-[#eddcc9] flex items-center justify-between gap-2">
-            <div>
-              <span class="text-base font-black text-[#8c6f5b]">${watch.price} ج.م</span>
-              <span class="text-xs text-stone-400 line-through block">${watch.oldPrice} ج.م</span>
-            </div>
-            <button onclick="addToCart(${watch.id})" class="bg-[#231812] hover:bg-[#3d281a] text-white text-xs font-bold px-4 py-2 rounded-xl transition-all">
-              للسلة 🛒
+        <!-- زر التحويل المباشر لفتح تطبيق إنستاباي فوراً -->
+        <a href="https://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk" target="_blank" class="w-full py-2.5 bg-gradient-to-r from-purple-800 to-indigo-900 text-white rounded-xl font-bold flex items-center justify-center gap-2 shadow-sm hover:opacity-95 transition-all text-xs">
+          <i class="fa-solid fa-bolt text-amber-400"></i>
+          <span>اضغط هنا للتحويل المباشر عبر تطبيق إنستاباي 📲</span>
+        </a>
+        
+        <!-- تفاصيل الحساب ونسخ الـ IPA ورقم التحويل -->
+        <div class="bg-white border border-amber-200 rounded-xl p-2.5 space-y-1.5">
+          <div class="flex items-center justify-between font-mono font-bold text-darkEspresso text-[11px]">
+            <span class="text-purple-900 truncate">mahmoudabokhashm2006@instapay</span>
+            <button type="button" onclick="navigator.clipboard.writeText('mahmoudabokhashm2006@instapay'); showToast('تم نسخ عنوان إنستاباي بنجاح! 📋')" class="text-[10px] bg-amber-100 hover:bg-amber-200 text-amber-900 px-2 py-1 rounded-lg transition-all flex items-center gap-1 shrink-0">
+              <i class="fa-regular fa-copy"></i> <span>نسخ الحساب</span>
             </button>
           </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function setCategoryFilter(cat) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.className = 'cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]';
-      });
-      document.getElementById(`cat-${cat}`).className = 'cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]';
-      renderProducts();
-    }
-
-    function setBrandFilter(brand) {
-      currentBrand = brand;
-      document.querySelectorAll('.brand-btn').forEach(btn => {
-        btn.className = 'brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap';
-      });
-      document.getElementById(`brand-${brand}`).className = 'brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#231812] text-white border border-[#231812] whitespace-nowrap';
-      renderProducts();
-    }
-
-    function handleSearch() {
-      searchQuery = document.getElementById('searchInput').value.trim();
-      renderProducts();
-    }
-
-    function toggleWishlist(id) {
-      if (wishlist.includes(id)) {
-        wishlist = wishlist.filter(x => x !== id);
-      } else {
-        wishlist.push(id);
-      }
-      localStorage.setItem('aura_wishlist', JSON.stringify(wishlist));
-      updateBadges();
-      renderProducts();
-      renderWishlist();
-    }
-
-    function renderWishlist() {
-      const list = document.getElementById('wishlistItemsList');
-      const items = allWatches.filter(w => wishlist.includes(w.id));
-      if (items.length === 0) {
-        list.innerHTML = '<p class="text-xs text-stone-400 text-center py-8">قائمة المفضلة فارغة ❤️</p>';
-        return;
-      }
-      list.innerHTML = items.map(w => `
-        <div class="flex items-center gap-3 p-3 bg-stone-900 rounded-xl border border-stone-800">
-          <img src="${w.img}" class="w-12 h-12 object-cover rounded-lg">
-          <div class="flex-1 min-w-0">
-            <h4 class="text-xs font-bold truncate">${w.title}</h4>
-            <span class="text-xs text-amber-400">${w.price} ج.م</span>
+          <div class="flex items-center justify-between text-[11px] pt-1 border-t border-amber-100">
+            <span class="text-slate-600 font-bold">أو رقم الموبايل: <strong class="text-darkEspresso font-mono">01010143989</strong></span>
+            <button type="button" onclick="navigator.clipboard.writeText('01010143989'); showToast('تم نسخ رقم إنستاباي بنجاح! 📋')" class="text-[10px] text-amber-800 font-bold hover:underline">
+              نسخ الرقم
+            </button>
           </div>
-          <button onclick="addToCart(${w.id})" class="text-xs bg-amber-500 text-stone-950 px-2.5 py-1 rounded-lg font-bold">للسلة</button>
-          <button onclick="toggleWishlist(${w.id})" class="text-rose-400 text-sm"><i class="fa-solid fa-trash"></i></button>
+        </div>
+
+        <!-- الحقل الإجباري لتأكيد اسم المحوّل -->
+        <div>
+          <label class="block text-amber-950 font-bold mb-1">اسم صاحب الحساب أو رقم الموبايل المحوّل منه على إنستاباي *</label>
+          <input type="text" id="instapay-sender" required placeholder="مثال: أحمد محمود أو 010xxxxxxxx" class="w-full bg-white border border-amber-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-amber-900">
+        </div>
+
+        <p class="text-[11px] text-amber-800 font-medium leading-relaxed">
+          📸 <strong>ملاحظة هامة:</strong> يتم خصم الـ 100 ج.م من إجمالي ثمن الساعة عند الاستلام، ويرجى <strong>إرفاق سكرين شوت إشعار التحويل</strong> في شات الواتساب لتأكيد خروج الأوردر فوراً.
+        </p>
+      </div>
+
+      <!-- صندوق تنبيه طلب رابط الفيزا المعتمد -->
+      <div id="visa-info-box" class="hidden bg-blue-50 border border-blue-200 rounded-2xl p-3.5 space-y-1.5 text-xs text-blue-950">
+        <div class="flex items-center gap-1.5 font-bold text-blue-900">
+          <i class="fa-solid fa-link text-blue-600"></i>
+          <span>دفع آمن بالفيزا / ماستركارد عبر رابط بنكي معتمد:</span>
+        </div>
+        <p class="text-[11px] text-blue-800 leading-relaxed">
+          حفاظاً على أمان بيانات بطاقتك البنكية، سيقوم مالك المتجر بإرسال <strong>رابط دفع إلكتروني رسمي ومباشر (Paymob / فيزا)</strong> على رقم الواتساب الخاص بك فور استلام بيانات طلبك.
+        </p>
+      </div>
+
+      <div>
+        <label class="block font-bold text-darkEspresso mb-1" data-i18n="form_address">العنوان التفصيلي وملاحظات الطلب *</label>
+        <textarea id="order-address" required rows="2" placeholder="مثال: القاهرة، التجمع الخامس، شارع التسعين، عمارة 14، شقة 5..." class="w-full bg-white border border-cafe-300 rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-darkEspresso"></textarea>
+      </div>
+
+      <button type="submit" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white py-3 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all">
+        <i class="fa-brands fa-whatsapp text-sm"></i> <span data-i18n="checkout_submit_btn">تأكيد الطلب وإرسال الفاتورة والصورة لمالك المتجر</span>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ RETURN POLICY MODAL ============ -->
+<div id="return-policy-modal" class="fixed inset-0 bg-darkEspresso/60 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+  <div class="bg-white rounded-3xl max-w-md w-full p-6 sm:p-7 shadow-2xl border border-cafe-200 space-y-4 text-xs">
+    <div class="flex justify-between items-center border-b border-cafe-200 pb-3">
+      <h3 class="text-sm font-bold text-darkEspresso flex items-center gap-2">
+        <i class="fa-solid fa-shield-check text-cafe-700"></i>
+        <span data-i18n="policy_modal_title">سياسة الضمان والمعاينة والاسترجاع</span>
+      </h3>
+      <button onclick="closeReturnPolicyModal()" class="text-cafe-700 hover:text-darkEspresso text-base"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="space-y-3 leading-relaxed text-cafe-800">
+      <p><strong>المعاينة والقياس المجاني:</strong> يحق لك فتح علبة الساعة وقياسها في يدك وفحص الموتور بحضور المندوب قبل دفع باقي المبلغ.</p>
+      <p><strong>استبدال واسترجاع 14 يوماً:</strong> في حال وجود أي ملاحظة أو الرغبة في تغيير الموديل، متاح الاستبدال والاسترجاع بكل سلاسة.</p>
+      <p><strong>شهادة ضمان سنة كاملة:</strong> تشمل كل ساعة كارت ضمان معتمد لمدة عام على الماكينة، البطارية، ومقاومة الماء والصدأ.</p>
+    </div>
+    <button onclick="closeReturnPolicyModal()" class="w-full py-2.5 bg-darkEspresso text-white rounded-xl font-bold" data-i18n="modal_close">فهمت ذلك</button>
+  </div>
+</div>
+
+<!-- ============ FIXED CHATBOT & WHATSAPP ============ -->
+<a href="https://wa.me/201005823798" target="_blank" rel="noopener noreferrer" class="fixed bottom-5 left-5 z-40 bg-emerald-700 hover:bg-emerald-800 text-white h-12 w-12 rounded-full flex items-center justify-center text-xl shadow-lg transition-all hover:scale-105" aria-label="واتساب">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<button id="chat-toggle" onclick="toggleChat()" aria-label="مساعد أورا للساعات" class="fixed bottom-5 right-5 z-40 h-12 w-12 rounded-full bg-darkEspresso hover:bg-cafe-900 text-white flex items-center justify-center text-lg shadow-lg transition-all hover:scale-105">
+  <i class="fa-solid fa-headset" id="chat-toggle-icon"></i>
+</button>
+
+<div id="chat-panel" class="closed fixed bottom-20 right-4 sm:right-6 z-40 bg-white rounded-2xl shadow-2xl border border-cafe-200 overflow-hidden flex flex-col w-[340px] max-w-[calc(100vw-32px)]" style="max-height: min(490px, calc(100vh - 100px));">
+  <div class="bg-darkEspresso text-white px-4 py-3 flex items-center gap-2.5">
+    <div class="h-8 w-8 rounded-full bg-cafe-800 text-cafe-200 flex items-center justify-center font-bold text-xs">A</div>
+    <div class="flex-1">
+      <p class="font-bold text-xs leading-tight" data-i18n="bot_title">مساعد متجر AURA للساعات الفاخرة</p>
+      <p class="text-[9px] text-cafe-300" data-i18n="bot_sub">متصل الآن — يمكنك طلب ساعتك من هنا</p>
+    </div>
+    <button onclick="toggleChat()" class="text-white/70 hover:text-white text-base"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div id="chat-messages" class="flex-1 overflow-y-auto px-3.5 py-3 space-y-2 bg-cafe-50 flex flex-col text-xs" style="min-height: 230px;"></div>
+  <div id="chat-quick" class="px-2.5 pb-2 flex flex-wrap gap-1 bg-cafe-50"></div>
+  <div class="px-3 py-2 bg-white border-t border-cafe-200 flex items-center gap-2">
+    <input id="chat-input" type="text" placeholder="اكتب استفسارك أو اطلب ساعتك..." class="flex-1 bg-cafe-50 border border-cafe-200 rounded-full px-3.5 py-1.5 text-xs focus:outline-none focus:border-darkEspresso" onkeydown="if(event.key==='Enter')sendUserChat()">
+    <button onclick="sendUserChat()" class="h-8 w-8 rounded-full bg-darkEspresso text-white flex items-center justify-center text-xs shrink-0"><i class="fa-solid fa-paper-plane text-cafe-300"></i></button>
+  </div>
+</div>
+
+<div id="toast" class="fixed top-4 left-1/2 -translate-x-1/2 z-50 bg-darkEspresso text-white px-4 py-2 rounded-full font-bold text-xs shadow-xl flex items-center gap-2 transform -translate-y-16 opacity-0 transition-all duration-300 pointer-events-none border border-cafe-600">
+  <i class="fa-solid fa-circle-check text-cafe-300"></i>
+  <span id="toast-text">تمت الإضافة بنجاح!</span>
+</div>
+
+<!-- ============ المحرك البرمجي ============ -->
+<script>
+  const WHATSAPP_PHONE = '201005823798';
+  const INSTAPAY_LINK = 'https://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk';
+  const INSTAPAY_HANDLE = 'mahmoudabokhashm2006@instapay';
+  const INSTAPAY_DEPOSIT_PHONE = '01010143989';
+
+  let currentLang = 'ar';
+  let cart = [];
+  let productsData = [];
+  let currentCategory = 'all';
+
+  let botOrderState = {
+    active: false,
+    step: 0,
+    selectedWatch: null,
+    customerName: '',
+    customerPhone: '',
+    customerGov: '',
+    customerAddress: ''
+  };
+
+  const i18n = {
+    ar: {
+      top_ship: '🚚 شحن سريع لكافة محافظات مصر',
+      top_inspect: '🔍 <strong>معاينة وقياس مجاني</strong> قبل دفع باقي المبلغ للمندوب',
+      nav_home: 'الرئيسية',
+      nav_catalog: 'كتالوج الساعات',
+      nav_offers: 'عروض خاصة',
+      nav_policy: 'الضمان والاستبدال',
+      cart_btn: 'السلة',
+      hero_badge: '<span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> تشكيلة الساعات الفاخرة 2026',
+      hero_title_1: 'فخامة الوقت..',
+      hero_title_2: 'ودقة في كل ثانية.',
+      hero_desc: 'في <strong>AURA</strong>، نقدم لك أرقى موديلات الساعات، ماكينات يابانية معتمدة عالية الدقة، ضد الماء مع ضمان سنة كاملة ومعاينة وقياس قبل الدفع.',
+      hero_btn_catalog: 'تصفح كتالوج الساعات',
+      hero_btn_offers: 'العروض الحصرية',
+      trust_inspect: 'معاينة قبل الدفع',
+      trust_year: 'سنة كاملة',
+      trust_warranty: 'ضمان على الموتور',
+      trust_waterproof: 'ضد الماء',
+      trust_scratch: 'وزجاج مقاوم للخدش',
+      hero_card_tag: 'الإصدار الأكثر طلباً',
+      hero_order_btn: 'اطلب الآن — معاينة ودفع عند الاستلام',
+      catalog_tag: 'المتجر الحصري',
+      catalog_heading: 'كتالوج الساعات المتاحة فوراً',
+      tab_all: 'كل الساعات',
+      tab_best: 'الأكثر طلباً ⭐',
+      tab_offers: 'عروض خاصة 🔥',
+      offer_tag: 'عرض خاص من AURA',
+      offer_title: 'اشتري أي ساعتين واحصل على شحن مجاني وخصم 15% إضافي!',
+      offer_desc: 'العرض يشمل علب فاخرة مع كروت ضمان معتمدة لكل ساعة مع حق المعاينة والقياس قبل الاستلام.',
+      offer_btn: 'اطلب العرض عبر واتساب (01005823798)',
+      sec_trust_sub: 'ثقة وراحة تامة',
+      sec_trust_title: 'طرق الدفع والتوصيل وسياسة الضمان',
+      b1_title: 'الدفع عند الاستلام (كاش)',
+      b1_desc: 'افتح وعاين الساعة وقسها بنفسك مع المندوب قبل دفع باقي المبلغ (ديبوزت 100 ج.م فقط لجدية الشحن).',
+      b2_title: 'إنستاباي وفودافون كاش',
+      b2_desc: 'تحويل مباشر عبر رابط إنستاباي المباشر أو لحساب mahmoudabokhashm2006@instapay على 01010143989.',
+      b3_title: 'شحن سريع لكافة المحافظات',
+      b3_desc: 'القاهرة والإسكندرية والجيزة 24-48 ساعة، وباقي المحافظات خلال يومين إلى 3 أيام عمل.',
+      b4_title: 'ضمان سنة كاملة',
+      b4_desc: 'ضمان عام كامل معتمد على ماكينات الساعات وثبات الألوان مع حق الاستبدال خلال 14 يوماً.',
+      footer_desc: 'براند مصري متخصص في تقديم أرقى الساعات ذات الماكينات اليابانية الأصلية مع شهادة ضمان معتمدة.',
+      footer_h1: 'خدمات الشراء',
+      footer_h2: 'خدمة العملاء',
+      footer_h3: 'تواصل معنا',
+      f_s1: 'الشحن والتوصيل لجميع المحافظات',
+      f_s2: 'سياسة المعاينة والاستبدال (14 يوم)',
+      f_s3: 'تتبع شحنتك عبر واتساب',
+      f_loc: 'توصيل سريع لباب البيت بجميع المحافظات',
+      f_time: 'خدمة العملاء متاحة طوال أيام الأسبوع',
+      cart_modal_title: 'سلة مشتريات الساعات',
+      cart_subtotal_label: 'المجموع الفرعي:',
+      cart_inspect_note: '🔍 المعاينة وقياس الساعة مجاناً قبل الدفع للمندوب',
+      cart_checkout_btn: 'متابعة الطلب وتحديد العنوان',
+      checkout_title: 'بيانات الشحن وتأكيد طلب الساعة',
+      checkout_summary_title: 'ملخص الساعات المطلوبة:',
+      checkout_total_label: 'الإجمالي المطلوب:',
+      form_name: 'الاسم ثلاثي *',
+      form_phone: 'رقم الموبايل / واتساب *',
+      form_zone: 'منطقة ومحافظة الشحن *',
+      form_payment: 'طريقة الدفع *',
+      form_address: 'العنوان التفصيلي وملاحظات الطلب *',
+      checkout_submit_btn: 'تأكيد الطلب وإرسال الفاتورة والصورة لمالك المتجر',
+      policy_modal_title: 'سياسة الضمان والمعاينة والاسترجاع',
+      modal_close: 'فهمت ذلك',
+      bot_title: 'مساعد متجر AURA للساعات الفاخرة',
+      bot_sub: 'متصل الآن — يمكنك طلب ساعتك من هنا',
+      currency: 'ج.م'
+    },
+    en: {
+      top_ship: '🚚 Fast Express Delivery Across All Egypt Governorates',
+      top_inspect: '🔍 <strong>Free Try-on & Inspection</strong> before paying courier',
+      nav_home: 'Home',
+      nav_catalog: 'Watches Catalog',
+      nav_offers: 'Special Offers',
+      nav_policy: 'Warranty & Returns',
+      cart_btn: 'Cart',
+      hero_badge: '<span class="w-2 h-2 rounded-full bg-cafe-500 animate-ping"></span> Exclusive Watches 2026',
+      hero_title_1: 'Elegance of Time..',
+      hero_title_2: 'Precision in Every Second.',
+      hero_desc: 'At <strong>AURA</strong>, we curate premier timepieces featuring certified Japanese movements, water resistance, and scratch-resistant sapphire glass with a 1-year warranty.',
+      hero_btn_catalog: 'Explore Catalog',
+      hero_btn_offers: 'Exclusive Deals',
+      trust_inspect: 'Try-on Inspection',
+      trust_year: '1 Full Year',
+      trust_warranty: 'Movement Warranty',
+      trust_waterproof: 'Water Resistant',
+      trust_scratch: 'Sapphire Glass',
+      hero_card_tag: 'Most Wanted Edition',
+      hero_order_btn: 'Order Now — Cash on Delivery',
+      catalog_tag: 'Official Store',
+      catalog_heading: 'Ready for Immediate Dispatch',
+      tab_all: 'All Watches',
+      tab_best: 'Best Sellers ⭐',
+      tab_offers: 'Special Offers 🔥',
+      offer_tag: 'AURA Special Offer',
+      offer_title: 'Buy Any 2 Watches & Get Free Shipping + 15% Off!',
+      offer_desc: 'Includes luxury presentation boxes and certified 1-year warranty cards with doorstep inspection.',
+      offer_btn: 'Claim Offer on WhatsApp (01005823798)',
+      sec_trust_sub: 'Complete Confidence',
+      sec_trust_title: 'Payment, Delivery & Warranty Policies',
+      b1_title: 'Cash on Delivery',
+      b1_desc: 'Open the parcel, inspect and try on the watch before paying remaining amount (100 EGP deposit).',
+      b2_title: 'InstaPay & Vodafone Cash',
+      b2_desc: 'Direct transfer via InstaPay link or to mahmoudabokhashm2006@instapay.',
+      b3_title: 'Express Egypt Shipping',
+      b3_desc: 'Cairo & Giza 24-48 hrs, Alexandria & Delta 2-3 business days.',
+      b4_title: '1-Year Full Warranty',
+      b4_desc: 'Certified 1-year warranty covering movement, battery, and color durability.',
+      footer_desc: 'Premier Egyptian watch brand offering authentic Japanese movements with certified warranty cards.',
+      footer_h1: 'Shop Services',
+      footer_h2: 'Client Services',
+      footer_h3: 'Contact Us',
+      f_s1: 'Egypt Shipping & Delivery',
+      f_s2: '14-Day Free Exchange Policy',
+      f_s3: 'Track Order via WhatsApp',
+      f_loc: 'Doorstep express delivery across Egypt',
+      f_time: 'Customer support available 7 days a week',
+      cart_modal_title: 'Your Watch Shopping Bag',
+      cart_subtotal_label: 'Subtotal:',
+      cart_inspect_note: '🔍 Free inspection and try-on before paying courier',
+      cart_checkout_btn: 'Proceed to Shipping Address',
+      checkout_title: 'Shipping Info & Order Confirmation',
+      checkout_summary_title: 'Selected Watches Summary:',
+      checkout_total_label: 'Total Due:',
+      form_name: 'Full Name *',
+      form_phone: 'Phone / WhatsApp *',
+      form_zone: 'Delivery Governorate / Zone *',
+      form_payment: 'Payment Method *',
+      form_address: 'Street, Building & Detailed Address *',
+      checkout_submit_btn: 'Confirm Order & Send Photo to Owner',
+      policy_modal_title: 'Warranty & Return Policy',
+      modal_close: 'I Understand',
+      bot_title: 'AURA Watch Assistant',
+      bot_sub: 'Online — You can order your watch here',
+      currency: 'EGP'
+    }
+  };
+
+  function toggleLanguage() {
+    currentLang = (currentLang === 'ar') ? 'en' : 'ar';
+    document.documentElement.setAttribute('lang', currentLang);
+    document.documentElement.setAttribute('dir', (currentLang === 'ar') ? 'rtl' : 'ltr');
+    document.body.className = (currentLang === 'en') ? 'overflow-x-hidden antialiased selection:bg-cafe-300 selection:text-darkEspresso lang-en' : 'overflow-x-hidden antialiased selection:bg-cafe-300 selection:text-darkEspresso';
+    document.getElementById('lang-btn-text').innerText = (currentLang === 'ar') ? 'English' : 'العربية';
+
+    const dict = i18n[currentLang];
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const k = el.getAttribute('data-i18n');
+      if (dict[k]) el.innerHTML = dict[k];
+    });
+
+    renderProducts(productsData);
+    updateCartUI();
+  }
+
+  // تحميل الـ 73 ساعة من المستودع مع تحديد الشارات لـ 6 ساعات فقط
+  async function loadRepoWatches() {
+    try {
+      const pathParts = window.location.pathname.split('/').filter(Boolean);
+      const repoName = pathParts[0] || 'AURA';
+      
+      const res = await fetch(`https://api.github.com/repos/mahmoudabokhashmmm-svg/${repoName}/contents`);
+      if (res.ok) {
+        const files = await res.json();
+        const imageFiles = files.filter(f => f.type === 'file' && /\.(jpe?g|png|webp|gif|svg)$/i.test(f.name));
+
+        if (imageFiles.length > 0) {
+          document.getElementById('hero-dynamic-img').src = imageFiles[0].download_url;
+
+          productsData = imageFiles.map((file, idx) => {
+            const num = idx + 1;
+            const price = 650 + ((idx * 25) % 550);
+            const oldPrice = price + 350;
+            
+            let badge_ar = '';
+            let badge_en = '';
+            let category = 'all';
+
+            if (num === 1) {
+              badge_ar = 'الأكثر طلباً ⭐';
+              badge_en = 'Most Wanted ⭐';
+              category = 'best';
+            } else if (num === 5) {
+              badge_ar = 'عرض خاص 🔥';
+              badge_en = 'Special Offer 🔥';
+              category = 'offers';
+            } else if (num === 12) {
+              badge_ar = 'الأكثر مبيعاً ⭐';
+              badge_en = 'Best Seller ⭐';
+              category = 'best';
+            } else if (num === 20) {
+              badge_ar = 'تخفيض حصري 🔥';
+              badge_en = 'Exclusive Deal 🔥';
+              category = 'offers';
+            } else if (num === 33) {
+              badge_ar = 'إصدار مميز ⭐';
+              badge_en = 'Special Edition ⭐';
+              category = 'best';
+            } else if (num === 50) {
+              badge_ar = 'عرض محدود 🔥';
+              badge_en = 'Limited Offer 🔥';
+              category = 'offers';
+            }
+
+            return {
+              id: num,
+              title_ar: `ساعة AURA الفاخرة #${num}`,
+              title_en: `AURA Luxury Watch #${num}`,
+              category: category,
+              price: price,
+              oldPrice: oldPrice,
+              badge_ar: badge_ar,
+              badge_en: badge_en,
+              rating: (4.8 + ((idx % 3) * 0.1)).toFixed(1),
+              desc_ar: `ماكينة يابانية معتمدة عالية الدقة مع زجاج زفير مقاوم للخدش وعلبة فاخرة مع كارت ضمان سنة.`,
+              desc_en: `Certified Japanese movement with scratch-resistant sapphire glass, luxury box & 1-yr warranty.`,
+              img: file.download_url
+            };
+          });
+
+          updateCountsAndRender();
+          return;
+        }
+      }
+    } catch (e) {
+      console.log('Using default watches catalog fallback');
+    }
+
+    const defaultFallbacks = [
+      'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1542496658-e33a6d0d50f6?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80',
+      'https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=700&q=80'
+    ];
+
+    productsData = defaultFallbacks.map((url, idx) => {
+      const num = idx + 1;
+      return {
+        id: num,
+        title_ar: `ساعة AURA الفاخرة #${num}`,
+        title_en: `AURA Luxury Watch #${num}`,
+        category: (num === 1 ? 'best' : (num === 2 ? 'offers' : 'all')),
+        price: 750 + (idx * 50),
+        oldPrice: 1150 + (idx * 50),
+        badge_ar: (num === 1 ? 'الأكثر طلباً ⭐' : (num === 2 ? 'عرض خاص 🔥' : '')),
+        badge_en: (num === 1 ? 'Best Seller ⭐' : (num === 2 ? 'Special Offer 🔥' : '')),
+        rating: '4.9',
+        desc_ar: `ماكينة يابانية معتمدة عالية الدقة مع زجاج مقاوم للخدش وعلبة فاخرة مع كارت ضمان سنة.`,
+        desc_en: `Certified high-precision Japanese movement with scratch-resistant glass, luxury box & 1-yr warranty.`,
+        img: url
+      };
+    });
+    updateCountsAndRender();
+  }
+
+  function updateCountsAndRender() {
+    document.getElementById('count-all').textContent = productsData.length;
+    document.getElementById('count-best').textContent = productsData.filter(p => p.category === 'best').length;
+    document.getElementById('count-offers').textContent = productsData.filter(p => p.category === 'offers').length;
+    renderProducts(productsData);
+  }
+
+  function renderProducts(list) {
+    const grid = document.getElementById('product-grid');
+    grid.innerHTML = '';
+    const dict = i18n[currentLang];
+    
+    if (!list || list.length === 0) {
+      grid.innerHTML = `
+        <div class="col-span-full text-center py-16 text-cafe-700">
+          <i class="fa-solid fa-magnifying-glass text-4xl mb-3 text-cafe-300"></i>
+          <p class="font-bold text-sm">${currentLang === 'ar' ? 'لم يتم العثور على ساعات مطابقة' : 'No matching watches found'}</p>
+        </div>
+      `;
+      return;
+    }
+
+    list.forEach(p => {
+      const title = (currentLang === 'ar') ? p.title_ar : p.title_en;
+      const desc = (currentLang === 'ar') ? p.desc_ar : p.desc_en;
+      const badge = (currentLang === 'ar') ? p.badge_ar : p.badge_en;
+
+      const badgeHTML = badge ? `<span class="absolute top-3 ${currentLang === 'ar' ? 'right-3' : 'left-3'} bg-darkEspresso text-cafe-100 text-[10px] font-bold px-2.5 py-1 rounded-md shadow-xs z-10">${badge}</span>` : '';
+
+      const card = document.createElement('div');
+      card.className = "product-card bg-white rounded-2xl border border-cafe-200 overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all";
+      card.innerHTML = `
+        <div>
+          <div class="relative h-64 overflow-hidden bg-cafe-100 flex items-center justify-center">
+            <img src="${p.img}" alt="${title}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=700&q=80';">
+            ${badgeHTML}
+          </div>
+          <div class="p-4">
+            <div class="flex items-center gap-1 text-cafe-500 text-xs mb-1">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              <span class="text-cafe-600 text-[11px] ${currentLang === 'ar' ? 'mr-1' : 'ml-1'}">(${p.rating})</span>
+            </div>
+            <h4 class="font-bold text-darkEspresso text-sm">${title}</h4>
+            <p class="text-xs text-cafe-700 mt-1 line-clamp-2">${desc}</p>
+          </div>
+        </div>
+        <div class="p-4 pt-0">
+          <div class="flex items-baseline justify-between mb-3 border-t border-cafe-100 pt-3">
+            <div>
+              <span class="text-xs text-slate-400 line-through">${p.oldPrice} ${dict.currency}</span>
+              <p class="text-lg font-black text-darkEspresso">${p.price} <span class="text-xs font-normal text-cafe-700">${dict.currency}</span></p>
+            </div>
+            <span class="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded">${currentLang === 'ar' ? 'جاهز للشحن' : 'In Stock'}</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button onclick="addToCart('${title}', ${p.price}, '${p.img}')" class="bg-cafe-100 hover:bg-cafe-200 text-darkEspresso font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+              <i class="fa-solid fa-cart-plus text-cafe-600"></i> <span>${currentLang === 'ar' ? 'للسلة' : 'Add to Cart'}</span>
+            </button>
+            <button onclick="quickOrder('${title}', ${p.price}, '${p.img}')" class="bg-darkEspresso hover:bg-cafe-900 text-white font-bold py-2 rounded-xl text-xs transition-all flex items-center justify-center gap-1">
+              <i class="fa-solid fa-bolt text-cafe-300"></i> <span>${currentLang === 'ar' ? 'طلب سريع' : 'Quick Buy'}</span>
+            </button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function filterCategory(cat) {
+    currentCategory = cat;
+    const buttons = document.querySelectorAll('.cat-btn');
+    buttons.forEach(b => {
+      if(b.dataset.cat === cat) {
+        b.className = 'cat-btn active bg-white text-darkEspresso shadow-xs px-4 py-2 rounded-lg transition-all font-bold';
+      } else {
+        b.className = 'cat-btn text-cafe-700 hover:text-darkEspresso px-4 py-2 rounded-lg transition-all font-bold';
+      }
+    });
+
+    const filtered = (cat === 'all') ? productsData : productsData.filter(p => p.category === cat);
+    renderProducts(filtered);
+  }
+
+  function searchProducts() {
+    const q = document.getElementById('search-input').value.toLowerCase().trim();
+    let list = (currentCategory === 'all') ? productsData : productsData.filter(p => p.category === currentCategory);
+    if (q) {
+      list = list.filter(p => (p.title_ar && p.title_ar.toLowerCase().includes(q)) || (p.title_en && p.title_en.toLowerCase().includes(q)) || p.price.toString().includes(q));
+    }
+    renderProducts(list);
+  }
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toast-text').textContent = message;
+    toast.classList.remove('-translate-y-16', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+    setTimeout(() => {
+      toast.classList.add('-translate-y-16', 'opacity-0');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 2400);
+  }
+
+  function toggleCart() {
+    const drawer = document.getElementById('cart-drawer');
+    const overlay = document.getElementById('cart-drawer-overlay');
+    const isOpen = !drawer.classList.contains('-translate-x-full');
+    if (isOpen) {
+      drawer.classList.add('-translate-x-full');
+      overlay.classList.add('hidden');
+    } else {
+      drawer.classList.remove('-translate-x-full');
+      overlay.classList.remove('hidden');
+    }
+  }
+
+  function addToCart(title, price, img) {
+    const existing = cart.find(item => item.title === title);
+    if (existing) {
+      existing.qty += 1;
+    } else {
+      cart.push({ title, price, img, qty: 1 });
+    }
+    updateCartUI();
+    showToast(currentLang === 'ar' ? `تمت إضافة "${title}" إلى السلة 🛍️` : `Added to cart 🛍️`);
+  }
+
+  function quickOrder(title, price, img) {
+    cart = [{ title, price, img, qty: 1 }];
+    updateCartUI();
+    openCheckoutModal();
+  }
+
+  function changeQty(index, delta) {
+    cart[index].qty += delta;
+    if (cart[index].qty <= 0) cart.splice(index, 1);
+    updateCartUI();
+  }
+
+  function updateCartUI() {
+    const dict = i18n[currentLang];
+    const countEl = document.getElementById('cart-items-count');
+    const badgeEl = document.getElementById('cart-badge');
+    const container = document.getElementById('cart-items-container');
+    const subtotalEl = document.getElementById('cart-subtotal');
+    const checkoutBtn = document.getElementById('btn-proceed-checkout');
+
+    const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+    const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+    countEl.textContent = totalCount;
+    badgeEl.textContent = totalCount;
+    subtotalEl.textContent = subtotal.toLocaleString(currentLang === 'ar' ? 'ar-EG' : 'en-US') + ' ' + dict.currency;
+
+    if (cart.length === 0) {
+      checkoutBtn.disabled = true;
+      container.innerHTML = `
+        <div class="text-center py-16 text-cafe-600">
+          <i class="fa-solid fa-bag-shopping text-4xl text-cafe-300 mb-2 block"></i>
+          <p class="text-xs">${currentLang === 'ar' ? 'سلتك فارغة حالياً' : 'Your bag is empty'}</p>
+        </div>
+      `;
+    } else {
+      checkoutBtn.disabled = false;
+      container.innerHTML = cart.map((item, idx) => `
+        <div class="flex items-center gap-3 bg-cafe-50 p-2 rounded-xl border border-cafe-200">
+          <img src="${item.img}" class="w-12 h-12 rounded-lg object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=150&q=80';">
+          <div class="flex-1">
+            <h5 class="text-xs font-bold text-darkEspresso line-clamp-1">${item.title}</h5>
+            <p class="text-cafe-700 font-black text-xs mt-0.5">${item.price} ${dict.currency}</p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white rounded-lg p-1 border border-cafe-200">
+            <button onclick="changeQty(${idx}, -1)" class="w-4 h-4 text-cafe-600 hover:text-darkEspresso flex items-center justify-center font-bold text-xs">-</button>
+            <span class="text-xs font-bold text-darkEspresso px-1">${item.qty}</span>
+            <button onclick="changeQty(${idx}, 1)" class="w-4 h-4 text-darkEspresso flex items-center justify-center font-bold text-xs">+</button>
+          </div>
         </div>
       `).join('');
     }
+  }
 
-    function moveAllWishlistToCart() {
-      wishlist.forEach(id => addToCart(id));
-      toggleWishlistDrawer(false);
-      toggleCartDrawer(true);
+  function updateZoneTime() {
+    const govSelect = document.getElementById('order-gov');
+    const selectedOpt = govSelect.options[govSelect.selectedIndex];
+    const time = selectedOpt.getAttribute('data-time');
+    document.getElementById('zone-time-preview').innerHTML = `<i class="fa-solid fa-truck-fast ml-1"></i> ${currentLang === 'ar' ? 'مدة التوصيل المقدرة:' : 'Estimated delivery:'} ${time}`;
+  }
+
+  // التبديل بين خيارات الدفع
+  function togglePaymentSection(type) {
+    const instapayBox = document.getElementById('instapay-info-box');
+    const instapayTitle = document.getElementById('instapay-box-title');
+    const visaInfoBox = document.getElementById('visa-info-box');
+    const senderInput = document.getElementById('instapay-sender');
+
+    if (type === 'cod') {
+      instapayBox.classList.remove('hidden');
+      visaInfoBox.classList.add('hidden');
+      senderInput.required = true;
+      instapayTitle.innerText = "تحويل عربون الشحن (100 ج.م) عبر إنستاباي:";
+    } else if (type === 'instapay') {
+      instapayBox.classList.remove('hidden');
+      visaInfoBox.classList.add('hidden');
+      senderInput.required = true;
+      instapayTitle.innerText = "تحويل إجمالي ثمن الساعة عبر إنستاباي:";
+    } else if (type === 'visa') {
+      instapayBox.classList.add('hidden');
+      visaInfoBox.classList.remove('hidden');
+      senderInput.required = false;
+    }
+  }
+
+  function openCheckoutModal() {
+    if (cart.length === 0) return;
+    const modal = document.getElementById('checkout-modal');
+    const summaryList = document.getElementById('checkout-summary-list');
+    const totalEl = document.getElementById('checkout-final-total');
+    const dict = i18n[currentLang];
+
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    summaryList.innerHTML = cart.map(i => `• ${i.title} (${i.qty}×) - <b>${i.price * i.qty} ${dict.currency}</b>`).join('<br>');
+    totalEl.textContent = total.toLocaleString(currentLang === 'ar' ? 'ar-EG' : 'en-US') + ' ' + dict.currency;
+
+    // ضبط إنستاباي افتراضياً
+    togglePaymentSection('cod');
+
+    document.getElementById('cart-drawer').classList.add('-translate-x-full');
+    document.getElementById('cart-drawer-overlay').classList.add('hidden');
+    modal.classList.remove('hidden');
+  }
+
+  function closeCheckoutModal() {
+    document.getElementById('checkout-modal').classList.add('hidden');
+  }
+
+  function openReturnPolicyModal() {
+    document.getElementById('return-policy-modal').classList.remove('hidden');
+  }
+
+  function closeReturnPolicyModal() {
+    document.getElementById('return-policy-modal').classList.add('hidden');
+  }
+
+  // إرسال تفاصيل الأوردر المؤكدة مع رابط إنستاباي والحساب والصورة لمالك المتجر
+  function submitFinalOrder(e) {
+    e.preventDefault();
+    const name = document.getElementById('order-name').value.trim();
+    const phone = document.getElementById('order-phone').value.trim();
+    const gov = document.getElementById('order-gov').value;
+    const payment = document.querySelector('input[name="paymentMethod"]:checked').value;
+    const instapaySender = document.getElementById('instapay-sender').value.trim();
+    const address = document.getElementById('order-address').value.trim();
+    const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+    const invoiceNo = 'AURA-' + Math.floor(100000 + Math.random() * 900000);
+
+    let isCod = payment.includes('Cash on Delivery') || payment.includes('عند الاستلام');
+    let isInsta = payment.includes('InstaPay');
+    let isVisa = payment.includes('Visa');
+
+    let rawMsg = `🛍️ *طلب جديد من متجر AURA للساعات*\n`;
+    rawMsg += `---------------------------------\n`;
+    rawMsg += `🧾 *رقم الفاتورة:* #${invoiceNo}\n`;
+    rawMsg += `👤 *اسم العميل:* ${name}\n`;
+    rawMsg += `📱 *رقم الموبايل:* ${phone}\n`;
+    rawMsg += `📍 *المحافظة:* ${gov}\n`;
+    rawMsg += `🏠 *العنوان التفصيلي:* ${address}\n`;
+    rawMsg += `💳 *طريقة الدفع:* ${payment}\n`;
+
+    if (isCod) {
+      rawMsg += `🏦 *اسم/رقم محوّل إنستاباي (عربون 100 ج):* ${instapaySender}\n`;
+      rawMsg += `⚡ *حساب الاستلام:* ${INSTAPAY_HANDLE} (رقم: ${INSTAPAY_DEPOSIT_PHONE})\n`;
+      rawMsg += `📸 *إثبات التحويل:* مطلوب إرفاق سكرين شوت التحويل في الشات\n`;
+    } else if (isInsta) {
+      rawMsg += `🏦 *اسم/رقم محوّل إنستاباي (المبلغ كاملاً):* ${instapaySender}\n`;
+      rawMsg += `⚡ *حساب الاستلام:* ${INSTAPAY_HANDLE} (رقم: ${INSTAPAY_DEPOSIT_PHONE})\n`;
+      rawMsg += `📸 *إثبات التحويل:* مطلوب إرفاق سكرين شوت التحويل في الشات\n`;
+    } else if (isVisa) {
+      rawMsg += `💳 *طلب رابط فيزا:* يرجى إرسال رابط Paymob للعميل على هذا الرقم\n`;
     }
 
-    function addToCart(id) {
-      const item = cart.find(x => x.id === id);
-      if (item) {
-        item.qty += 1;
-      } else {
-        const watch = allWatches.find(w => w.id === id);
-        cart.push({ ...watch, qty: 1 });
-      }
-      localStorage.setItem('aura_cart', JSON.stringify(cart));
-      updateBadges();
-      renderCart();
+    rawMsg += `---------------------------------\n`;
+    rawMsg += `⌚ *الساعات المطلوبة:*\n`;
+    cart.forEach((i, idx) => {
+      rawMsg += `${idx + 1}. ${i.title} (${i.qty} قطع) - السعر: ${i.price * i.qty} ج.م\n`;
+      rawMsg += `🔗 صورة الساعة: ${i.img}\n`;
+    });
+    rawMsg += `---------------------------------\n`;
+    rawMsg += `💰 *الإجمالي المستحق:* ${total.toLocaleString()} ج.م (شحن مجاني ومعاينة)`;
+
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(rawMsg)}`;
+
+    window.open(whatsappUrl, '_blank');
+    closeCheckoutModal();
+    cart = [];
+    updateCartUI();
+    showToast(currentLang === 'ar' ? 'تم إرسال طلبك وصورة الساعة للمالك بنجاح! 🎉' : 'Order and watch photo sent to owner! 🎉');
+  }
+
+  // ============ SMART CHATBOT ============
+  const chatMessages = document.getElementById('chat-messages');
+  const chatQuick = document.getElementById('chat-quick');
+  const chatInput = document.getElementById('chat-input');
+
+  const quickReplies = [
+    { label: '🛍️ اطلب ساعة الآن من الشات', key: 'order_now' },
+    { label: '🛡️ الضمان ومقاومة الماء', key: 'warranty' },
+    { label: '🚚 المحافظات ومدة التوصيل', key: 'shipping' },
+    { label: '💳 طرق الدفع والديبوزت', key: 'payment' },
+    { label: '💬 محادثة المالك (01005823798)', key: 'human' }
+  ];
+
+  const botReplies = {
+    greeting: 'أهلاً بك في متجر AURA للساعات الفاخرة! 👋\nأنا مساعدك الذكي. يمكنك الاستفسار أو **طلب ساعتك مباشرة من هنا عبر الشات**!',
+    warranty: '🛡️ ضمان AURA المعتمد:\n• ضمان عام كامل على الماكينة والموتور\n• مقاومة تامة للماء والصدأ\n• زجاج زفير مقاوم للخدش\n• حق استبدال واسترجاع 14 يوماً.',
+    shipping: '🚚 الشحن لكافة محافظات مصر:\n• القاهرة والجيزة: 24 - 48 ساعة\n• الإسكندرية والدلتا: 2 - 3 أيام عمل\n• محافظات الصعيد والبحر الأحمر: 3 - 4 أيام\n✨ فحص وقياس الساعة متاح ومجاني مع المندوب قبل دفع باقي الحساب!',
+    payment: `💳 طرق الدفع المعتمدة:\n1. دفع عند الاستلام (يتم تحويل عربون 100 ج.م عبر إنستاباي على حساب: ${INSTAPAY_HANDLE} أو رقم ${INSTAPAY_DEPOSIT_PHONE} وإرفاق الاسكرين شوت لتأكيد خروج الشحنة وتخصم من تمن الساعة).\n2. تحويل إنستاباي كامل.\n3. طلب رابط دفع فيزا رسمي أونلاين.\n\nرابط إنستاباي للدفع المباشر:\n${INSTAPAY_LINK}`,
+    human: `📞 للتواصل المباشر مع مالك المتجر، تفضل بمراسلتنا على واتساب:\nhttps://wa.me/${WHATSAPP_PHONE}`,
+    fallback: `يسعدنا الرد على استفسارك! يمكنك كتابة "عايز اطلب" لطلب ساعتك فوراً أو محادثة المالك على 01005823798:\nhttps://wa.me/${WHATSAPP_PHONE}`
+  };
+
+  function matchBotReply(t) {
+    t = t.toLowerCase();
+    if (/(اطلب|شراء|طلب|order|buy)/.test(t)) return 'order_now';
+    if (/(سلام|اهلا|مرحبا|هاي|hello|hi)/.test(t)) return 'greeting';
+    if (/(ضمان|مياه|ماء|خدش|استبدال|استرجاع)/.test(t)) return 'warranty';
+    if (/(شحن|توصيل|محافظات|معاينة|استلام|قياس|زون)/.test(t)) return 'shipping';
+    if (/(دفع|كاش|انستاباي|فيزا|فودافون|ديبوزت|عربون)/.test(t)) return 'payment';
+    if (/(عملاء|مالك|واتس|رقم|تليفون)/.test(t)) return 'human';
+    return 'fallback';
+  }
+
+  function addChatMsg(text, who) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + (who === 'user' ? 'self-end bg-darkEspresso text-white rounded-2xl rounded-br-xs px-3 py-1.5 text-xs' : 'self-start bg-white text-darkEspresso border border-cafe-200 rounded-2xl rounded-bl-xs px-3 py-1.5 text-xs shadow-xs whitespace-pre-line');
+    div.textContent = text;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function startChatOrderFlow() {
+    botOrderState = { active: true, step: 1, selectedWatch: null, customerName: '', customerPhone: '', customerGov: '', customerAddress: '' };
+    const div = document.createElement('div');
+    div.className = 'chat-msg self-start bg-white border border-cafe-200 p-2.5 rounded-2xl text-xs space-y-2';
+    div.innerHTML = `
+      <p class="font-bold text-darkEspresso">✨ اختر الساعة التي ترغب في طلبها:</p>
+      <div class="space-y-1 max-h-48 overflow-y-auto">
+        ${productsData.slice(0, 15).map(p => `
+          <button onclick="chooseWatchInChat(${p.id})" class="w-full text-right p-1.5 rounded-lg border border-cafe-200 hover:bg-cafe-100 text-[11px] flex items-center justify-between">
+            <span>${currentLang === 'ar' ? p.title_ar : p.title_en}</span>
+            <b class="text-cafe-700">${p.price} ج.م</b>
+          </button>
+        `).join('')}
+      </div>
+    `;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function chooseWatchInChat(id) {
+    const watch = productsData.find(p => p.id === id);
+    botOrderState.selectedWatch = watch;
+    botOrderState.step = 2;
+    addChatMsg(`ممتاز! اخترت: ${currentLang === 'ar' ? watch.title_ar : watch.title_en} (${watch.price} ج.م).\n\nمن فضلك اكتب اسمك ثلاثي:`, 'bot');
+  }
+
+  function handleChatOrderStep(msg) {
+    if (botOrderState.step === 2) {
+      botOrderState.customerName = msg;
+      botOrderState.step = 3;
+      addChatMsg(`أهلاً بك أستاذ ${msg} ✨\nيرجى كتابة رقم الموبايل (واتساب):`, 'bot');
+    } else if (botOrderState.step === 3) {
+      botOrderState.customerPhone = msg;
+      botOrderState.step = 4;
+      addChatMsg(`تمام! يرجى كتابة المحافظة والعنوان بالتفصيل:`, 'bot');
+    } else if (botOrderState.step === 4) {
+      botOrderState.customerAddress = msg;
+      botOrderState.active = false;
+
+      const w = botOrderState.selectedWatch;
+      const invoiceNo = 'AURA-CHAT-' + Math.floor(100000 + Math.random() * 900000);
+
+      let rawMsg = `🛍️ *طلب ساعة مباشر عبر الشات بوت (AURA)*\n`;
+      rawMsg += `---------------------------------\n`;
+      rawMsg += `🧾 *رقم الفاتورة:* #${invoiceNo}\n`;
+      rawMsg += `👤 *اسم العميل:* ${botOrderState.customerName}\n`;
+      rawMsg += `📱 *رقم الموبايل:* ${botOrderState.customerPhone}\n`;
+      rawMsg += `🏠 *العنوان والبيانات:* ${botOrderState.customerAddress}\n`;
+      rawMsg += `⌚ *الساعة المطلوبة:* ${w.title_ar}\n`;
+      rawMsg += `💰 *السعر:* ${w.price} ج.م (شحن مجاني ومعاينة)\n`;
+      rawMsg += `⚡ *حساب إنستاباي:* ${INSTAPAY_HANDLE} (رقم: ${INSTAPAY_DEPOSIT_PHONE})\n`;
+      rawMsg += `⚠️ *ديبوزت الشحن:* مطلوب إرفاق سكرين شوت تحويل 100 ج.م على إنستاباي\n`;
+      rawMsg += `---------------------------------\n`;
+      rawMsg += `🖼️ *صورة الساعة:*\n${w.img}`;
+
+      const waUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE}&text=${encodeURIComponent(rawMsg)}`;
+
+      const div = document.createElement('div');
+      div.className = 'chat-msg self-start bg-emerald-50 border border-emerald-300 p-3 rounded-2xl text-xs space-y-2 text-darkEspresso';
+      div.innerHTML = `
+        <p class="font-bold text-emerald-900">🎉 تم تجهيز الفاتورة رقم #${invoiceNo} بنجاح!</p>
+        <a href="${INSTAPAY_LINK}" target="_blank" class="block w-full py-2 bg-gradient-to-r from-purple-800 to-indigo-900 text-white rounded-xl text-center font-bold text-xs">
+          اضغط هنا للتحويل المباشر عبر إنستاباي 📲
+        </a>
+        <p class="text-[11px] text-amber-900">يرجى تحويل عربون 100 ج.م وإرفاق الاسكرين شوت في الشات لتأكيد خروج الشحنة:</p>
+        <a href="${waUrl}" target="_blank" class="block w-full py-2 bg-emerald-700 text-white text-center rounded-xl font-bold hover:bg-emerald-800">
+          <i class="fa-brands fa-whatsapp ml-1"></i> إرسال الأوردر والفاتورة للمالك
+        </a>
+      `;
+      chatMessages.appendChild(div);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+  }
+
+  function sendUserChat() {
+    const text = chatInput.value.trim();
+    if (!text) return;
+    addChatMsg(text, 'user');
+    chatInput.value = '';
+
+    if (botOrderState.active) {
+      handleChatOrderStep(text);
+      return;
     }
 
-    function renderCart() {
-      const list = document.getElementById('cartItemsList');
-      if (cart.length === 0) {
-        list.innerHTML = '<p class="text-xs text-[#735340] text-center py-8">السلة فارغة حالياً 🛍️</p>';
-        document.getElementById('cartTotalPrice').innerText = '0 ج.م';
-        return;
-      }
-      let total = 0;
-      list.innerHTML = cart.map(item => {
-        total += item.price * item.qty;
-        return `
-          <div class="flex items-center gap-3 p-3 bg-[#f7f2ea] rounded-xl border border-[#eddcc9]">
-            <img src="${item.img}" class="w-12 h-12 object-cover rounded-lg">
-            <div class="flex-1 min-w-0">
-              <h4 class="text-xs font-bold text-[#231812] truncate">${item.title}</h4>
-              <span class="text-xs font-black text-[#8c6f5b]">${item.price} ج.م × ${item.qty}</span>
-            </div>
-            <button onclick="removeFromCart(${item.id})" class="text-rose-600 text-sm"><i class="fa-solid fa-trash"></i></button>
-          </div>
-        `;
-      }).join('');
-      document.getElementById('cartTotalPrice').innerText = total + ' ج.م';
+    const matched = matchBotReply(text);
+    if (matched === 'order_now') {
+      startChatOrderFlow();
+      return;
     }
 
-    function removeFromCart(id) {
-      cart = cart.filter(x => x.id !== id);
-      localStorage.setItem('aura_cart', JSON.stringify(cart));
-      updateBadges();
-      renderCart();
+    setTimeout(() => {
+      addChatMsg(botReplies[matched], 'bot');
+      showQuickChat();
+    }, 400);
+  }
+
+  function sendQuickKey(key, label) {
+    addChatMsg(label, 'user');
+    if (key === 'order_now') {
+      startChatOrderFlow();
+      return;
     }
+    setTimeout(() => {
+      addChatMsg(botReplies[key], 'bot');
+    }, 350);
+  }
 
-    function updateBadges() {
-      document.getElementById('wishlistCountBadge').innerText = wishlist.length;
-      document.getElementById('cartCountBadge').innerText = cart.reduce((s, i) => s + i.qty, 0);
+  function showQuickChat() {
+    chatQuick.innerHTML = '';
+    quickReplies.forEach(q => {
+      const btn = document.createElement('button');
+      btn.textContent = q.label;
+      btn.className = 'text-[10px] font-bold bg-white border border-cafe-200 text-darkEspresso rounded-full px-2.5 py-1 hover:bg-darkEspresso hover:text-white transition-all';
+      btn.onclick = () => sendQuickKey(q.key, q.label);
+      chatQuick.appendChild(btn);
+    });
+  }
+
+  function toggleChat() {
+    const panel = document.getElementById('chat-panel');
+    const icon = document.getElementById('chat-toggle-icon');
+    const isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open', !isOpen);
+    panel.classList.toggle('closed', isOpen);
+    icon.className = isOpen ? 'fa-solid fa-headset' : 'fa-solid fa-xmark';
+    if (!isOpen && chatMessages.children.length === 0) {
+      addChatMsg(botReplies.greeting, 'bot');
+      showQuickChat();
     }
+  }
 
-    function toggleWishlistDrawer(open) {
-      const d = document.getElementById('wishlistDrawer');
-      if (open) { renderWishlist(); d.classList.remove('hidden'); }
-      else { d.classList.add('hidden'); }
-    }
+  // بدء تشغيل وتحميل الساعات فوراً
+  loadRepoWatches();
+</script>
 
-    function toggleCartDrawer(open) {
-      const d = document.getElementById('cartDrawer');
-      if (open) { renderCart(); d.classList.remove('hidden'); }
-      else { d.classList.add('hidden'); }
-    }
-
-    function toggleCheckoutModal(open) {
-      const m = document.getElementById('checkoutModal');
-      if (open) {
-        if (cart.length === 0) return;
-        renderCheckoutPreview();
-        m.classList.remove('hidden');
-      } else {
-        m.classList.add('hidden');
-      }
-    }
-
-    function openCheckoutModal() {
-      toggleCartDrawer(false);
-      toggleCheckoutModal(true);
-    }
-
-    function renderCheckoutPreview() {
-      const container = document.getElementById('checkoutItemsPreview');
-      let total = 0;
-      container.innerHTML = cart.map(item => {
-        total += item.price * item.qty;
-        return `
-          <div class="flex items-center justify-between text-xs py-1 border-b border-[#eddcc9]/50">
-            <span class="font-bold truncate max-w-[200px]">${item.title} (×${item.qty})</span>
-            <span class="font-black text-[#8c6f5b]">${item.price * item.qty} ج.م</span>
-          </div>
-        `;
-      }).join('');
-      document.getElementById('checkoutTotalAmount').innerText = total + ' ج.م';
-    }
-
-    // توليد وإرسال رسالة الواتساب بنفس التنسيق المطلوب بالضبط
-    function handleCheckoutSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('custName').value.trim();
-      const phone = document.getElementById('custPhone').value.trim();
-      const gov = document.getElementById('custGov').value;
-      const address = document.getElementById('custAddress').value.trim();
-      const payment = document.getElementById('custPayment').value;
-
-      // توليد رقم فاتورة عشوائي
-      const invoiceNum = 'AURA-' + Math.floor(100000 + Math.random() * 900000);
-
-      // بناء نص رسالة الواتساب المطابقة للصورة تماماً
-      let msg = `🛍️ *طلب جديد من متجر AURA للساعات*\n`;
-      msg += `-----------------------------\n`;
-      msg += `🧾 *رقم الفاتورة:* #${invoiceNum}\n`;
-      msg += `👤 *اسم العميل:* ${name}\n`;
-      msg += `📱 *رقم الموبايل:* ${phone}\n`;
-      msg += `📍 *المحافظة:* ${gov}\n`;
-      msg += `🏠 *العنوان التفصيلي:* ${address}\n`;
-      msg += `💵 *طريقة الدفع:* ${payment}\n`;
-      msg += `⚠️ *تنبيه الديبوزت:* تم إرفاق سكرين شوت تحويل 100 ج.م عربون شحن على إنستاباي (01005823798 / 01010143989)\n`;
-      msg += `-----------------------------\n`;
-      msg += `⌚ *الساعات المطلوبة:*\n`;
-
-      let total = 0;
-      cart.forEach((item, i) => {
-        const itemTotal = item.price * item.qty;
-        total += itemTotal;
-        msg += `${i + 1}. *${item.title}* (${item.qty} قطع) - السعر: ${itemTotal} ج.م\n`;
-        msg += `🔗 *صورة الساعة:* ${item.img}\n\n`;
-      });
-
-      msg += `-----------------------------\n`;
-      msg += `💰 *الإجمالي المستحق:* ${total} ج.م (شحن مجاني ومعاينة)\n`;
-
-      // فتح واتساب
-      const targetPhone = '201005823798';
-      const encodedMsg = encodeURIComponent(msg);
-      window.open(`https://wa.me/${targetPhone}?text=${encodedMsg}`, '_blank');
-      
-      toggleCheckoutModal(false);
-    }
-
-    // منطق الشات بوت المساعد
-    function toggleChatbot(open) {
-      const b = document.getElementById('chatbotModal');
-      if (open) { b.classList.remove('hidden'); b.classList.add('flex'); }
-      else { b.classList.add('hidden'); b.classList.remove('flex'); }
-    }
-
-    function sendQuickPrompt(text) {
-      document.getElementById('chatInput').value = text;
-      handleChatSend();
-    }
-
-    function handleChatSend() {
-      const input = document.getElementById('chatInput');
-      const text = input.value.trim();
-      if (!text) return;
-
-      const container = document.getElementById('chatMessages');
-
-      // رسالة العميل
-      const userMsg = document.createElement('div');
-      userMsg.className = 'bg-[#231812] text-white p-3 rounded-2xl rounded-tl-none mr-auto max-w-[85%]';
-      userMsg.innerText = text;
-      container.appendChild(userMsg);
-
-      input.value = '';
-      container.scrollTop = container.scrollHeight;
-
-      // رد الشات بوت الذكي التلقائي
-      setTimeout(() => {
-        let reply = 'أهلاً بك! يمكنك طلب أي ساعة وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً.';
-        const lower = text.toLowerCase();
-        
-        if (lower.includes('معاينة') || lower.includes('ضمان') || lower.includes('استلام')) {
-          reply = '🛡️ **نظام الضمان والمعاينة في AURA:**\nلك الحق في فتح الشحنة وقياس الساعة ومعاينة الماكينة مع المندوب قبل دفع باقي الحساب، بالإضافة لضمان معتمد لمدة عام كامل مع كارت الضمان والعلبة.';
-        } else if (lower.includes('رسمي') || lower.includes('بدل') || lower.includes('كارتييه') || lower.includes('تانك')) {
-          reply = '👔 **ترشيحات الساعات الكلاسيكية والرسمية:**\nننصحك بمجموعة كارتييه تانك لويس المستطيلة، أو رولكس داي ديت 40 وسكاي دويلر، حيث تنزلق بسلاسة تحت أكمام القمصان والبدلات.';
-        } else if (lower.includes('رياضي') || lower.includes('مية') || lower.includes('ماء') || lower.includes('سبورت')) {
-          reply = '🏊 **ترشيحات الساعات الرياضية:**\nننصحك بساعات رولكس صبمارينر (هالك)، وتومي هيلفيغر TH85 كرونوغراف، وكاسيو إيديفيس، حيث تتمتع بمقاومة ماء عالية وعقارب فوسفورية مضيئة.';
-        } else if (lower.includes('عربون') || lower.includes('ديبوزت') || lower.includes('إنستاباي') || lower.includes('شحن')) {
-          reply = '💳 **عربون الشحن (100 ج.م):**\nيتم تحويل 100 ج.م عربون جدية شحن عبر إنستاباي على 01005823798 وتخصم من إجمالي الفاتورة عند الاستلام.';
-        }
-
-        const botMsg = document.createElement('div');
-        botMsg.className = 'bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812] whitespace-pre-line';
-        botMsg.innerText = reply;
-        container.appendChild(botMsg);
-        container.scrollTop = container.scrollHeight;
-      }, 500);
-    }
-
-    // التشغيل المبدئي
-    renderProducts();
-    updateBadges();
-  </script>
 </body>
-</html>
+  </html>
