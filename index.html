@@ -6,12 +6,10 @@
   <title>AURA | أورا — متجر الساعات الفاخرة</title>
   <meta name="description" content="متجر AURA للساعات الفاخرة المعتمدة بماكينات يابانية دقيقة وضمان عام كامل ومعاينة قبل الدفع">
   
-  <!-- خطوط جوجل الفاخرة -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -37,7 +35,6 @@
     }
   </script>
   
-  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -56,11 +53,10 @@
     <span class="font-bold">توصيل سريع لكافة محافظات مصر • المعاينة والقياس مجاناً مع المندوب قبل دفع باقي الحساب</span>
   </div>
 
-  <!-- الهيدر وشريط التنقل -->
+  <!-- الهيدر -->
   <header class="sticky top-0 z-40 bg-[#fdfbf7]/90 backdrop-blur-md border-b border-[#eddcc9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
       
-      <!-- الشعار -->
       <a href="#" class="flex items-center gap-3 group">
         <div class="w-11 h-11 rounded-full bg-[#231812] text-[#fdfbf7] flex items-center justify-center font-bold text-xl font-cinzel shadow-sm group-hover:scale-105 transition-transform">
           A
@@ -71,37 +67,28 @@
         </div>
       </a>
 
-      <!-- روابط التنقل -->
       <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-[#4a3b31]">
         <a href="#home" class="hover:text-[#8c6f5b] transition-colors">الرئيسية</a>
         <a href="#products" class="hover:text-[#8c6f5b] transition-colors">الكتالوج الكامل (99 ساعة)</a>
-        <a href="#watch-guide" class="hover:text-[#8c6f5b] transition-colors flex items-center gap-1.5">
-          <i class="fa-regular fa-compass text-[#b08968]"></i>
-          <span>دليل اختيار ساعتك</span>
-        </a>
       </nav>
 
-      <!-- الأزرار والإجراءات -->
       <div class="flex items-center gap-2.5">
         <a href="https://wa.me/201005823798" target="_blank" class="hidden lg:flex items-center gap-1.5 text-xs font-bold bg-[#f7f2ea] hover:bg-[#eddcc9] text-[#231812] px-3.5 py-2 rounded-full transition-all border border-[#eddcc9]">
           <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
           <span dir="ltr">01005823798</span>
         </a>
 
-        <!-- زر المساعد الذكي -->
         <button onclick="toggleChatbot(true)" class="p-2.5 sm:px-3 sm:py-2 rounded-full bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold flex items-center gap-1.5 transition-all">
           <i class="fa-solid fa-headset text-emerald-600"></i>
           <span class="hidden sm:inline">مستشار الساعات</span>
         </button>
 
-        <!-- زر المفضلة -->
         <button onclick="toggleWishlistDrawer(true)" class="relative p-2.5 sm:px-3 sm:py-2 rounded-full bg-[#f7f2ea] hover:bg-[#eddcc9] text-[#231812] border border-[#eddcc9] text-xs font-bold flex items-center gap-1.5 transition-all">
           <i class="fa-solid fa-heart text-rose-500 text-sm"></i>
           <span class="hidden sm:inline">المفضلة</span>
           <span id="wishlistCountBadge" class="bg-rose-500 text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center">0</span>
         </button>
 
-        <!-- زر السلة -->
         <button onclick="toggleCartDrawer(true)" class="relative bg-[#231812] hover:bg-[#3d281a] text-white px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-all">
           <i class="fa-solid fa-bag-shopping text-[#dec2a3]"></i>
           <span class="hidden sm:inline">السلة</span>
@@ -111,7 +98,7 @@
     </div>
   </header>
 
-  <!-- القسم الترحيبي Hero -->
+  <!-- القسم الترحيبي -->
   <section id="home" class="relative py-12 sm:py-20 overflow-hidden bg-gradient-to-b from-[#f7f2ea] to-[#fdfbf7] border-b border-[#eddcc9]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#eddcc9] text-xs font-bold text-[#735340] shadow-xs">
@@ -134,7 +121,7 @@
     </div>
   </section>
 
-  <!-- كتالوج الساعات الكامل (99 ساعة) -->
+  <!-- الكتالوج -->
   <section id="products" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
       <div>
@@ -142,7 +129,6 @@
         <p class="text-xs sm:text-sm text-[#735340] mt-1">كل ساعة معروضة بصورتها المعتمدة ومواصفاتها الفنية الكاملة</p>
       </div>
       
-      <!-- فلتر الحالة -->
       <div class="flex items-center gap-2 flex-wrap">
         <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]">كل الساعات</button>
         <button onclick="setCategoryFilter('best')" id="cat-best" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">الأكثر طلباً ⭐</button>
@@ -150,7 +136,6 @@
       </div>
     </div>
 
-    <!-- شريط فلتر الماركات (Brand Filters) -->
     <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none">
       <button onclick="setBrandFilter('all')" id="brand-all" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#231812] text-white border border-[#231812] whitespace-nowrap">جميع الماركات (99)</button>
       <button onclick="setBrandFilter('rolex')" id="brand-rolex" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">رولكس Rolex</button>
@@ -161,13 +146,11 @@
       <button onclick="setBrandFilter('omega')" id="brand-omega" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">أوميغا Omega</button>
     </div>
 
-    <!-- حقل البحث السريع -->
     <div class="mb-8 relative">
       <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الموديل أو اللون أو الماركة..." class="w-full bg-white border border-[#eddcc9] rounded-2xl py-3.5 pr-11 pl-4 text-xs sm:text-sm text-[#231812] placeholder-[#735340]/60 focus:outline-none focus:border-[#b08968] shadow-xs">
       <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-[#8c6f5b]"></i>
     </div>
 
-    <!-- شبكة الـ 99 ساعة -->
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </section>
 
@@ -189,7 +172,6 @@
         </button>
       </div>
 
-      <!-- ملخص الساعات المختارة -->
       <div class="bg-[#f7f2ea] p-4 rounded-2xl border border-[#eddcc9] space-y-2">
         <h4 class="text-xs font-bold text-[#735340]">الساعات المطلوبة:</h4>
         <div id="checkoutItemsPreview" class="space-y-2 max-h-36 overflow-y-auto custom-scroll pr-1"></div>
@@ -199,9 +181,7 @@
         </div>
       </div>
 
-      <!-- نموذج بيانات العميل -->
       <form onsubmit="handleCheckoutSubmit(event)" class="space-y-4">
-        
         <div>
           <label class="block text-xs font-bold text-[#4a3b31] mb-1">الاسم بالكامل *</label>
           <input type="text" id="custName" required placeholder="مثال: محمود ناصر" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
@@ -210,7 +190,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-[#4a3b31] mb-1">رقم الموبايل (واتساب) *</label>
-            <input type="tel" id="custPhone" required placeholder="01005823798" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
+            <input type="tel" id="custPhone" required placeholder="01010143989" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
           </div>
           <div>
             <label class="block text-xs font-bold text-[#4a3b31] mb-1">المحافظة *</label>
@@ -237,25 +217,34 @@
           </select>
         </div>
 
-        <!-- صندوق التنبيه الخاص بالعربون -->
-        <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-2xl text-[11px] text-amber-900 leading-relaxed space-y-1">
-          <div class="font-bold flex items-center gap-1.5 text-amber-800">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <span>تنبيه ديبوزت جدية الشحن (100 ج.م)</span>
+        <!-- صندوق التحويل الدقيق -->
+        <div class="bg-amber-50 border border-amber-300 p-4 rounded-2xl text-[11px] text-amber-950 space-y-2">
+          <div class="font-bold flex items-center justify-between text-amber-900">
+            <span class="flex items-center gap-1.5"><i class="fa-solid fa-bolt text-amber-600"></i> عربون جدية الشحن (100 ج.م)</span>
+            <span class="bg-purple-100 text-purple-900 text-[10px] px-2 py-0.5 rounded font-bold">InstaPay</span>
           </div>
-          <p>لضمان جدية الاستلام وحجز المندوب، يتم تحويل 100 ج.م عربون شحن على إنستاباي رقم: <strong dir="ltr" class="font-black text-[#231812]">01005823798</strong> وخصمها من إجمالي الفاتورة عند الاستلام.</p>
+          <p>يتم تحويل 100 ج.م لحجز المندوب وتأكيد الجدية، وتخصم من إجمالي الفاتورة عند الاستلام.</p>
+          
+          <a href="https://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk" target="_blank" class="w-full py-2 bg-purple-900 hover:bg-purple-800 text-white rounded-xl font-bold flex items-center justify-center gap-1.5 text-xs transition">
+            <span>اضغط هنا للتحويل المباشر في إنستاباي 📲</span>
+          </a>
+
+          <div class="font-mono bg-white p-2 rounded-lg border border-amber-200 flex justify-between items-center text-[11px]">
+            <span>رقم التحويل: <strong>01010143989</strong></span>
+            <span class="text-stone-400">|</span>
+            <span class="text-[10px]">mahmoudabokhashm2006@instapay</span>
+          </div>
         </div>
 
         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 text-sm">
           <i class="fa-brands fa-whatsapp text-lg"></i>
           <span>إرسال الطلب والتفاصيل بالواتساب 🚀</span>
         </button>
-
       </form>
     </div>
   </div>
 
-  <!-- الشات بوت الذكي لمساعد العميل (Smart Watch Assistant) -->
+  <!-- الشات بوت الذكي لمساعد العميل (AURA) -->
   <div id="chatbotModal" class="fixed bottom-5 start-5 z-50 w-full max-w-sm bg-white rounded-3xl border border-[#eddcc9] shadow-2xl overflow-hidden hidden flex-col transition-all">
     <div class="bg-[#231812] p-4 text-white flex items-center justify-between">
       <div class="flex items-center gap-2.5">
@@ -265,7 +254,7 @@
         <div>
           <h4 class="text-xs font-bold">مستشار AURA للساعات الذكي</h4>
           <span class="text-[9px] text-emerald-400 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> متصل لمساعدتك الشاملة
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> متصل للإجابة على كافة الأسئلة
           </span>
         </div>
       </div>
@@ -281,15 +270,13 @@
       </div>
     </div>
 
-    <!-- أزرار الأسئلة الشائعة السريعة -->
     <div class="p-2 bg-white border-t border-[#eddcc9] flex gap-1.5 overflow-x-auto scrollbar-none">
-      <button onclick="sendQuickPrompt('ازاي اطلب ساعة؟')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">طريقة الطلب؟</button>
+      <button onclick="sendQuickPrompt('طريقة عمل أوردر؟')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">طريقة الطلب؟</button>
       <button onclick="sendQuickPrompt('المعاينة والضمان ونظام الاستلام')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">المعاينة والضمان؟</button>
-      <button onclick="sendQuickPrompt('تفاصيل الشحن والتوصيل والعربون')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">الشحن والعربون؟</button>
-      <button onclick="sendQuickPrompt('رشحلي أفضل الساعات الكلاسيكية والرياضية')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">ترشيحات الساعات؟</button>
+      <button onclick="sendQuickPrompt('عربون إنستاباي 100 ج')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">عربون 100 ج؟</button>
+      <button onclick="sendQuickPrompt('مواعيد وتفاصيل الشحن والتوصيل')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">الشحن ومواعيده؟</button>
     </div>
 
-    <!-- حقل إرسال الرسالة -->
     <div class="p-3 bg-white border-t border-[#eddcc9] flex items-center gap-2">
       <input type="text" id="chatInput" onkeypress="if(event.key==='Enter') handleChatSend()" placeholder="اكتب استفسارك هنا..." class="flex-1 bg-[#fdfbf7] border border-[#eddcc9] rounded-xl px-3 py-2 text-xs focus:outline-none focus:border-[#b08968]">
       <button onclick="handleChatSend()" class="w-8 h-8 rounded-xl bg-[#231812] hover:bg-[#3d281a] text-white flex items-center justify-center text-xs">
@@ -298,13 +285,11 @@
     </div>
   </div>
 
-  <!-- زر فتح الشات بوت العائم -->
   <button onclick="toggleChatbot(true)" class="fixed bottom-5 start-5 z-40 bg-[#231812] hover:bg-[#3d281a] text-white p-3.5 rounded-full shadow-2xl flex items-center gap-2 border border-[#dec2a3]/40 hover:scale-105 transition-all">
     <i class="fa-solid fa-comments text-emerald-400 text-lg"></i>
     <span class="text-xs font-bold hidden sm:inline">مستشار AURA</span>
   </button>
 
-  <!-- درج المفضلة (Wishlist) -->
   <div id="wishlistDrawer" class="fixed inset-0 z-50 hidden">
     <div onclick="toggleWishlistDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
     <div class="absolute inset-y-0 start-0 max-w-md w-full bg-[#231812] text-white shadow-2xl flex flex-col p-6 space-y-4">
@@ -326,7 +311,6 @@
     </div>
   </div>
 
-  <!-- درج السلة (Cart) -->
   <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
     <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
     <div class="absolute inset-y-0 end-0 max-w-md w-full bg-white text-[#231812] shadow-2xl flex flex-col p-6 space-y-4">
@@ -456,7 +440,6 @@
       "1-25.jpg.webp"
     ];
 
-    // تحديث الأسعار لتبدأ من 2900 ج.م فما فوق
     const allWatches = imageFiles.map((file, idx) => {
       const lower = file.toLowerCase();
       let brand = 'rolex';
@@ -720,7 +703,7 @@
       msg += `📍 *المحافظة:* ${gov}\n`;
       msg += `🏠 *العنوان التفصيلي:* ${address}\n`;
       msg += `💵 *طريقة الدفع:* ${payment}\n`;
-      msg += `⚡ *تنبيه الديبوزت:* تم إرفاق سكرين شوت تحويل 100 ج.م عربون شحن على إنستاباي (01005823798)\n`;
+      msg += `⚡ *تنبيه الديبوزت:* تم إرفاق سكرين شوت تحويل 100 ج.م عربون شحن على إنستاباي (01010143989)\n`;
       msg += `-----------------------------\n`;
       msg += `⌚ *الساعات المطلوبة:*\n`;
 
@@ -741,7 +724,7 @@
       toggleCheckoutModal(false);
     }
 
-    // منطق الشات بوت الذكي المتكامل
+    // منطق الشات بوت فائق الذكاء لمتجر AURA
     function toggleChatbot(open) {
       const b = document.getElementById('chatbotModal');
       if (open) { b.classList.remove('hidden'); b.classList.add('flex'); }
@@ -769,31 +752,52 @@
       container.scrollTop = container.scrollHeight;
 
       setTimeout(() => {
-        const lower = text.toLowerCase();
+        const t = text.toLowerCase();
         let reply = '';
 
-        if (lower.includes('سلام') || lower.includes('مرحبا') || lower.includes('اهلا') || lower.includes('هاي') || lower.includes('صباح') || lower.includes('مساء')) {
-          reply = 'أهلاً بحضرتك في متجر AURA للساعات الفاخرة! ⌚🌟\nيسعدني جداً مساعدتك. يمكنك الاستفسار عن (طريقة الطلب - الأسعار - الضمان والمعاينة - مواعيد الشحن - ترشيحات الساعات المناسبة لك).';
-        } else if (lower.includes('طلب') || lower.includes('اشتري') || lower.includes('اوردر') || lower.includes('ازاي')) {
-          reply = '🛒 **خطوات الطلب بسيطة جداً:**\n1. تصفح الكتالوج واضغط على زر "للسلة 🛒" للساعة التي تعجبك.\n2. افتح السلة واضغط "متابعة الشراء".\n3. ادخل بياناتك وعنوانك وحول عربون الشحن (100 ج) عبر إنستاباي لحجز المندوب.\n4. سيتم إرسال الفاتورة عبر واتساب وتجهيز الشحن فوراً!';
-        } else if (lower.includes('معاينة') || lower.includes('ضمان') || lower.includes('استلام') || lower.includes('افحص') || lower.includes('فتح')) {
-          reply = '🛡️ **نظام المعاينة والضمان في AURA:**\n• لك كامل الحق في **فتح الشحنة وقياس الساعة وفحص وزنها وماكينتها** مع مندوب الشحن قبل دفع باقي الحساب.\n• جميع الساعات بماكينات يابانية معتمدة عالية الدقة وزجاج زفير مقاوم للخدش.\n• كل ساعة تأتي مع علبة فاخرة وكارت ضمان لمدة عام كامل ضد عيوب الصناعة.';
-        } else if (lower.includes('شحن') || lower.includes('توصيل') || lower.includes('محافظ') || lower.includes('كام يوم') || lower.includes('وقت')) {
-          reply = '🚚 **مواعيد الشحن والتوصيل:**\n• القاهرة والجيزة والإسكندرية: خلال 24 إلى 48 ساعة فقط.\n• محافظات الدلتا والقناة والصعيد: خلال 2 إلى 3 أيام عمل.\n• الشحن مجاني مع المعاينة والقياس قبل الدفع.';
-        } else if (lower.includes('عربون') || lower.includes('ديبوزت') || lower.includes('إنستاباي') || lower.includes('instapay') || lower.includes('100')) {
-          reply = '💳 **تفاصيل عربون جدية الشحن (100 ج.م):**\nلضمان جدية الاستلام وحجز مندوب التوصيل، يتم تحويل 100 ج.م عبر تطبيق إنستاباي InstaPay على الرقم:\n📱 **01005823798**\nوتُخصم الـ 100 ج.م بالكامل من إجمالي الفاتورة عند استلامك للساعة.';
-        } else if (lower.includes('سعر') || lower.includes('اسعار') || lower.includes('بكام') || lower.includes('رخيص')) {
+        // 1. الديبوزت وإنستاباي (أولوية قصوى)
+        if (t.includes('عربون') || t.includes('ديبوزت') || t.includes('انستاباي') || t.includes('إنستاباي') || t.includes('instapay') || t.includes('100') || t.includes('تحويل')) {
+          reply = '⚡ **تفاصيل عربون جدية الشحن (100 ج.م):**\n• لحجز المندوب وتأكيد جدية استلامك للساعة، يتم تحويل 100 ج.م عربون عبر تطبيق إنستاباي.\n• 📱 **رقم التحويل:** `01010143989`\n• 🔗 **عنوان إنستاباي:** `mahmoudabokhashm2006@instapay`\n• 📲 **رابط التحويل المباشر:**\nhttps://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk\n\n📌 *ملحوظة:* الـ 100 ج.م تُخصم بالكامل من إجمالي الفاتورة عند استلامك للساعة.';
+        }
+        // 2. التحيات
+        else if (t.includes('سلام') || t.includes('مرحبا') || t.includes('اهلا') || t.includes('أهلا') || t.includes('هاي') || t.includes('صباح') || t.includes('مساء') || t.includes('ازيك') || t.includes('عامل ايه')) {
+          reply = 'أهلاً بحضرتك في متجر **AURA** للساعات الفاخرة! ⌚🌟\nيسعدني جداً خدمتك اليوم. يمكنك سؤالي عن:\n• 🛒 طريقة عمل أوردر والشراء\n• 🛡️ نظام المعاينة والقياس قبل الدفع والضمان\n• 🚚 مواعيد الشحن وعربون إنستاباي (100 ج)\n• 💎 ترشيحات الماركات وأسعار الساعات.';
+        }
+        // 3. طريقة الطلب والشراء
+        else if (t.includes('اطلب') || t.includes('اشتري') || t.includes('شراء') || t.includes('اوردر') || t.includes('أوردر') || t.includes('سلة') || t.includes('طريقة الطلب') || t.includes('ازاي')) {
+          reply = '🛒 **خطوات الطلب وتأكيد الشراء:**\n1. اختر الساعة التي تعجبك من الكتالوج واضغط **"للسلة 🛒"**.\n2. افتح السلة من أعلى الصفحة واضغط **"متابعة الشراء"**.\n3. املأ بيانات الاسم والعنوان بالتفصيل، ثم حول عربون الـ 100 ج عبر إنستاباي على **01010143989**.\n4. اضغط **"إرسال الطلب بالواتساب"** وسنقوم بتجهيز الشحن والمعاينة لك فوراً!';
+        }
+        // 4. المعاينة والضمان
+        else if (t.includes('معاين') || t.includes('ضمان') || t.includes('استلام') || t.includes('افحص') || t.includes('فتح') || t.includes('قيس') || t.includes('قياس') || t.includes('اصلي') || t.includes('خام')) {
+          reply = '🛡️ **نظام المعاينة والضمان في AURA:**\n• **المعاينة والقياس مجاناً مع المندوب:** لك كامل الحق في فتح الشحنة وقياس الساعة وفحص وزنها وتشغيلها قبل دفع باقي الحساب.\n• جميع الساعات بماكينات يابانية معتمدة عالية الدقة وزجاج زفير مقاوم للخدش.\n• كل ساعة تأتي مع علبة فاخرة وكارت ضمان لمدة عام كامل.';
+        }
+        // 5. الشحن ومواعيد التوصيل
+        else if (t.includes('شحن') || t.includes('توصيل') || t.includes('محافظ') || t.includes('كام يوم') || t.includes('وقت') || t.includes('مكان') || t.includes('عنوان')) {
+          reply = '🚚 **مواعيد الشحن والتوصيل:**\n• القاهرة والجيزة والإسكندرية: توصيل سريع خلال 24 إلى 48 ساعة.\n• محافظات الدلتا والقناة والصعيد: خلال 2 إلى 3 أيام عمل.\n• الشحن مجاني لجميع المحافظات مع المعاينة والقياس قبل الدفع.';
+        }
+        // 6. الأسعار
+        else if (t.includes('سعر') || t.includes('اسعار') || t.includes('بكام') || t.includes('تكلفة') || t.includes('رخيص') || t.includes('غالي')) {
           reply = '💎 **أسعار الساعات في AURA:**\nساعاتنا ماستر كواليتي تبدأ من **2,900 ج.م** لأعلى فئة وتصل حتى 4,200 ج.م (حسب الماركة كـ Rolex, Omega, Cartier, Casio Edifice, Tommy, Lacoste) مع علبة وكارت ضمان وشحن مجاني ومعاينة.';
-        } else if (lower.includes('رولكس') || lower.includes('rolex') || lower.includes('داي ديت') || lower.includes('صبمارينر')) {
-          reply = '👑 **مجموعة رولكس Rolex:**\nمتوفر لدينا أشهر إصدارات رولكس (Submariner Hulk, Day-Date 40, Sky-Dweller, Datejust, GMT-Master II Pepsi) بماكينات أوتوماتيك ويابانية راقية وزجاج زفير. تصفحها بالضغط على فلتر "رولكس" في الكتالوج!';
-        } else if (lower.includes('كارتييه') || lower.includes('cartier') || lower.includes('تانك') || lower.includes('سانتوس') || lower.includes('رسمي') || lower.includes('بدل')) {
-          reply = '👔 **مجموعة كارتييه والأطقم الرسمية:**\nساعات كارتييه تانك (Tank) وسانتوس (Santos) هي الخيار المثالي للبدلات والمناسبات الفاخرة بفضل تصميمها المستطيل الأنيق وسيور الجلد الطبيعي.';
-        } else if (lower.includes('رياضي') || lower.includes('سبورت') || lower.includes('مية') || lower.includes('ماء') || lower.includes('كاسيو') || lower.includes('تومي') || lower.includes('لاكوست')) {
-          reply = '🏊 **الساعات الرياضية والكاجوال:**\nننصحك بمجموعات كاسيو إيديفيس (Casio Edifice) وتومي هيلفيغر (Tommy TH85) ولاكوست الرياضية، المقاومة للماء والمزودة بكرونوغراف دقيق وعقارب مضيئة.';
-        } else if (lower.includes('تواصل') || lower.includes('رقم') || lower.includes('واتس') || lower.includes('محادثة') || lower.includes('كلمني')) {
-          reply = '📞 يمكنك التواصل المباشر مع المالك هاتفياً أو عبر واتساب على الرقم:\n📱 **01005823798**\nجاهزون للرد على كافة استفساراتكم على مدار الساعة!';
-        } else {
-          reply = 'يسعدني مساعدتك! ⌚ يمكنك طلب أي ساعة وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً قبل الدفع. للتواصل المباشر مع الإدارة كلمنا واتساب على: 01005823798.';
+        }
+        // 7. ماركة رولكس
+        else if (t.includes('رولكس') || t.includes('rolex') || t.includes('داي ديت') || t.includes('صبمارينر') || t.includes('سكاي')) {
+          reply = '👑 **مجموعة رولكس Rolex:**\nمتوفر لدينا أقوى إصدارات رولكس (Submariner Hulk, Day-Date 40, Sky-Dweller, Datejust, GMT-Master II Pepsi) بماكينات أوتوماتيك ويابانية راقية وزجاج زفير. تصفحها بالضغط على فلتر "رولكس" في الكتالوج!';
+        }
+        // 8. ماركة كارتييه والرسميات
+        else if (t.includes('كارتييه') || t.includes('cartier') || t.includes('تانك') || t.includes('سانتوس') || t.includes('رسمي') || t.includes('بدل')) {
+          reply = '👔 **مجموعة كارتييه والأطقم الرسمية:**\nساعات كارتييه تانك (Tank) وسانتوس (Santos) هي الخيار الكلاسيكي الفاخر للبدلات والمناسبات الرسمية بفضل تصميمها الأنيق وسيور الجلد الطبيعي المريح.';
+        }
+        // 9. الساعات الرياضية
+        else if (t.includes('رياضي') || t.includes('سبورت') || t.includes('مية') || t.includes('ماء') || t.includes('كاسيو') || t.includes('تومي') || t.includes('لاكوست') || t.includes('omega') || t.includes('اوميغا') || t.includes('أوميغا')) {
+          reply = '🏊 **الساعات الرياضية والكاجوال:**\nننصحك بمجموعات كاسيو إيديفيس (Casio Edifice) وتومي هيلفيغر (Tommy TH85) وأوميغا سي ماستر المقاومة للماء والمزودة بكرونوغراف دقيق وعقارب فوسفورية مضيئة.';
+        }
+        // 10. التواصل المباشر
+        else if (t.includes('تواصل') || t.includes('رقم') || t.includes('واتس') || t.includes('فون') || t.includes('اتصال') || t.includes('خدمة العملاء')) {
+          reply = '📞 يمكنك التواصل المباشر مع إدارة المتجر عبر واتساب أو الاتصال على:\n📱 **01005823798**\nيسعدنا الرد على كافة استفساراتك على مدار الساعة!';
+        }
+        // رد عام ذكي
+        else {
+          reply = 'يسعدني مساعدتك! ⌚ يمكنك طلب أي ساعة وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً قبل الدفع.\nللتواصل المباشر مع الإدارة كلمنا واتساب على: 01005823798.';
         }
 
         const botMsg = document.createElement('div');
@@ -801,11 +805,11 @@
         botMsg.innerText = reply;
         container.appendChild(botMsg);
         container.scrollTop = container.scrollHeight;
-      }, 400);
+      }, 350);
     }
 
     renderProducts();
     updateBadges();
   </script>
 </body>
-  </html>
+</html>
