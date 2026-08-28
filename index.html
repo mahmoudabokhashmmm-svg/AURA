@@ -168,9 +168,7 @@
     </div>
 
     <!-- شبكة الـ 99 ساعة -->
-    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-      <!-- يتم حقن الـ 99 ساعة ديناميكياً بواسطة JavaScript -->
-    </div>
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </section>
 
   <!-- نافذة إتمام الطلب الشاملة (Checkout Modal) -->
@@ -212,14 +210,14 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label class="block text-xs font-bold text-[#4a3b31] mb-1">رقم الموبايل (واتساب) *</label>
-            <input type="tel" id="custPhone" required placeholder="01010143989" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
+            <input type="tel" id="custPhone" required placeholder="01005823798" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
           </div>
           <div>
             <label class="block text-xs font-bold text-[#4a3b31] mb-1">المحافظة *</label>
             <select id="custGov" required class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
+              <option value="القاهرة والجيزة">القاهرة والجيزة (توصيل 24-48 ساعة)</option>
+              <option value="الإسكندرية والساحل">الإسكندرية والساحل</option>
               <option value="محافظات الدلتا والقناة">محافظات الدلتا والقناة</option>
-              <option value="القاهرة والجيزة">القاهرة والجيزة</option>
-              <option value="الإسكندرية">الإسكندرية</option>
               <option value="محافظات الصعيد">محافظات الصعيد</option>
               <option value="محافظات أخرى">محافظات أخرى</option>
             </select>
@@ -228,13 +226,13 @@
 
         <div>
           <label class="block text-xs font-bold text-[#4a3b31] mb-1">العنوان التفصيلي وعلامة مميزة *</label>
-          <input type="text" id="custAddress" required placeholder="مثال: دمنهور شارع شندي اخر شارع المعهد الديني قصاد الدفراوي" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
+          <input type="text" id="custAddress" required placeholder="الشارع / رقم العمارة / الشقة" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
         </div>
 
         <div>
           <label class="block text-xs font-bold text-[#4a3b31] mb-1">طريقة الدفع *</label>
           <select id="custPayment" class="w-full bg-[#fdfbf7] border border-[#eddcc9] rounded-xl p-3 text-xs text-[#231812] focus:outline-none focus:border-[#b08968]">
-            <option value="كاش عند الاستلام">كاش عند الاستلام (معاينة قبل الدفع)</option>
+            <option value="كاش عند الاستلام">كاش عند الاستلام (معاينة وقياس قبل الدفع)</option>
             <option value="إنستاباي InstaPay">تحويل إنستاباي InstaPay</option>
           </select>
         </div>
@@ -245,7 +243,7 @@
             <i class="fa-solid fa-triangle-exclamation"></i>
             <span>تنبيه ديبوزت جدية الشحن (100 ج.م)</span>
           </div>
-          <p>لضمان جدية الاستلام وحجز المندوب، يتم تحويل 100 ج.م عربون شحن على إنستاباي رقم: <strong dir="ltr" class="font-black text-[#231812]">01005823798</strong> أو <strong dir="ltr" class="font-black text-[#231812]">01010143989</strong> وخصمها من إجمالي الفاتورة عند الاستلام.</p>
+          <p>لضمان جدية الاستلام وحجز المندوب، يتم تحويل 100 ج.م عربون شحن على إنستاباي رقم: <strong dir="ltr" class="font-black text-[#231812]">01005823798</strong> وخصمها من إجمالي الفاتورة عند الاستلام.</p>
         </div>
 
         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 text-sm">
@@ -265,9 +263,9 @@
           <i class="fa-solid fa-robot text-white"></i>
         </div>
         <div>
-          <h4 class="text-xs font-bold">مستشار AURA للساعات</h4>
+          <h4 class="text-xs font-bold">مستشار AURA للساعات الذكي</h4>
           <span class="text-[9px] text-emerald-400 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> متصل لمساعدتك
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> متصل لمساعدتك الشاملة
           </span>
         </div>
       </div>
@@ -277,16 +275,18 @@
     </div>
 
     <div id="chatMessages" class="p-4 h-72 overflow-y-auto custom-scroll space-y-3 bg-[#fdfbf7] text-xs">
-      <div class="bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812]">
-        أهلاً بك في AURA! ⌚ أنا مستشارك الشخصي لمساعدتك في اختيار الساعة المثالية أو الإجابة عن الضمان والمعاينة. كيف أساعدك اليوم؟
+      <div class="bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812] leading-relaxed">
+        أهلاً بك في <strong>AURA</strong>! ⌚✨<br>
+        أنا مستشارك الذكي لمساعدتك في كل ما يخص الساعات، الضمان، الشحن، أو طريقة الطلب. كيف أساعدك اليوم؟
       </div>
     </div>
 
     <!-- أزرار الأسئلة الشائعة السريعة -->
     <div class="p-2 bg-white border-t border-[#eddcc9] flex gap-1.5 overflow-x-auto scrollbar-none">
-      <button onclick="sendQuickPrompt('ما هو نظام المعاينة قبل الدفع؟')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">المعاينة والضمان؟</button>
-      <button onclick="sendQuickPrompt('رشحلي أفضل ساعة للمناسبات والبدلات')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">ساعة رسمية؟</button>
-      <button onclick="sendQuickPrompt('عايز ساعة رياضية ضد المية')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">ساعة رياضية؟</button>
+      <button onclick="sendQuickPrompt('ازاي اطلب ساعة؟')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">طريقة الطلب؟</button>
+      <button onclick="sendQuickPrompt('المعاينة والضمان ونظام الاستلام')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">المعاينة والضمان؟</button>
+      <button onclick="sendQuickPrompt('تفاصيل الشحن والتوصيل والعربون')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">الشحن والعربون؟</button>
+      <button onclick="sendQuickPrompt('رشحلي أفضل الساعات الكلاسيكية والرياضية')" class="px-2.5 py-1 bg-[#f7f2ea] hover:bg-[#eddcc9] rounded-full text-[10px] font-bold text-[#735340] whitespace-nowrap">ترشيحات الساعات؟</button>
     </div>
 
     <!-- حقل إرسال الرسالة -->
@@ -353,7 +353,6 @@
     </div>
   </div>
 
-  <!-- السكربت الشامل لكل الـ 99 صورة ورسائل الواتساب والشات بوت -->
   <script>
     const imageFiles = [
       "rolex-men-land-dweller-ice-blue-honeycomb-dial-watch-990x990.webp",
@@ -457,23 +456,24 @@
       "1-25.jpg.webp"
     ];
 
+    // تحديث الأسعار لتبدأ من 2900 ج.م فما فوق
     const allWatches = imageFiles.map((file, idx) => {
       const lower = file.toLowerCase();
       let brand = 'rolex';
       let brandName = 'رولكس';
-      let price = 1050;
-      let oldPrice = 1550;
+      let price = 3850;
+      let oldPrice = 5200;
 
       if (lower.includes('cartier') || lower.includes('santos') || lower.includes('tank')) {
-        brand = 'cartier'; brandName = 'كارتييه'; price = 950; oldPrice = 1390;
+        brand = 'cartier'; brandName = 'كارتييه'; price = 3450; oldPrice = 4700;
       } else if (lower.includes('tommy') || lower.includes('hilfiger') || lower.includes('th85') || lower.includes('1792')) {
-        brand = 'tommy'; brandName = 'تومي هيلفيغر'; price = 850; oldPrice = 1250;
+        brand = 'tommy'; brandName = 'تومي هيلفيغر'; price = 3100; oldPrice = 4200;
       } else if (lower.includes('lacoste') || lower.includes('2011')) {
-        brand = 'lacoste'; brandName = 'لاكوست'; price = 790; oldPrice = 1190;
+        brand = 'lacoste'; brandName = 'لاكوست'; price = 2900; oldPrice = 3900;
       } else if (lower.includes('casio') || lower.includes('edifice') || lower.startsWith('1-9') || lower.startsWith('1-8') || lower.startsWith('1-10')) {
-        brand = 'casio'; brandName = 'كاسيو إيديفيس'; price = 890; oldPrice = 1290;
+        brand = 'casio'; brandName = 'كاسيو إيديفيس'; price = 2950; oldPrice = 3950;
       } else if (lower.includes('omega') || lower.includes('seamaster') || lower.includes('1-25')) {
-        brand = 'omega'; brandName = 'أوميغا'; price = 1250; oldPrice = 1790;
+        brand = 'omega'; brandName = 'أوميغا'; price = 4200; oldPrice = 5800;
       }
 
       const clean = file.replace(/\.(webp|jpe?g|png|gif)(\.webp)?$/i, '').replace(/[-_]+/g, ' ').replace(/\b\d{3,4}x\d{3,4}\b/gi, '').trim();
@@ -537,8 +537,8 @@
           </div>
           <div class="p-4 border-t border-[#eddcc9] flex items-center justify-between gap-2">
             <div>
-              <span class="text-base font-black text-[#8c6f5b]">${watch.price} ج.م</span>
-              <span class="text-xs text-stone-400 line-through block">${watch.oldPrice} ج.م</span>
+              <span class="text-base font-black text-[#8c6f5b]">${watch.price.toLocaleString()} ج.م</span>
+              <span class="text-xs text-stone-400 line-through block">${watch.oldPrice.toLocaleString()} ج.م</span>
             </div>
             <button onclick="addToCart(${watch.id})" class="bg-[#231812] hover:bg-[#3d281a] text-white text-xs font-bold px-4 py-2 rounded-xl transition-all">
               للسلة 🛒
@@ -596,7 +596,7 @@
           <img src="${w.img}" class="w-12 h-12 object-cover rounded-lg">
           <div class="flex-1 min-w-0">
             <h4 class="text-xs font-bold truncate">${w.title}</h4>
-            <span class="text-xs text-amber-400">${w.price} ج.م</span>
+            <span class="text-xs text-amber-400">${w.price.toLocaleString()} ج.م</span>
           </div>
           <button onclick="addToCart(${w.id})" class="text-xs bg-amber-500 text-stone-950 px-2.5 py-1 rounded-lg font-bold">للسلة</button>
           <button onclick="toggleWishlist(${w.id})" class="text-rose-400 text-sm"><i class="fa-solid fa-trash"></i></button>
@@ -638,13 +638,13 @@
             <img src="${item.img}" class="w-12 h-12 object-cover rounded-lg">
             <div class="flex-1 min-w-0">
               <h4 class="text-xs font-bold text-[#231812] truncate">${item.title}</h4>
-              <span class="text-xs font-black text-[#8c6f5b]">${item.price} ج.م × ${item.qty}</span>
+              <span class="text-xs font-black text-[#8c6f5b]">${item.price.toLocaleString()} ج.م × ${item.qty}</span>
             </div>
             <button onclick="removeFromCart(${item.id})" class="text-rose-600 text-sm"><i class="fa-solid fa-trash"></i></button>
           </div>
         `;
       }).join('');
-      document.getElementById('cartTotalPrice').innerText = total + ' ج.م';
+      document.getElementById('cartTotalPrice').innerText = total.toLocaleString() + ' ج.م';
     }
 
     function removeFromCart(id) {
@@ -695,14 +695,13 @@
         return `
           <div class="flex items-center justify-between text-xs py-1 border-b border-[#eddcc9]/50">
             <span class="font-bold truncate max-w-[200px]">${item.title} (×${item.qty})</span>
-            <span class="font-black text-[#8c6f5b]">${item.price * item.qty} ج.م</span>
+            <span class="font-black text-[#8c6f5b]">${(item.price * item.qty).toLocaleString()} ج.م</span>
           </div>
         `;
       }).join('');
-      document.getElementById('checkoutTotalAmount').innerText = total + ' ج.م';
+      document.getElementById('checkoutTotalAmount').innerText = total.toLocaleString() + ' ج.م';
     }
 
-    // توليد وإرسال رسالة الواتساب بنفس التنسيق المطلوب بالضبط
     function handleCheckoutSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('custName').value.trim();
@@ -711,10 +710,8 @@
       const address = document.getElementById('custAddress').value.trim();
       const payment = document.getElementById('custPayment').value;
 
-      // توليد رقم فاتورة عشوائي
       const invoiceNum = 'AURA-' + Math.floor(100000 + Math.random() * 900000);
 
-      // بناء نص رسالة الواتساب المطابقة للصورة تماماً
       let msg = `🛍️ *طلب جديد من متجر AURA للساعات*\n`;
       msg += `-----------------------------\n`;
       msg += `🧾 *رقم الفاتورة:* #${invoiceNum}\n`;
@@ -723,7 +720,7 @@
       msg += `📍 *المحافظة:* ${gov}\n`;
       msg += `🏠 *العنوان التفصيلي:* ${address}\n`;
       msg += `💵 *طريقة الدفع:* ${payment}\n`;
-      msg += `⚠️ *تنبيه الديبوزت:* تم إرفاق سكرين شوت تحويل 100 ج.م عربون شحن على إنستاباي (01005823798 / 01010143989)\n`;
+      msg += `⚡ *تنبيه الديبوزت:* تم إرفاق سكرين شوت تحويل 100 ج.م عربون شحن على إنستاباي (01005823798)\n`;
       msg += `-----------------------------\n`;
       msg += `⌚ *الساعات المطلوبة:*\n`;
 
@@ -731,14 +728,12 @@
       cart.forEach((item, i) => {
         const itemTotal = item.price * item.qty;
         total += itemTotal;
-        msg += `${i + 1}. *${item.title}* (${item.qty} قطع) - السعر: ${itemTotal} ج.م\n`;
-        msg += `🔗 *صورة الساعة:* ${item.img}\n\n`;
+        msg += `${i + 1}. *${item.title}* (${item.qty} قطع) - السعر: ${itemTotal.toLocaleString()} ج.م\n`;
       });
 
       msg += `-----------------------------\n`;
-      msg += `💰 *الإجمالي المستحق:* ${total} ج.م (شحن مجاني ومعاينة)\n`;
+      msg += `💰 *الإجمالي المستحق:* ${total.toLocaleString()} ج.م (شحن مجاني ومعاينة)\n`;
 
-      // فتح واتساب
       const targetPhone = '201005823798';
       const encodedMsg = encodeURIComponent(msg);
       window.open(`https://wa.me/${targetPhone}?text=${encodedMsg}`, '_blank');
@@ -746,7 +741,7 @@
       toggleCheckoutModal(false);
     }
 
-    // منطق الشات بوت المساعد
+    // منطق الشات بوت الذكي المتكامل
     function toggleChatbot(open) {
       const b = document.getElementById('chatbotModal');
       if (open) { b.classList.remove('hidden'); b.classList.add('flex'); }
@@ -765,41 +760,52 @@
 
       const container = document.getElementById('chatMessages');
 
-      // رسالة العميل
       const userMsg = document.createElement('div');
-      userMsg.className = 'bg-[#231812] text-white p-3 rounded-2xl rounded-tl-none mr-auto max-w-[85%]';
+      userMsg.className = 'bg-[#231812] text-white p-3 rounded-2xl rounded-tl-none mr-auto max-w-[85%] font-medium';
       userMsg.innerText = text;
       container.appendChild(userMsg);
 
       input.value = '';
       container.scrollTop = container.scrollHeight;
 
-      // رد الشات بوت الذكي التلقائي
       setTimeout(() => {
-        let reply = 'أهلاً بك! يمكنك طلب أي ساعة وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً.';
         const lower = text.toLowerCase();
-        
-        if (lower.includes('معاينة') || lower.includes('ضمان') || lower.includes('استلام')) {
-          reply = '🛡️ **نظام الضمان والمعاينة في AURA:**\nلك الحق في فتح الشحنة وقياس الساعة ومعاينة الماكينة مع المندوب قبل دفع باقي الحساب، بالإضافة لضمان معتمد لمدة عام كامل مع كارت الضمان والعلبة.';
-        } else if (lower.includes('رسمي') || lower.includes('بدل') || lower.includes('كارتييه') || lower.includes('تانك')) {
-          reply = '👔 **ترشيحات الساعات الكلاسيكية والرسمية:**\nننصحك بمجموعة كارتييه تانك لويس المستطيلة، أو رولكس داي ديت 40 وسكاي دويلر، حيث تنزلق بسلاسة تحت أكمام القمصان والبدلات.';
-        } else if (lower.includes('رياضي') || lower.includes('مية') || lower.includes('ماء') || lower.includes('سبورت')) {
-          reply = '🏊 **ترشيحات الساعات الرياضية:**\nننصحك بساعات رولكس صبمارينر (هالك)، وتومي هيلفيغر TH85 كرونوغراف، وكاسيو إيديفيس، حيث تتمتع بمقاومة ماء عالية وعقارب فوسفورية مضيئة.';
-        } else if (lower.includes('عربون') || lower.includes('ديبوزت') || lower.includes('إنستاباي') || lower.includes('شحن')) {
-          reply = '💳 **عربون الشحن (100 ج.م):**\nيتم تحويل 100 ج.م عربون جدية شحن عبر إنستاباي على 01005823798 وتخصم من إجمالي الفاتورة عند الاستلام.';
+        let reply = '';
+
+        if (lower.includes('سلام') || lower.includes('مرحبا') || lower.includes('اهلا') || lower.includes('هاي') || lower.includes('صباح') || lower.includes('مساء')) {
+          reply = 'أهلاً بحضرتك في متجر AURA للساعات الفاخرة! ⌚🌟\nيسعدني جداً مساعدتك. يمكنك الاستفسار عن (طريقة الطلب - الأسعار - الضمان والمعاينة - مواعيد الشحن - ترشيحات الساعات المناسبة لك).';
+        } else if (lower.includes('طلب') || lower.includes('اشتري') || lower.includes('اوردر') || lower.includes('ازاي')) {
+          reply = '🛒 **خطوات الطلب بسيطة جداً:**\n1. تصفح الكتالوج واضغط على زر "للسلة 🛒" للساعة التي تعجبك.\n2. افتح السلة واضغط "متابعة الشراء".\n3. ادخل بياناتك وعنوانك وحول عربون الشحن (100 ج) عبر إنستاباي لحجز المندوب.\n4. سيتم إرسال الفاتورة عبر واتساب وتجهيز الشحن فوراً!';
+        } else if (lower.includes('معاينة') || lower.includes('ضمان') || lower.includes('استلام') || lower.includes('افحص') || lower.includes('فتح')) {
+          reply = '🛡️ **نظام المعاينة والضمان في AURA:**\n• لك كامل الحق في **فتح الشحنة وقياس الساعة وفحص وزنها وماكينتها** مع مندوب الشحن قبل دفع باقي الحساب.\n• جميع الساعات بماكينات يابانية معتمدة عالية الدقة وزجاج زفير مقاوم للخدش.\n• كل ساعة تأتي مع علبة فاخرة وكارت ضمان لمدة عام كامل ضد عيوب الصناعة.';
+        } else if (lower.includes('شحن') || lower.includes('توصيل') || lower.includes('محافظ') || lower.includes('كام يوم') || lower.includes('وقت')) {
+          reply = '🚚 **مواعيد الشحن والتوصيل:**\n• القاهرة والجيزة والإسكندرية: خلال 24 إلى 48 ساعة فقط.\n• محافظات الدلتا والقناة والصعيد: خلال 2 إلى 3 أيام عمل.\n• الشحن مجاني مع المعاينة والقياس قبل الدفع.';
+        } else if (lower.includes('عربون') || lower.includes('ديبوزت') || lower.includes('إنستاباي') || lower.includes('instapay') || lower.includes('100')) {
+          reply = '💳 **تفاصيل عربون جدية الشحن (100 ج.م):**\nلضمان جدية الاستلام وحجز مندوب التوصيل، يتم تحويل 100 ج.م عبر تطبيق إنستاباي InstaPay على الرقم:\n📱 **01005823798**\nوتُخصم الـ 100 ج.م بالكامل من إجمالي الفاتورة عند استلامك للساعة.';
+        } else if (lower.includes('سعر') || lower.includes('اسعار') || lower.includes('بكام') || lower.includes('رخيص')) {
+          reply = '💎 **أسعار الساعات في AURA:**\nساعاتنا ماستر كواليتي تبدأ من **2,900 ج.م** لأعلى فئة وتصل حتى 4,200 ج.م (حسب الماركة كـ Rolex, Omega, Cartier, Casio Edifice, Tommy, Lacoste) مع علبة وكارت ضمان وشحن مجاني ومعاينة.';
+        } else if (lower.includes('رولكس') || lower.includes('rolex') || lower.includes('داي ديت') || lower.includes('صبمارينر')) {
+          reply = '👑 **مجموعة رولكس Rolex:**\nمتوفر لدينا أشهر إصدارات رولكس (Submariner Hulk, Day-Date 40, Sky-Dweller, Datejust, GMT-Master II Pepsi) بماكينات أوتوماتيك ويابانية راقية وزجاج زفير. تصفحها بالضغط على فلتر "رولكس" في الكتالوج!';
+        } else if (lower.includes('كارتييه') || lower.includes('cartier') || lower.includes('تانك') || lower.includes('سانتوس') || lower.includes('رسمي') || lower.includes('بدل')) {
+          reply = '👔 **مجموعة كارتييه والأطقم الرسمية:**\nساعات كارتييه تانك (Tank) وسانتوس (Santos) هي الخيار المثالي للبدلات والمناسبات الفاخرة بفضل تصميمها المستطيل الأنيق وسيور الجلد الطبيعي.';
+        } else if (lower.includes('رياضي') || lower.includes('سبورت') || lower.includes('مية') || lower.includes('ماء') || lower.includes('كاسيو') || lower.includes('تومي') || lower.includes('لاكوست')) {
+          reply = '🏊 **الساعات الرياضية والكاجوال:**\nننصحك بمجموعات كاسيو إيديفيس (Casio Edifice) وتومي هيلفيغر (Tommy TH85) ولاكوست الرياضية، المقاومة للماء والمزودة بكرونوغراف دقيق وعقارب مضيئة.';
+        } else if (lower.includes('تواصل') || lower.includes('رقم') || lower.includes('واتس') || lower.includes('محادثة') || lower.includes('كلمني')) {
+          reply = '📞 يمكنك التواصل المباشر مع المالك هاتفياً أو عبر واتساب على الرقم:\n📱 **01005823798**\nجاهزون للرد على كافة استفساراتكم على مدار الساعة!';
+        } else {
+          reply = 'يسعدني مساعدتك! ⌚ يمكنك طلب أي ساعة وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً قبل الدفع. للتواصل المباشر مع الإدارة كلمنا واتساب على: 01005823798.';
         }
 
         const botMsg = document.createElement('div');
-        botMsg.className = 'bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812] whitespace-pre-line';
+        botMsg.className = 'bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812] whitespace-pre-line leading-relaxed';
         botMsg.innerText = reply;
         container.appendChild(botMsg);
         container.scrollTop = container.scrollHeight;
-      }, 500);
+      }, 400);
     }
 
-    // التشغيل المبدئي
     renderProducts();
     updateBadges();
   </script>
 </body>
-      </html>
+  </html>
