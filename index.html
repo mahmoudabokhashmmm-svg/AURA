@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA | أورا — متجر الساعات الفاخرة</title>
+  <meta name="description" content="متجر AURA للساعات الفاخرة المعتمدة بماكينات يابانية دقيقة وضمان عام كامل ومعاينة قبل الدفع">
+  
+  <!-- خطوط جوجل الفاخرة -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Cinzel:wght@600;700;800;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            aura: {
+              bg: '#fdfbf7',
+              dark: '#231812',
+              card: '#ffffff',
+              border: '#eddcc9',
+              gold: '#b08968',
+              goldDark: '#8c6f5b',
+              accent: '#f7f2ea'
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            cinzel: ['Cinzel', 'serif']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    body { font-family: 'Cairo', sans-serif; background-color: #fdfbf7; color: #231812; }
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .custom-scroll::-webkit-scrollbar { width: 6px; }
+    .custom-scroll::-webkit-scrollbar-track { background: #f7f2ea; }
+    .custom-scroll::-webkit-scrollbar-thumb { background: #dec2a3; border-radius: 4px; }
+  </style>
+</head>
+<body class="overflow-x-hidden antialiased bg-[#fdfbf7]">
+
+  <!-- شريط الإعلان العلوي -->
+  <div class="bg-[#231812] text-[#f7f2ea] text-xs py-2.5 px-4 text-center flex items-center justify-center gap-2 border-b border-[#3d281a]">
+    <i class="fa-solid fa-truck-fast text-[#dec2a3]"></i>
+    <span class="font-bold">توصيل سريع لكافة محافظات مصر • المعاينة والقياس مجاناً مع المندوب قبل دفع باقي المبلغ</span>
+  </div>
+
+  <!-- الهيدر وشريط التنقل -->
+  <header class="sticky top-0 z-40 bg-[#fdfbf7]/90 backdrop-blur-md border-b border-[#eddcc9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      
+      <!-- الشعار -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div class="w-11 h-11 rounded-full bg-[#231812] text-[#fdfbf7] flex items-center justify-center font-bold text-xl font-cinzel shadow-sm group-hover:scale-105 transition-transform">
+          A
+        </div>
+        <div class="flex flex-col">
+          <span class="font-cinzel text-xl sm:text-2xl font-black tracking-widest text-[#231812] leading-none">AURA</span>
+          <span class="text-[9px] uppercase tracking-widest text-[#8c6f5b] font-semibold">Luxury Timepieces</span>
+        </div>
+      </a>
+
+      <!-- روابط التنقل -->
+      <nav class="hidden md:flex items-center gap-6 text-xs sm:text-sm font-bold text-[#4a3b31]">
+        <a href="#home" class="hover:text-[#8c6f5b] transition-colors">الرئيسية</a>
+        <a href="#products" class="hover:text-[#8c6f5b] transition-colors">الكتالوج الكامل (99 ساعة)</a>
+        <a href="#watch-guide" class="hover:text-[#8c6f5b] transition-colors flex items-center gap-1.5">
+          <i class="fa-regular fa-compass text-[#b08968]"></i>
+          <span>دليل اختيار ساعتك</span>
+        </a>
+      </nav>
+
+      <!-- الأزرار والإجراءات -->
+      <div class="flex items-center gap-2.5">
+        <a href="https://wa.me/201005823798" target="_blank" class="hidden lg:flex items-center gap-1.5 text-xs font-bold bg-[#f7f2ea] hover:bg-[#eddcc9] text-[#231812] px-3.5 py-2 rounded-full transition-all border border-[#eddcc9]">
+          <i class="fa-brands fa-whatsapp text-emerald-600 text-sm"></i>
+          <span dir="ltr">01005823798</span>
+        </a>
+
+        <!-- زر المفضلة -->
+        <button onclick="toggleWishlistDrawer(true)" class="relative p-2.5 sm:px-3 sm:py-2 rounded-full bg-[#f7f2ea] hover:bg-[#eddcc9] text-[#231812] border border-[#eddcc9] text-xs font-bold flex items-center gap-1.5 transition-all">
+          <i class="fa-solid fa-heart text-rose-500 text-sm"></i>
+          <span class="hidden sm:inline">المفضلة</span>
+          <span id="wishlistCountBadge" class="bg-rose-500 text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center">0</span>
+        </button>
+
+        <!-- زر السلة -->
+        <button onclick="toggleCartDrawer(true)" class="relative bg-[#231812] hover:bg-[#3d281a] text-white px-3.5 sm:px-4 py-2 rounded-full text-xs font-bold flex items-center gap-2 shadow-xs transition-all">
+          <i class="fa-solid fa-bag-shopping text-[#dec2a3]"></i>
+          <span class="hidden sm:inline">السلة</span>
+          <span id="cartCountBadge" class="bg-[#b08968] text-white text-[10px] font-black w-4.5 h-4.5 rounded-full flex items-center justify-center">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- القسم الترحيبي Hero -->
+  <section id="home" class="relative py-12 sm:py-20 overflow-hidden bg-gradient-to-b from-[#f7f2ea] to-[#fdfbf7] border-b border-[#eddcc9]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-5">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-[#eddcc9] text-xs font-bold text-[#735340] shadow-xs">
+        <i class="fa-solid fa-gem text-[#b08968]"></i>
+        <span>المجموعة الشاملة 2026 — 99 ساعة فاخرة بضمان معتمد</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-[#231812] tracking-tight leading-tight">
+        فخامة الوقت..<br>
+        <span class="text-[#8c6f5b]">ودقة متناهية في كل ثانية.</span>
+      </h1>
+      <p class="max-w-2xl mx-auto text-sm sm:text-base text-[#735340] font-medium leading-relaxed">
+        ساعات مختارة بعناية (رولكس، كارتييه، تومي هيلفيغر، لاكوست، كاسيو إيديفيس، أوميغا). عاين وقس ساعتك براحتك مع المندوب قبل دفع باقي الحساب.
+      </p>
+      <div class="flex items-center justify-center gap-3 pt-3">
+        <a href="#products" class="bg-[#231812] hover:bg-[#3d281a] text-white font-bold text-sm px-6 py-3 rounded-full transition-all shadow-md flex items-center gap-2">
+          <span>استعرض الـ 99 ساعة</span>
+          <i class="fa-solid fa-arrow-down text-xs"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- كتالوج الساعات الكامل -->
+  <section id="products" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+      <div>
+        <h2 class="text-2xl sm:text-3xl font-black text-[#231812]">كتالوج الساعات (99 ساعة)</h2>
+        <p class="text-xs sm:text-sm text-[#735340] mt-1">كل ساعة معروضة بصورتها المعتمدة ومواصفاتها الفنية الكاملة</p>
+      </div>
+      
+      <!-- فلتر الحالة -->
+      <div class="flex items-center gap-2 flex-wrap">
+        <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]">كل الساعات</button>
+        <button onclick="setCategoryFilter('best')" id="cat-best" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">الأكثر طلباً ⭐</button>
+        <button onclick="setCategoryFilter('offers')" id="cat-offers" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">عروض خاصة 🔥</button>
+      </div>
+    </div>
+
+    <!-- شريط فلتر الماركات (Brand Filters) -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none">
+      <button onclick="setBrandFilter('all')" id="brand-all" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#231812] text-white border border-[#231812] whitespace-nowrap">جميع الماركات (99)</button>
+      <button onclick="setBrandFilter('rolex')" id="brand-rolex" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">رولكس Rolex</button>
+      <button onclick="setBrandFilter('cartier')" id="brand-cartier" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كارتييه Cartier</button>
+      <button onclick="setBrandFilter('tommy')" id="brand-tommy" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">تومي Tommy</button>
+      <button onclick="setBrandFilter('lacoste')" id="brand-lacoste" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">لاكوست Lacoste</button>
+      <button onclick="setBrandFilter('casio')" id="brand-casio" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كاسيو إيديفيس Casio</button>
+      <button onclick="setBrandFilter('omega')" id="brand-omega" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">أوميغا Omega</button>
+    </div>
+
+    <!-- حقل البحث السريع -->
+    <div class="mb-8 relative">
+      <input type="text" id="searchInput" oninput="handleSearch()" placeholder="ابحث باسم الموديل أو اللون أو الماركة..." class="w-full bg-white border border-[#eddcc9] rounded-2xl py-3.5 pr-11 pl-4 text-xs sm:text-sm text-[#231812] placeholder-[#735340]/60 focus:outline-none focus:border-[#b08968] shadow-xs">
+      <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-[#8c6f5b]"></i>
+    </div>
+
+    <!-- شبكة الـ 99 ساعة -->
+    <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <!-- يتم حقن الـ 99 ساعة ديناميكياً بواسطة JavaScript -->
+    </div>
+  </section>
+
+  <!-- درج المفضلة (Wishlist) -->
+  <div id="wishlistDrawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleWishlistDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
+    <div class="absolute inset-y-0 start-0 max-w-md w-full bg-[#231812] text-white shadow-2xl flex flex-col p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-stone-800 pb-4">
+        <h3 class="text-lg font-bold flex items-center gap-2">
+          <i class="fa-solid fa-heart text-rose-500"></i>
+          <span>قائمة الساعات المفضلة</span>
+        </h3>
+        <button onclick="toggleWishlistDrawer(false)" class="text-stone-400 hover:text-white text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="wishlistItemsList" class="flex-1 overflow-y-auto space-y-3 custom-scroll"></div>
+      <div class="border-t border-stone-800 pt-4">
+        <button onclick="moveAllWishlistToCart()" class="w-full bg-[#b08968] hover:bg-[#8c6f5b] text-white font-bold py-3 rounded-xl transition-all">
+          نقل جميع المفضلة للسلة 🛒
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- درج السلة (Cart) -->
+  <div id="cartDrawer" class="fixed inset-0 z-50 hidden">
+    <div onclick="toggleCartDrawer(false)" class="absolute inset-0 bg-black/60 backdrop-blur-xs"></div>
+    <div class="absolute inset-y-0 end-0 max-w-md w-full bg-white text-[#231812] shadow-2xl flex flex-col p-6 space-y-4">
+      <div class="flex items-center justify-between border-b border-[#eddcc9] pb-4">
+        <h3 class="text-lg font-black flex items-center gap-2">
+          <i class="fa-solid fa-bag-shopping text-[#b08968]"></i>
+          <span>سلة المشتريات</span>
+        </h3>
+        <button onclick="toggleCartDrawer(false)" class="text-[#735340] hover:text-[#231812] text-lg">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div id="cartItemsList" class="flex-1 overflow-y-auto space-y-3 custom-scroll"></div>
+      <div class="border-t border-[#eddcc9] pt-4 space-y-3">
+        <div class="flex justify-between items-center text-sm font-bold">
+          <span>الإجمالي:</span>
+          <span id="cartTotalPrice" class="text-lg font-black text-[#8c6f5b]">0 ج.م</span>
+        </div>
+        <button onclick="sendOrderWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-lg"></i>
+          <span>تأكيد الطلب ومعاينة الساعات</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- تذييل الصفحة Footer -->
+  <footer class="bg-[#231812] text-[#f7f2ea] py-12 border-t border-[#3d281a]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-start">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-full bg-white text-[#231812] flex items-center justify-center font-cinzel font-bold">A</div>
+        <span class="font-cinzel tracking-widest text-lg font-bold">AURA LUXURY</span>
+      </div>
+      <p class="text-xs text-stone-400">جميع الحقوق محفوظة © 2026 متجر AURA للساعات الفاخرة • ضمان شامل عام كامل ومعاينة قبل الدفع</p>
+      <div class="flex items-center gap-4 text-stone-400 text-sm">
+        <a href="https://wa.me/201005823798" target="_blank" class="hover:text-emerald-400"><i class="fa-brands fa-whatsapp text-lg"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- السكربت الشامل لكل الـ 99 صورة -->
+  <script>
+    // قائمة أسماء ملفات الـ 99 صورة بالكامل
+    const imageFiles = [
+      "rolex-men-land-dweller-ice-blue-honeycomb-dial-watch-990x990.webp",
+      "rolex-mens-land-dweller-silver-honeycomb-dial-jubilee-watch-990x990.webp",
+      "226570-0001-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-white-dial-metal-silver-strap-automatic-analog-sweeping-hands-explorer-ii-1024x1024.webp",
+      "rolex-mens-land-dweller-rose-gold-honeycomb-dial-watch-990x990.webp",
+      "126622-0001-rolex-watch-oyster-perpetual-date-yacht-master-superlative-chronometer-officially-certified-men-gray-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "116681-0002-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-white-dial-metal-silver-gold-strap-automatic-analog-sweeping-hands-yacht-master-ii-1024x1024.webp",
+      "126610lv-0002-rolex-watch-hulk-oyster-perpetual-date-100ft-300m-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-submariner-1024x1024.webp",
+      "226659-0002-rolex-watch-oyster-perpetual-date-yacht-master-superlative-chronometer-officially-certified-men-black-dial-rubber-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "336934-0001-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "336934-0008-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "336934-0005-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "228238-0061-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-green-dial-metal-gold-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "336934-0006-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "336933-0006-rolex-watch-sky-dweller-oyster-perpetual-superlative-chronometer-officially-certified-men-white-dial-metal-silver-gold-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "228236-0008-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "228239-0007-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "126334-0028-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
+      "228235-0025-rolex-watch-oyster-perpetual-day-date-superlative-chronometer-officially-certified-men-green-dial-metal-rose-gold-strap-automatic-analog-sweeping-hands-1024x1024.webp",
+      "126334-0002-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
+      "126333-0010-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-gold-dial-metal-silver-golden-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
+      "126331-0016-rolex-watch-oyster-perpetual-datejust-superlative-chronometer-officially-certified-men-gray-dial-metal-silver-rose-gold-strap-automatic-analog-date-just-1024x1024.webp",
+      "126333-0016-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-white-dial-metal-silver-gold-strap-automatic-analog-sweeping-hands-date-just-1024x1024.webp",
+      "126710blro-0001-rolex-watch-pepsi-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
+      "126710grnr-0003-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
+      "126713grnr-0001-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-gold-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
+      "126710blnr-0002-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-black-dial-metal-silver-strap-automatic-analog-gmt-master-ii-1024x1024.webp",
+      "126000-0005-rolex-watch-datejust-superlative-chronometer-officially-certified-men-green-dial-metal-silver-strap-automatic-analog-sweeping-hands-oyster-perpetual-1024x1024.webp",
+      "126234-0048-rolex-watch-oyster-perpetual-datejust-superlative-chronometer-officially-certified-men-palm-motif-green-dial-metal-silver-strap-automatic-analog-date-just-1024x1024.webp",
+      "277200-0003-rolex-watch-datejust-superlative-chronometer-officially-certified-men-blue-dial-metal-silver-strap-automatic-analog-sweeping-hands-oyster-perpetual-1024x1024.webp",
+      "228206-0048-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-arabic-numerals-green-dial-metal-silver-strap-automatic-analog-day-date-1024x1024.webp",
+      "2-380.jpg",
+      "17-331.jpg",
+      "cartier-men-tank-gold-case-black-strap-watch-990x990.webp",
+      "cartier-men-silver-rectangular-black-leather-watch-990x990.webp",
+      "cartier-men-rectangular-silver-black-leather-watch-990x990.webp",
+      "cartier-men-square-white-dial-silver-metal-watch-990x990.webp",
+      "cartier-men-rose-gold-rectangular-black-leather-watch-990x990.webp",
+      "cartier-men-rectangular-brown-leather-cream-dial-watch-990x990.webp",
+      "cartier-men-white-dial-leather-watch-990x990.webp",
+      "cartier-men-brown-leather-square-white-dial-watch-990x990.webp",
+      "cartier-men-santos-blue-dial-silver-watch-990x990.webp",
+      "cartier-men-rectangular-silver-case-brown-leather-strap-watch-990x990.webp",
+      "cartier-men-santos-black-dial-silver-watch-990x990.webp",
+      "cartier-men-santos-white-dial-silver-metal-watch-990x990.webp",
+      "cartier-men-skeleton-dial-silver-metal-watch-990x990.webp",
+      "cartier-men-square-green-dial-silver-metal-watch-990x990.webp",
+      "1792214-tommy-hilfiger-watch-men-green-dial-metal-stainless-steel-silver-strap-quartz-analog-chronograph-th85-990x990.webp",
+      "1792215-tommy-hilfiger-watch-men-silver-dial-metal-stainless-steel-strap-quartz-analog-chronograph-th85-990x990.webp",
+      "1792213-tommy-hilfiger-watch-chronograph-men-black-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
+      "1792188-tommy-hilfiger-watch-chronograph-men-green-dial-leather-strap-quartz-analog-th85-990x990.webp",
+      "1792187-tommy-hilfiger-watch-chronograph-men-blue-dial-leather-navy-strap-quartz-analog-th85-990x990.webp",
+      "1792186-tommy-hilfiger-watch-chronograph-men-gray-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
+      "1792185-tommy-hilfiger-watch-chronograph-men-blue-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
+      "1792184-tommy-hilfiger-watch-chronograph-men-white-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
+      "1792180-tommy-hilfiger-watch-men-green-dial-metal-stainless-steel-silver-strap-quartz-analog-rocky-990x990.webp",
+      "1792179-tommy-hilfiger-watch-men-blue-dial-metal-stainless-steel-silver-strap-quartz-analog-rocky-990x990.webp",
+      "1792166-tommy-hilfiger-watch-chronograph-men-black-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
+      "1792168-tommy-hilfiger-watch-chronograph-men-black-dial-rubber-strap-quartz-analog-bank-990x990.webp",
+      "1792163-tommy-hilfiger-watch-chronograph-men-blue-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
+      "1792162-tommy-hilfiger-watch-chronograph-men-black-dial-leather-strap-quartz-analog-th85-990x990.webp",
+      "1792157-tommy-hilfiger-watch-chronograph-men-white-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
+      "1792158-tommy-hilfiger-watch-chronograph-men-blue-dial-metal-stainless-steel-gold-strap-quartz-analog-th85-990x990.webp",
+      "2011270-lacoste-watch-boston-men-chronograph-green-dial-black-stainless-steel-strap-990x990.webp",
+      "2011255-lacoste-watch-neo-heritage-men-chronograph-green-dial-silver-stainless-steel-strap-mesh-990x990.webp",
+      "2011218-lacoste-watch-endurance-men-green-dial-rubber-strap-5bar-990x990.webp",
+      "2011178-lacoste-watch-replay-men-green-dial-silver-stainless-steel-strap-990x990.webp",
+      "2011163-lacoste-watch-boston-men-chronograph-blue-dial-silver-stainless-steel-strap-mesh-990x990.webp",
+      "2011155-lacoste-watch-tiebreaker-men-chronograph-black-dial-silver-stainless-steel-strap-990x990.webp",
+      "2011162-lacoste-watch-boston-men-chronograph-black-dial-stainless-steel-strap-mesh-990x990.webp",
+      "2011080-lacoste-watch-boston-men-chronograph-green-dial-silver-stainless-steel-strap-990x990.webp",
+      "2011039-lacoste-watch-12-12-men-white-dial-rubber-strap-990x990.webp",
+      "2011069-lacoste-watch-12-12-men-white-dial-rubber-strap-990x990.webp",
+      "1-95.jpg.webp",
+      "1-93.jpg.webp",
+      "casio-edifice-efr-564d-2av-efr-564d-2av-9704004.jpg.webp",
+      "casio-edifice-men-efr-554-blue-gold-watch-990x990.webp",
+      "1-102.jpg.webp",
+      "1-103.jpg.webp",
+      "1-104.jpg.webp",
+      "1-94.jpg.webp",
+      "1-99.jpg.webp",
+      "1-98.jpg.webp",
+      "1-97.jpg.webp",
+      "1-83.jpg.webp",
+      "1-101.jpg.webp",
+      "1-82.jpg.webp",
+      "1-88.jpg.webp",
+      "1-90.jpg.webp",
+      "1-105.jpg.webp",
+      "1-89.jpg.webp",
+      "1-85.jpg.webp",
+      "omega-men-seamaster-worldtimer-light-blue-watch-990x990.webp",
+      "omega-men-seamaster-aqua-terra-worldtimer-titanium-watch-990x990.webp",
+      "omega-men-seamaster-aqua-terra-worldtimer-green-steel-watch-990x990.webp",
+      "omega-men-seamaster-worldtimer-blue-dial-metal-watch-990x990.webp",
+      "omega-men-seamaster-aqua-terra-worldtimer-blue-watch-990x990.webp",
+      "omega-mens-seamaster-aqua-terra-worldtimer-green-dial-watch-990x990.webp",
+      "omega-men-seamaster-aqua-terra-worldtimer-blue-strap-watch-990x990.webp",
+      "1-25.jpg.webp"
+    ];
+
+    // بناء قائمة الـ 99 ساعة بالمعلومات الدقيقة
+    const allWatches = imageFiles.map((file, idx) => {
+      const lower = file.toLowerCase();
+      let brand = 'rolex';
+      let brandName = 'رولكس';
+      let price = 1050;
+      let oldPrice = 1550;
+
+      if (lower.includes('cartier') || lower.includes('santos') || lower.includes('tank')) {
+        brand = 'cartier'; brandName = 'كارتييه'; price = 950; oldPrice = 1390;
+      } else if (lower.includes('tommy') || lower.includes('hilfiger') || lower.includes('th85') || lower.includes('1792')) {
+        brand = 'tommy'; brandName = 'تومي هيلفيغر'; price = 850; oldPrice = 1250;
+      } else if (lower.includes('lacoste') || lower.includes('2011')) {
+        brand = 'lacoste'; brandName = 'لاكوست'; price = 790; oldPrice = 1190;
+      } else if (lower.includes('casio') || lower.includes('edifice') || lower.startsWith('1-9') || lower.startsWith('1-8') || lower.startsWith('1-10')) {
+        brand = 'casio'; brandName = 'كاسيو إيديفيس'; price = 890; oldPrice = 1290;
+      } else if (lower.includes('omega') || lower.includes('seamaster') || lower.includes('1-25')) {
+        brand = 'omega'; brandName = 'أوميغا'; price = 1250; oldPrice = 1790;
+      }
+
+      const clean = file.replace(/\.(webp|jpe?g|png|gif)(\.webp)?$/i, '').replace(/[-_]+/g, ' ').replace(/\b\d{3,4}x\d{3,4}\b/gi, '').trim();
+
+      return {
+        id: idx + 1,
+        title: `ساعة ${brandName} فاخرة #${idx + 1}`,
+        desc: `ماكينة يابانية معتمدة عالية الدقة مع زجاج زفير مقاوم للخدش، علبة فاخرة وكارت ضمان سنة. (${clean.slice(0, 32)})`,
+        brand: brand,
+        category: idx % 3 === 0 ? 'best' : idx % 3 === 1 ? 'offers' : 'all',
+        price: price,
+        oldPrice: oldPrice,
+        rating: (4.8 + (idx % 3) * 0.1).toFixed(1),
+        img: `https://raw.githubusercontent.com/mahmoudabokhashmmm-svg/AURA/main/${file}`
+      };
+    });
+
+    let currentCategory = 'all';
+    let currentBrand = 'all';
+    let searchQuery = '';
+    let cart = JSON.parse(localStorage.getItem('aura_cart') || '[]');
+    let wishlist = JSON.parse(localStorage.getItem('aura_wishlist') || '[]');
+
+    function renderProducts() {
+      const grid = document.getElementById('productsGrid');
+      grid.innerHTML = '';
+
+      const filtered = allWatches.filter(w => {
+        const matchCat = currentCategory === 'all' || w.category === currentCategory;
+        const matchBrand = currentBrand === 'all' || w.brand === currentBrand;
+        const matchSearch = !searchQuery || w.title.includes(searchQuery) || w.desc.includes(searchQuery);
+        return matchCat && matchBrand && matchSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = '<div class="col-span-full py-12 text-center text-sm text-[#735340]">لا توجد نتائج مطابقة لبحثك</div>';
+        return;
+      }
+
+      filtered.forEach(watch => {
+        const isWish = wishlist.includes(watch.id);
+        const card = document.createElement('div');
+        card.className = 'bg-white rounded-3xl border border-[#eddcc9] overflow-hidden flex flex-col justify-between hover:shadow-xl transition-all';
+        card.innerHTML = `
+          <div>
+            <div class="relative h-64 overflow-hidden bg-[#f7f2ea]">
+              <img src="${watch.img}" alt="${watch.title}" onerror="this.src='https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover">
+              <button onclick="toggleWishlist(${watch.id})" class="absolute top-3.5 start-3.5 p-2 rounded-full backdrop-blur-md ${isWish ? 'bg-rose-500 text-white' : 'bg-white/80 text-stone-700 hover:text-rose-500'} shadow-sm">
+                <i class="fa-solid fa-heart"></i>
+              </button>
+            </div>
+            <div class="p-4 space-y-2">
+              <div class="flex items-center justify-between text-xs text-amber-500">
+                <span>⭐ ${watch.rating}</span>
+                <span class="text-[10px] bg-[#f7f2ea] text-[#8c6f5b] px-2 py-0.5 rounded-full font-bold">#${watch.id}</span>
+              </div>
+              <h3 class="font-bold text-sm text-[#231812]">${watch.title}</h3>
+              <p class="text-xs text-[#735340] line-clamp-2">${watch.desc}</p>
+            </div>
+          </div>
+          <div class="p-4 border-t border-[#eddcc9] flex items-center justify-between gap-2">
+            <div>
+              <span class="text-base font-black text-[#8c6f5b]">${watch.price} ج.م</span>
+              <span class="text-xs text-stone-400 line-through block">${watch.oldPrice} ج.م</span>
+            </div>
+            <button onclick="addToCart(${watch.id})" class="bg-[#231812] hover:bg-[#3d281a] text-white text-xs font-bold px-4 py-2 rounded-xl transition-all">
+              للسلة 🛒
+            </button>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function setCategoryFilter(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.className = 'cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]';
+      });
+      document.getElementById(`cat-${cat}`).className = 'cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]';
+      renderProducts();
+    }
+
+    function setBrandFilter(brand) {
+      currentBrand = brand;
+      document.querySelectorAll('.brand-btn').forEach(btn => {
+        btn.className = 'brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap';
+      });
+      document.getElementById(`brand-${brand}`).className = 'brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#231812] text-white border border-[#231812] whitespace-nowrap';
+      renderProducts();
+    }
+
+    function handleSearch() {
+      searchQuery = document.getElementById('searchInput').value.trim();
+      renderProducts();
+    }
+
+    function toggleWishlist(id) {
+      if (wishlist.includes(id)) {
+        wishlist = wishlist.filter(x => x !== id);
+      } else {
+        wishlist.push(id);
+      }
+      localStorage.setItem('aura_wishlist', JSON.stringify(wishlist));
+      updateBadges();
+      renderProducts();
+      renderWishlist();
+    }
+
+    function renderWishlist() {
+      const list = document.getElementById('wishlistItemsList');
+      const items = allWatches.filter(w => wishlist.includes(w.id));
+      if (items.length === 0) {
+        list.innerHTML = '<p class="text-xs text-stone-400 text-center py-8">قائمة المفضلة فارغة ❤️</p>';
+        return;
+      }
+      list.innerHTML = items.map(w => `
+        <div class="flex items-center gap-3 p-3 bg-stone-900 rounded-xl border border-stone-800">
+          <img src="${w.img}" class="w-12 h-12 object-cover rounded-lg">
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-bold truncate">${w.title}</h4>
+            <span class="text-xs text-amber-400">${w.price} ج.م</span>
+          </div>
+          <button onclick="addToCart(${w.id})" class="text-xs bg-amber-500 text-stone-950 px-2.5 py-1 rounded-lg font-bold">للسلة</button>
+          <button onclick="toggleWishlist(${w.id})" class="text-rose-400 text-sm"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      `).join('');
+    }
+
+    function moveAllWishlistToCart() {
+      wishlist.forEach(id => addToCart(id));
+      toggleWishlistDrawer(false);
+      toggleCartDrawer(true);
+    }
+
+    function addToCart(id) {
+      const item = cart.find(x => x.id === id);
+      if (item) {
+        item.qty += 1;
+      } else {
+        const watch = allWatches.find(w => w.id === id);
+        cart.push({ ...watch, qty: 1 });
+      }
+      localStorage.setItem('aura_cart', JSON.stringify(cart));
+      updateBadges();
+      renderCart();
+    }
+
+    function renderCart() {
+      const list = document.getElementById('cartItemsList');
+      if (cart.length === 0) {
+        list.innerHTML = '<p class="text-xs text-[#735340] text-center py-8">السلة فارغة حالياً 🛍️</p>';
+        document.getElementById('cartTotalPrice').innerText = '0 ج.م';
+        return;
+      }
+      let total = 0;
+      list.innerHTML = cart.map(item => {
+        total += item.price * item.qty;
+        return `
+          <div class="flex items-center gap-3 p-3 bg-[#f7f2ea] rounded-xl border border-[#eddcc9]">
+            <img src="${item.img}" class="w-12 h-12 object-cover rounded-lg">
+            <div class="flex-1 min-w-0">
+              <h4 class="text-xs font-bold text-[#231812] truncate">${item.title}</h4>
+              <span class="text-xs font-black text-[#8c6f5b]">${item.price} ج.م × ${item.qty}</span>
+            </div>
+            <button onclick="removeFromCart(${item.id})" class="text-rose-600 text-sm"><i class="fa-solid fa-trash"></i></button>
+          </div>
+        `;
+      }).join('');
+      document.getElementById('cartTotalPrice').innerText = total + ' ج.م';
+    }
+
+    function removeFromCart(id) {
+      cart = cart.filter(x => x.id !== id);
+      localStorage.setItem('aura_cart', JSON.stringify(cart));
+      updateBadges();
+      renderCart();
+    }
+
+    function updateBadges() {
+      document.getElementById('wishlistCountBadge').innerText = wishlist.length;
+      document.getElementById('cartCountBadge').innerText = cart.reduce((s, i) => s + i.qty, 0);
+    }
+
+    function toggleWishlistDrawer(open) {
+      const d = document.getElementById('wishlistDrawer');
+      if (open) { renderWishlist(); d.classList.remove('hidden'); }
+      else { d.classList.add('hidden'); }
+    }
+
+    function toggleCartDrawer(open) {
+      const d = document.getElementById('cartDrawer');
+      if (open) { renderCart(); d.classList.remove('hidden'); }
+      else { d.classList.add('hidden'); }
+    }
+
+    function sendOrderWhatsApp() {
+      if (cart.length === 0) return;
+      let msg = `مرحباً AURA، أرغب في طلب الساعات التالية مع المعاينة عند الاستلام:%0A%0A`;
+      let total = 0;
+      cart.forEach(item => {
+        msg += `• ${item.title} (العدد: ${item.qty}) - السعر: ${item.price * item.qty} ج.م%0A`;
+        total += item.price * item.qty;
+      });
+      msg += `%0Aالإجمالي: ${total} ج.م%0Aشكراً جزيلاً!`;
+      window.open(`https://wa.me/201005823798?text=${msg}`, '_blank');
+    }
+
+    // التشغيل المبدئي
+    renderProducts();
+    updateBadges();
+  </script>
+</body>
+  </html>
