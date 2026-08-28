@@ -110,7 +110,7 @@
         <span class="text-[#8c6f5b]">ودقة متناهية في كل ثانية.</span>
       </h1>
       <p class="max-w-2xl mx-auto text-sm sm:text-base text-[#735340] font-medium leading-relaxed">
-        ساعات مختارة بعناية (رولكس، كارتييه، تومي هيلفيغر، لاكوست، كاسيو إيديفيس، أوميغا). عاين وقس ساعتك براحتك مع المندوب قبل دفع باقي الحساب.
+        كتالوج يضم 99 ساعة مختارة بعناية (رولكس، كارتييه، تومي هيلفيغر، لاكوست، كاسيو إيديفيس، أوميغا). عاين وقس ساعتك براحتك مع المندوب قبل دفع باقي الحساب.
       </p>
       <div class="flex items-center justify-center gap-3 pt-3">
         <a href="#products" class="bg-[#231812] hover:bg-[#3d281a] text-white font-bold text-sm px-6 py-3 rounded-full transition-all shadow-md flex items-center gap-2">
@@ -121,29 +121,30 @@
     </div>
   </section>
 
-  <!-- الكتالوج -->
+  <!-- الكتالوج الكامل -->
   <section id="products" class="py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
       <div>
         <h2 class="text-2xl sm:text-3xl font-black text-[#231812]">كتالوج الساعات (99 ساعة)</h2>
-        <p class="text-xs sm:text-sm text-[#735340] mt-1">كل ساعة معروضة بصورتها المعتمدة ومواصفاتها الفنية الكاملة</p>
+        <p class="text-xs sm:text-sm text-[#735340] mt-1">كل ساعة معروضة بصورتها المعتمدة ومواصفاتها الفنية وسعرها المحدث</p>
       </div>
       
       <div class="flex items-center gap-2 flex-wrap">
-        <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]">كل الساعات</button>
+        <button onclick="setCategoryFilter('all')" id="cat-all" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-[#231812] text-white border border-[#231812]">كل الساعات (99)</button>
         <button onclick="setCategoryFilter('best')" id="cat-best" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">الأكثر طلباً ⭐</button>
         <button onclick="setCategoryFilter('offers')" id="cat-offers" class="cat-btn px-4 py-1.5 rounded-full text-xs font-bold bg-white text-[#735340] border border-[#eddcc9]">عروض خاصة 🔥</button>
       </div>
     </div>
 
+    <!-- فلاتر الماركات -->
     <div class="flex items-center gap-2 overflow-x-auto pb-3 mb-6 scrollbar-none">
       <button onclick="setBrandFilter('all')" id="brand-all" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-[#231812] text-white border border-[#231812] whitespace-nowrap">جميع الماركات (99)</button>
-      <button onclick="setBrandFilter('rolex')" id="brand-rolex" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">رولكس Rolex</button>
-      <button onclick="setBrandFilter('cartier')" id="brand-cartier" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كارتييه Cartier</button>
-      <button onclick="setBrandFilter('tommy')" id="brand-tommy" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">تومي Tommy</button>
-      <button onclick="setBrandFilter('lacoste')" id="brand-lacoste" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">لاكوست Lacoste</button>
-      <button onclick="setBrandFilter('casio')" id="brand-casio" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كاسيو إيديفيس Casio</button>
-      <button onclick="setBrandFilter('omega')" id="brand-omega" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">أوميغا Omega</button>
+      <button onclick="setBrandFilter('rolex')" id="brand-rolex" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">رولكس Rolex (32)</button>
+      <button onclick="setBrandFilter('cartier')" id="brand-cartier" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كارتييه Cartier (14)</button>
+      <button onclick="setBrandFilter('tommy')" id="brand-tommy" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">تومي Tommy (16)</button>
+      <button onclick="setBrandFilter('lacoste')" id="brand-lacoste" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">لاكوست Lacoste (10)</button>
+      <button onclick="setBrandFilter('casio')" id="brand-casio" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">كاسيو إيديفيس Casio (18)</button>
+      <button onclick="setBrandFilter('omega')" id="brand-omega" class="brand-btn px-4 py-2 rounded-xl text-xs font-bold bg-white text-[#735340] border border-[#eddcc9] whitespace-nowrap">أوميغا Omega (9)</button>
     </div>
 
     <div class="mb-8 relative">
@@ -151,6 +152,7 @@
       <i class="fa-solid fa-magnifying-glass absolute right-4 top-1/2 -translate-y-1/2 text-[#8c6f5b]"></i>
     </div>
 
+    <!-- شبكة الساعات بالكامل -->
     <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
   </section>
 
@@ -238,13 +240,13 @@
 
         <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-2xl transition-all shadow-lg flex items-center justify-center gap-2 text-sm">
           <i class="fa-brands fa-whatsapp text-lg"></i>
-          <span>إرسال الطلب والتفاصيل بالواتساب 🚀</span>
+          <span>إرسال الطلب والتفاصيل والصور بالواتساب 🚀</span>
         </button>
       </form>
     </div>
   </div>
 
-  <!-- الشات بوت الذكي لمساعد العميل (AURA) -->
+  <!-- الشات بوت الذكي -->
   <div id="chatbotModal" class="fixed bottom-5 start-5 z-50 w-full max-w-sm bg-white rounded-3xl border border-[#eddcc9] shadow-2xl overflow-hidden hidden flex-col transition-all">
     <div class="bg-[#231812] p-4 text-white flex items-center justify-between">
       <div class="flex items-center gap-2.5">
@@ -266,7 +268,7 @@
     <div id="chatMessages" class="p-4 h-72 overflow-y-auto custom-scroll space-y-3 bg-[#fdfbf7] text-xs">
       <div class="bg-[#f7f2ea] p-3 rounded-2xl rounded-tr-none border border-[#eddcc9] text-[#231812] leading-relaxed">
         أهلاً بك في <strong>AURA</strong>! ⌚✨<br>
-        أنا مستشارك الذكي لمساعدتك في كل ما يخص الساعات، الضمان، الشحن، أو طريقة الطلب. كيف أساعدك اليوم؟
+        أنا مستشارك الذكي لمساعدتك في كل ما يخص الـ 99 ساعة، الضمان، الشحن، أو طريقة الطلب. كيف أساعدك اليوم؟
       </div>
     </div>
 
@@ -338,7 +340,9 @@
   </div>
 
   <script>
+    // مصفوفة الـ 99 صورة بالكامل
     const imageFiles = [
+      // رولكس (32 ساعة)
       "rolex-men-land-dweller-ice-blue-honeycomb-dial-watch-990x990.webp",
       "rolex-mens-land-dweller-silver-honeycomb-dial-jubilee-watch-990x990.webp",
       "226570-0001-rolex-watch-oyster-perpetual-date-superlative-chronometer-officially-certified-men-white-dial-metal-silver-strap-automatic-analog-sweeping-hands-explorer-ii-1024x1024.webp",
@@ -371,6 +375,7 @@
       "228206-0048-rolex-watch-oyster-perpetual-superlative-chronometer-officially-certified-men-arabic-numerals-green-dial-metal-silver-strap-automatic-analog-day-date-1024x1024.webp",
       "2-380.jpg",
       "17-331.jpg",
+      // كارتييه (14 ساعة)
       "cartier-men-tank-gold-case-black-strap-watch-990x990.webp",
       "cartier-men-silver-rectangular-black-leather-watch-990x990.webp",
       "cartier-men-rectangular-silver-black-leather-watch-990x990.webp",
@@ -385,6 +390,7 @@
       "cartier-men-santos-white-dial-silver-metal-watch-990x990.webp",
       "cartier-men-skeleton-dial-silver-metal-watch-990x990.webp",
       "cartier-men-square-green-dial-silver-metal-watch-990x990.webp",
+      // تومي هيلفيغر (16 ساعة)
       "1792214-tommy-hilfiger-watch-men-green-dial-metal-stainless-steel-silver-strap-quartz-analog-chronograph-th85-990x990.webp",
       "1792215-tommy-hilfiger-watch-men-silver-dial-metal-stainless-steel-strap-quartz-analog-chronograph-th85-990x990.webp",
       "1792213-tommy-hilfiger-watch-chronograph-men-black-dial-leather-brown-strap-quartz-analog-th85-990x990.webp",
@@ -401,6 +407,7 @@
       "1792162-tommy-hilfiger-watch-chronograph-men-black-dial-leather-strap-quartz-analog-th85-990x990.webp",
       "1792157-tommy-hilfiger-watch-chronograph-men-white-dial-metal-stainless-steel-silver-strap-quartz-analog-th85-990x990.webp",
       "1792158-tommy-hilfiger-watch-chronograph-men-blue-dial-metal-stainless-steel-gold-strap-quartz-analog-th85-990x990.webp",
+      // لاكوست (10 ساعات)
       "2011270-lacoste-watch-boston-men-chronograph-green-dial-black-stainless-steel-strap-990x990.webp",
       "2011255-lacoste-watch-neo-heritage-men-chronograph-green-dial-silver-stainless-steel-strap-mesh-990x990.webp",
       "2011218-lacoste-watch-endurance-men-green-dial-rubber-strap-5bar-990x990.webp",
@@ -411,6 +418,7 @@
       "2011080-lacoste-watch-boston-men-chronograph-green-dial-silver-stainless-steel-strap-990x990.webp",
       "2011039-lacoste-watch-12-12-men-white-dial-rubber-strap-990x990.webp",
       "2011069-lacoste-watch-12-12-men-white-dial-rubber-strap-990x990.webp",
+      // كاسيو إيديفيس (18 ساعة)
       "1-95.jpg.webp",
       "1-93.jpg.webp",
       "casio-edifice-efr-564d-2av-efr-564d-2av-9704004.jpg.webp",
@@ -429,6 +437,7 @@
       "1-90.jpg.webp",
       "1-105.jpg.webp",
       "1-89.jpg.webp",
+      // أوميغا (9 ساعات)
       "1-85.jpg.webp",
       "omega-men-seamaster-worldtimer-light-blue-watch-990x990.webp",
       "omega-men-seamaster-aqua-terra-worldtimer-titanium-watch-990x990.webp",
@@ -467,7 +476,8 @@
         rawFileName: file,
         desc: `ماكينة يابانية معتمدة عالية الدقة مع زجاج زفير مقاوم للخدش، علبة فاخرة وكارت ضمان سنة. (${clean.slice(0, 32)})`,
         brand: brand,
-        category: idx % 3 === 0 ? 'best' : idx % 3 === 1 ? 'offers' : 'all',
+        isBest: idx % 3 === 0,
+        isOffer: idx % 3 === 1,
         price: price,
         oldPrice: oldPrice,
         rating: (4.8 + (idx % 3) * 0.1).toFixed(1),
@@ -486,7 +496,10 @@
       grid.innerHTML = '';
 
       const filtered = allWatches.filter(w => {
-        const matchCat = currentCategory === 'all' || w.category === currentCategory;
+        let matchCat = true;
+        if (currentCategory === 'best') matchCat = w.isBest;
+        if (currentCategory === 'offers') matchCat = w.isOffer;
+
         const matchBrand = currentBrand === 'all' || w.brand === currentBrand;
         const matchSearch = !searchQuery || w.title.includes(searchQuery) || w.desc.includes(searchQuery);
         return matchCat && matchBrand && matchSearch;
@@ -685,6 +698,7 @@
       document.getElementById('checkoutTotalAmount').innerText = total.toLocaleString() + ' ج.م';
     }
 
+    // بناء رسالة الواتساب شاملة صورة كل منتج مطلوب بالتفصيل
     function handleCheckoutSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('custName').value.trim();
@@ -705,17 +719,20 @@
       msg += `💵 *طريقة الدفع:* ${payment}\n`;
       msg += `⚡ *تنبيه الديبوزت:* تم إرفاق سكرين شوت تحويل 100 ج.م عربون شحن على إنستاباي (01010143989)\n`;
       msg += `-----------------------------\n`;
-      msg += `⌚ *الساعات المطلوبة:*\n`;
+      msg += `⌚ *الساعات المطلوبة ومرفق صورها:*\n\n`;
 
       let total = 0;
       cart.forEach((item, i) => {
         const itemTotal = item.price * item.qty;
         total += itemTotal;
-        msg += `${i + 1}. *${item.title}* (${item.qty} قطع) - السعر: ${itemTotal.toLocaleString()} ج.م\n`;
+        msg += `🔹 *${i + 1}. ${item.title}*\n`;
+        msg += `   • الكمية: ${item.qty} قطعة\n`;
+        msg += `   • السعر: ${itemTotal.toLocaleString()} ج.م\n`;
+        msg += `   • 🖼️ *لينك صورة الساعة:* ${item.img}\n\n`;
       });
 
       msg += `-----------------------------\n`;
-      msg += `💰 *الإجمالي المستحق:* ${total.toLocaleString()} ج.م (شحن مجاني ومعاينة)\n`;
+      msg += `💰 *الإجمالي المستحق:* ${total.toLocaleString()} ج.م (شحن مجاني ومعاينة)`;
 
       const targetPhone = '201005823798';
       const encodedMsg = encodeURIComponent(msg);
@@ -755,7 +772,7 @@
         const t = text.toLowerCase();
         let reply = '';
 
-        // 1. الديبوزت وإنستاباي (أولوية قصوى)
+        // 1. الديبوزت وإنستاباي (أولوية أولى لمنع تداخل الكلمات)
         if (t.includes('عربون') || t.includes('ديبوزت') || t.includes('انستاباي') || t.includes('إنستاباي') || t.includes('instapay') || t.includes('100') || t.includes('تحويل')) {
           reply = '⚡ **تفاصيل عربون جدية الشحن (100 ج.م):**\n• لحجز المندوب وتأكيد جدية استلامك للساعة، يتم تحويل 100 ج.م عربون عبر تطبيق إنستاباي.\n• 📱 **رقم التحويل:** `01010143989`\n• 🔗 **عنوان إنستاباي:** `mahmoudabokhashm2006@instapay`\n• 📲 **رابط التحويل المباشر:**\nhttps://ipn.eg/S/mahmoudabokhashm2006/instapay/46V1Wk\n\n📌 *ملحوظة:* الـ 100 ج.م تُخصم بالكامل من إجمالي الفاتورة عند استلامك للساعة.';
         }
@@ -765,7 +782,7 @@
         }
         // 3. طريقة الطلب والشراء
         else if (t.includes('اطلب') || t.includes('اشتري') || t.includes('شراء') || t.includes('اوردر') || t.includes('أوردر') || t.includes('سلة') || t.includes('طريقة الطلب') || t.includes('ازاي')) {
-          reply = '🛒 **خطوات الطلب وتأكيد الشراء:**\n1. اختر الساعة التي تعجبك من الكتالوج واضغط **"للسلة 🛒"**.\n2. افتح السلة من أعلى الصفحة واضغط **"متابعة الشراء"**.\n3. املأ بيانات الاسم والعنوان بالتفصيل، ثم حول عربون الـ 100 ج عبر إنستاباي على **01010143989**.\n4. اضغط **"إرسال الطلب بالواتساب"** وسنقوم بتجهيز الشحن والمعاينة لك فوراً!';
+          reply = '🛒 **خطوات الطلب وتأكيد الشراء:**\n1. اختر الساعة التي تعجبك من الكتالوج واضغط **"للسلة 🛒"**.\n2. افتح السلة من أعلى الصفحة واضغط **"متابعة الشراء"**.\n3. املأ بيانات الاسم والعنوان بالتفصيل، ثم حول عربون الـ 100 ج عبر إنستاباي على **01010143989**.\n4. اضغط **"إرسال الطلب بالواتساب"** وسيقوم الموقع بإرسال الفاتورة مع صورة الساعة مباشرة لواتساب الإدارة لتجهيز الشحن فوراً!';
         }
         // 4. المعاينة والضمان
         else if (t.includes('معاين') || t.includes('ضمان') || t.includes('استلام') || t.includes('افحص') || t.includes('فتح') || t.includes('قيس') || t.includes('قياس') || t.includes('اصلي') || t.includes('خام')) {
@@ -781,23 +798,22 @@
         }
         // 7. ماركة رولكس
         else if (t.includes('رولكس') || t.includes('rolex') || t.includes('داي ديت') || t.includes('صبمارينر') || t.includes('سكاي')) {
-          reply = '👑 **مجموعة رولكس Rolex:**\nمتوفر لدينا أقوى إصدارات رولكس (Submariner Hulk, Day-Date 40, Sky-Dweller, Datejust, GMT-Master II Pepsi) بماكينات أوتوماتيك ويابانية راقية وزجاج زفير. تصفحها بالضغط على فلتر "رولكس" في الكتالوج!';
+          reply = '👑 **مجموعة رولكس Rolex (32 ساعة):**\nمتوفر لدينا أقوى إصدارات رولكس (Submariner Hulk, Day-Date 40, Sky-Dweller, Datejust, GMT-Master II Pepsi) بماكينات أوتوماتيك ويابانية راقية وزجاج زفير. تصفحها بالضغط على فلتر "رولكس" في الكتالوج!';
         }
         // 8. ماركة كارتييه والرسميات
         else if (t.includes('كارتييه') || t.includes('cartier') || t.includes('تانك') || t.includes('سانتوس') || t.includes('رسمي') || t.includes('بدل')) {
-          reply = '👔 **مجموعة كارتييه والأطقم الرسمية:**\nساعات كارتييه تانك (Tank) وسانتوس (Santos) هي الخيار الكلاسيكي الفاخر للبدلات والمناسبات الرسمية بفضل تصميمها الأنيق وسيور الجلد الطبيعي المريح.';
+          reply = '👔 **مجموعة كارتييه والأطقم الرسمية (14 ساعة):**\nساعات كارتييه تانك (Tank) وسانتوس (Santos) هي الخيار الكلاسيكي الفاخر للبدلات والمناسبات الرسمية بفضل تصميمها الأنيق وسيور الجلد الطبيعي المريح.';
         }
         // 9. الساعات الرياضية
         else if (t.includes('رياضي') || t.includes('سبورت') || t.includes('مية') || t.includes('ماء') || t.includes('كاسيو') || t.includes('تومي') || t.includes('لاكوست') || t.includes('omega') || t.includes('اوميغا') || t.includes('أوميغا')) {
-          reply = '🏊 **الساعات الرياضية والكاجوال:**\nننصحك بمجموعات كاسيو إيديفيس (Casio Edifice) وتومي هيلفيغر (Tommy TH85) وأوميغا سي ماستر المقاومة للماء والمزودة بكرونوغراف دقيق وعقارب فوسفورية مضيئة.';
+          reply = '🏊 **الساعات الرياضية والكاجوال:**\nننصحك بمجموعات كاسيو إيديفيس (18 موديل) وتومي هيلفيغر (16 موديل) وأوميغا سي ماستر المقاومة للماء والمزودة بكرونوغراف دقيق وعقارب فوسفورية مضيئة.';
         }
         // 10. التواصل المباشر
         else if (t.includes('تواصل') || t.includes('رقم') || t.includes('واتس') || t.includes('فون') || t.includes('اتصال') || t.includes('خدمة العملاء')) {
           reply = '📞 يمكنك التواصل المباشر مع إدارة المتجر عبر واتساب أو الاتصال على:\n📱 **01005823798**\nيسعدنا الرد على كافة استفساراتك على مدار الساعة!';
         }
-        // رد عام ذكي
         else {
-          reply = 'يسعدني مساعدتك! ⌚ يمكنك طلب أي ساعة وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً قبل الدفع.\nللتواصل المباشر مع الإدارة كلمنا واتساب على: 01005823798.';
+          reply = 'يسعدني مساعدتك! ⌚ متوفر لدينا 99 ساعة فاخرة يمكنك طلب أي منها وإضافتها للسلة وسنقوم بالتوصيل مع المعاينة والقياس مجاناً قبل الدفع.\nللتواصل المباشر مع الإدارة كلمنا واتساب على: 01005823798.';
         }
 
         const botMsg = document.createElement('div');
@@ -812,4 +828,4 @@
     updateBadges();
   </script>
 </body>
-</html>
+  </html>
